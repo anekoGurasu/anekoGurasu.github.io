@@ -11,7 +11,7 @@ body{
 
 .content{
     margin:auto;
-    width:24.5%;
+    width:24%;
     height:60%;
     text-align: center;
     vertical-align: middle;
@@ -23,8 +23,6 @@ body{
     color:#e0e0ff;
     font-family: 'Ubuntu', sans-serif;
 }
-
-
 
 
 
@@ -51,10 +49,28 @@ body{
     padding-right:17px;
     color:#5e87b0;
     top:90%;
-
     animation: top .75s steps(200, end);
-    animation-delay: 1.5s;
+    animation-delay: 1.4s;
     animation-fill-mode: forwards;
+}
+
+.clickbtn{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color:#e0e0ff;
+    animation: opacity 1.5s;
+    animation-delay: 3.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.clickbtn::after{
+    color:#e0e0ff;
+}
+
+.clickbtn:hover{
+    color:#5e87b0;
 }
 
 @keyframes top {
@@ -68,6 +84,10 @@ body{
   to { width: 100% }
 }
 
+@keyframes opacity {
+    from { opacity: 0% }
+    to { opacity:100% }
+  }
 
   
 
