@@ -1,5 +1,6 @@
 body{
     background-color: #212429;
+    overflow: hidden;
 }
 
 .preloader{
@@ -11,7 +12,7 @@ body{
 
 .content{
     margin:auto;
-    width:24%;
+    width:19.25%;
     height:60%;
     text-align: center;
     vertical-align: middle;
@@ -26,18 +27,14 @@ body{
 
 
 
-.logoname{
-    font-size: 5em;
+.logoName{
+    font-size: 4em;
     font-weight: bold;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     border-right: .15em solid transparent; /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-     /* Gives that scrolling effect as the typing happens */
+    white-space: nowrap; 
     text-shadow: 2px 2px 5px black;
     animation:typing 1.2s steps(20, end);
-   
-    
-        
 }
 
 .ptf{
@@ -48,10 +45,11 @@ body{
     text-align: right;
     padding-right:17px;
     color:#5e87b0;
-    top:90%;
+
     animation: top .75s steps(200, end);
     animation-delay: 1.4s;
     animation-fill-mode: forwards;
+    opacity: 0%;
 }
 
 .clickbtn{
@@ -60,7 +58,7 @@ body{
     text-decoration: none;
     color:#e0e0ff;
     animation: opacity 1.5s;
-    animation-delay: 3.5s;
+    animation-delay: 4s;
     animation-fill-mode: forwards;
     opacity: 0;
 }
@@ -75,7 +73,7 @@ body{
 
 @keyframes top {
     from { top: 30%; opacity:0%}
-    to { top:-15%; opacity:100% }
+    to { top:-13%; opacity:100% }
   }
 
 /* The typing effect */

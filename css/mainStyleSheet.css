@@ -1,8 +1,52 @@
 body{
     background-color: #212429;
-    color:aliceblue;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-.h{
-    color:aliceblue
+.header{
+    color:#e0e0ff;
+    /*border:2px solid #e0e0ff;*/
+    height: 6em;
+    width:100%;
+    padding-left:3em;
+    padding-right:3em;
+}
+
+a{
+    color:#e0e0ff;
+    text-decoration: none;
+}
+
+.logo{
+    float: left;
+    position:relative;
+    top:50%;
+    transform: translateY(-51%);
+    font-size: 1.5em;
+}
+.menu{
+    word-spacing: 2em;
+    text-decoration: none;
+    font-size: 1.25em;
+    position: relative;
+    top:50%;
+    padding-left: 25em;
+}
+
+.menu a{
+    color:#e0e0ff;
+}
+
+.menu a:active{
+    color:#e0e0ff;
+    text-decoration: underline;
+}
+
+.menu a:hover{
+    color:#5e87b0;
+}
+
+.menuOthers{
+    float:right;
+
 }
