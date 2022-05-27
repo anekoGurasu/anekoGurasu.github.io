@@ -56,7 +56,34 @@ a{
     color:#e0e0ff;
     width:100%;
     text-align: center;
-    position: relative;
+    position: absolute;
     bottom:0%;
-    border: 2px white solid;
+    
+}
+
+.introduction{
+    position: relative;
+    width:150%;
+    margin:auto;
+    box-shadow: 2px 2px 5px black;
+    padding-left:17%;   
+    padding-top:1em;
+    padding-bottom:3em;
+    left:-5%
+}
+
+.mainNadpis{
+    color:#e0e0ff;
+    font-size: 4em;
+    text-shadow: black;
+}
+
+
+.textIntroduction{
+    width:28%
+}
+
+.profile{
+    color:#e0e0ff;
+    font-size: 1.25em;
 }
