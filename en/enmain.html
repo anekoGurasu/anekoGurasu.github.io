@@ -6,6 +6,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <link href="/css/mainStyleSheet.css" rel="stylesheet">
+        <link href="/css/slider.css" rel="stylesheet">
+    
     </head>
     <body>
         <div class="header">
@@ -14,8 +16,8 @@
             </div>
             <div class="menu">
                 <a href="#introductionID">Introduction</a>
-                <a href="#portfolioID">Portfolio</a>
                 <a href="#contactID">Contact</a>
+                <a href="#portfolioID">Portfolio</a>
                 <a href="#reviewsID">Reviews</a>
             </div>
             <div class="menuOthers">
@@ -51,22 +53,49 @@
                         
                     </div>
                 </div>
-                <br><br><br><br><br><br>
-                <div class="pf" id="portfolioID">
-                    <h1>Portfolio</h1>
-                </div>
-                <div class="contact" id="contactID">
+                <br><br><br><br><br><br><br><br><br><br><br>
+
+                <div class="slider-container">
+                    <div class="slider">
+                      <div class="slides">
+                        <div id="slides__1" class="slide">
+                          <span class="slide__text"><img src="/img/pfpf.png" id="imgslider"></span>
+                          <a class="slide__prev" href="#slides__4" title="Next"></a>
+                          <a class="slide__next" href="#slides__2" title="Next"></a>
+                        </div>
+                        <div id="slides__2" class="slide">
+                          <span class="slide__text">2</span>
+                          <a class="slide__prev" href="#slides__1" title="Prev"></a>
+                          <a class="slide__next" href="#slides__3" title="Next"></a>
+                        </div>
+                        <div id="slides__3" class="slide">
+                          <span class="slide__text">3</span>
+                          <a class="slide__prev" href="#slides__2" title="Prev"></a>
+                          <a class="slide__next" href="#slides__4" title="Next"></a>
+                        </div>
+                        <div id="slides__4" class="slide">
+                          <span class="slide__text">4</span>
+                          <a class="slide__prev" href="#slides__3" title="Prev"></a>
+                          <a class="slide__next" href="#slides__1" title="Prev"></a>
+                        </div>
+                      </div>
+                      <div class="slider__nav">
+                        <a class="slider__navlink" href="#slides__1"></a>
+                        <a class="slider__navlink" href="#slides__2"></a>
+                        <a class="slider__navlink" href="#slides__3"></a>
+                        <a class="slider__navlink" href="#slides__4"></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="contact" id="contactID">
                     <p>✉ tranickova-kristyna@seznam.cz</p>
                     <p>LinkedIn <img src="/img/Ei-external-link.svg.png" alt="link" id="link"></p>
                     <p>Instagram <img src="/img/Ei-external-link.svg.png" alt="link" id="link"></p>
-
-                </div>
-                <div class="reviews" id="reviewsID">
-                    <h1>Reviews</h1>
+        
                 </div>
         </div>
-        <div class="bottom">
-            <p>© Kristýna Trávníčková 2022</p>
-        </div>
+        
+        
     </body>
 </html>
