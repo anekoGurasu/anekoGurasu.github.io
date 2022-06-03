@@ -1,0 +1,128 @@
+$barvaPozadi:#212429;
+$barvaTextu:#e0e0ff;
+$barvaOdliseni:#5e87b0;
+
+/*  
+    Hlavicka stranky (header)
+
+    @author AnekoGur
+    @version 1.0 06-04-2022
+*/
+header{
+    position:fixed;
+    display: flex;
+    flex-direction: row;
+    padding-left:3em;
+    padding-right:3em;
+    padding-bottom:2em;
+    z-index: 100;
+    margin-top:1.5em;
+    margin-bottom:1.5em;
+    align-items: end;
+    top:0;
+    left:0;
+    right:0;
+
+    .logo{
+        width:250px;
+        word-spacing: 3em;
+        font-size: 3em;
+    }
+    
+    .menu{
+        flex:1;
+        word-spacing: 3em;
+        font-size: 1.25em;
+        padding-left:5em;
+        padding-right:5em;
+        text-align: center;
+    
+        a:hover{
+            color:$barvaOdliseni;
+            transition: color .25s;
+        }
+    }
+    
+    .menuOthers{
+        width: 100px;
+        top:0;
+        font-size: 1.25em;
+        align-self: right;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        text-align: center;
+    
+        .lang{
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            #flag{
+                height:1.3em;
+                width:1.3em;
+
+                &:hover{
+                    border-radius:50%;
+                    box-shadow: 0 0 0 3px $barvaOdliseni;
+                    transition: box-shadow 0.25s ease-in-out;
+                }
+            }
+
+            .tooltip-flag{
+                transition: all 3s;
+                display: none;
+                position: absolute;
+                bottom:-3.75em;
+                left:-1em;
+                font-size: .7em;
+                padding:.5em;
+                padding-bottom:.75em;
+                background-color: #111315;
+                opacity:.6;
+                font-weight: 100;
+            }
+
+            .tooltip-flag-show{
+                display: block;               
+            }          
+        }
+    }
+}
+
+.wrapper{
+    position: fixed;
+    z-index: 101;
+    top:3em;
+    right:4em;
+
+    #arrow{
+        height:1.5m;
+        width:1.5em;
+    
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .tooltip-header{
+        transition: all 3s;
+        display: none;
+        position: absolute;
+        bottom:-4.05em;
+        left:-1em;
+        font-size: .85em;
+        padding:.6em;
+        background-color: #111315;
+        opacity:.6;
+        font-weight: 100;
+        text-align: center;
+    }
+    .tooltip-header-show{
+        display: block;               
+    }
+}
+
+
+

@@ -1,3 +1,10 @@
+<!--
+    Portfolio
+
+    @author Kristýna Trávníčková (AnekoGur)
+    @version 1.0 06-04-2022
+-->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,15 +12,36 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-        <link href="/css/preloader.css" rel="stylesheet">
+        <link href="/css/general.css" rel="stylesheet">
+        <script src="/js/script.js"></script>
     </head>
     <body>
-        <div class="preloader">
-            <div class="content">
-                <p class="logoName">Aneko<b style="color:#0a67c2">G</b>ur</p>
-                <p class="ptf">PORTFOLIO</p>
-                <a href="en/enmain.html" class="clickbtn">CLICK HERE</a>
+        <header id="header">
+            <div class="logo">
+                <a href="index.html">Aneko<b style="color:#0a67c2">G</b>ur</a>
             </div>
+            <div class="menu">
+                <a href="#introductionID">Introduction</a>
+                <a href="#contactID">Contact</a>
+                <a href="#portfolioID">Portfolio</a>
+                <a href="#reviewsID">Reviews</a>
+            </div>
+            <div class="menuOthers" id="other">
+                <div class="lang">
+                    <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hidToolTipFlag()"/></a>
+                    <div class="tooltip-flag" id="tooltip-flag">
+                        Change Language
+                    </div>
+                </div>
+                 
+            </div>
+        </header>
+        <div class="wrapper">
+            <img src="img/50-508007_arrow-of-double-angle-pointing-up-vector-double.png" alt="Arr" id="arrow" onmouseenter="hoverArrowUp(this),showToolTipHeader()" onmouseleave="unhoverArrowUp(this),hidToolTipHeader()">
+            <div class="tooltip-header" id="tooltip-header">
+                (Un)wrap Header
+            </div>
+            
         </div>
     </body>
 </html>

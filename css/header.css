@@ -1,0 +1,147 @@
+/*  
+    Hlavicka stranky (header)
+
+    @author AnekoGur
+    @version 1.0 06-04-2022
+*/
+header {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 3em;
+  padding-right: 3em;
+  padding-bottom: 2em;
+  z-index: 100;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+header .logo {
+  width: 250px;
+  word-spacing: 3em;
+  font-size: 3em;
+}
+
+header .menu {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  word-spacing: 3em;
+  font-size: 1.25em;
+  padding-left: 5em;
+  padding-right: 5em;
+  text-align: center;
+}
+
+header .menu a:hover {
+  color: #5e87b0;
+  -webkit-transition: color .25s;
+  transition: color .25s;
+}
+
+header .menuOthers {
+  width: 100px;
+  top: 0;
+  font-size: 1.25em;
+  -ms-flex-item-align: right;
+      align-self: right;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  text-align: center;
+}
+
+header .menuOthers .lang {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+header .menuOthers .lang #flag {
+  height: 1.3em;
+  width: 1.3em;
+}
+
+header .menuOthers .lang #flag:hover {
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 0 3px #5e87b0;
+          box-shadow: 0 0 0 3px #5e87b0;
+  -webkit-transition: -webkit-box-shadow 0.25s ease-in-out;
+  transition: -webkit-box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out, -webkit-box-shadow 0.25s ease-in-out;
+}
+
+header .menuOthers .lang .tooltip-flag {
+  -webkit-transition: all 3s;
+  transition: all 3s;
+  display: none;
+  position: absolute;
+  bottom: -3.75em;
+  left: -1em;
+  font-size: .7em;
+  padding: .5em;
+  padding-bottom: .75em;
+  background-color: #111315;
+  opacity: .6;
+  font-weight: 100;
+}
+
+header .menuOthers .lang .tooltip-flag-show {
+  display: block;
+}
+
+.wrapper {
+  position: fixed;
+  z-index: 101;
+  top: 3em;
+  right: 4em;
+}
+
+.wrapper #arrow {
+  height: 1.5m;
+  width: 1.5em;
+}
+
+.wrapper #arrow:hover {
+  cursor: pointer;
+}
+
+.wrapper .tooltip-header {
+  -webkit-transition: all 3s;
+  transition: all 3s;
+  display: none;
+  position: absolute;
+  bottom: -4.05em;
+  left: -1em;
+  font-size: .85em;
+  padding: .6em;
+  background-color: #111315;
+  opacity: .6;
+  font-weight: 100;
+  text-align: center;
+}
+
+.wrapper .tooltip-header-show {
+  display: block;
+}
+/*# sourceMappingURL=header.css.map */
