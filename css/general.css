@@ -195,9 +195,9 @@ header .menuOthers .lang .tooltip-flag-show {
           flex-direction: row;
   word-spacing: 5%;
   text-align: left;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .introduction-border .introduction-content .text-introduction .btn-coop {
