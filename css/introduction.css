@@ -1,9 +1,9 @@
 .introduction-border {
   position: relative;
-  width: 102%;
+  width: 100%;
   -webkit-box-shadow: 3px 3px 6px black;
           box-shadow: 3px 3px 6px black;
-  left: -1%;
+  margin: 0px;
   background: rgba(68, 68, 68, 0.5);
   padding-top: 2%;
   padding-bottom: 2.5%;

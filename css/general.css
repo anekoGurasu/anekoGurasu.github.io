@@ -147,10 +147,10 @@ header .menuOthers .lang .tooltip-flag-show {
 
 .introduction-border {
   position: relative;
-  width: 102%;
+  width: 100%;
   -webkit-box-shadow: 3px 3px 6px black;
           box-shadow: 3px 3px 6px black;
-  left: -1%;
+  margin: 0px;
   background: rgba(68, 68, 68, 0.5);
   padding-top: 2%;
   padding-bottom: 2.5%;
@@ -269,6 +269,8 @@ body {
   background-color: #212429;
   color: #e0e0ff;
   font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  margin: 0;
 }
 
 a {
