@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="author" content="Kristyna Travnickova">
+        <meta name="version" content="1.0">
         <title>Portfolio</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,28 +22,50 @@
             <div class="logo">
                 <a href="index.html">Aneko<b style="color:#0a67c2">G</b>ur</a>
             </div>
-            <div class="menu">
-                <a href="#introductionID">Introduction</a>
-                <a href="#contactID">Contact</a>
-                <a href="#portfolioID">Portfolio</a>
-                <a href="#reviewsID">Reviews</a>
-            </div>
-            <div class="menuOthers" id="other">
-                <div class="lang">
-                    <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hidToolTipFlag()"/></a>
-                    <div class="tooltip-flag" id="tooltip-flag">
-                        Change Language
+                
+                <nav class="menu">
+                    <a href="#introductionID">Introduction</a>
+                    <a href="#contactID">Contact</a>
+                    <a href="#portfolioID">Portfolio</a>
+                    <a href="#reviewsID">Reviews</a>
+                </nav>
+                <div class="menuOthers" id="other">
+                    <div class="lang">
+                        <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hidToolTipFlag()"/></a>
+                        <div class="tooltip-flag" id="tooltip-flag">
+                            Change Language
+                        </div>
+                    </div> 
+                </div>
+                <div class="wrapper">
+                    <img src="img/50-508007_arrow-of-double-angle-pointing-up-vector-double.png" alt="Arr" id="arrow" onmouseenter="hoverArrowUp(this),showToolTipHeader()" onmouseleave="unhoverArrowUp(this),hidToolTipHeader()">
+                    <div class="tooltip-header" id="tooltip-header">
+                        (Un)wrap Header
                     </div>
                 </div>
-                 
-            </div>
         </header>
-        <div class="wrapper">
-            <img src="img/50-508007_arrow-of-double-angle-pointing-up-vector-double.png" alt="Arr" id="arrow" onmouseenter="hoverArrowUp(this),showToolTipHeader()" onmouseleave="unhoverArrowUp(this),hidToolTipHeader()">
-            <div class="tooltip-header" id="tooltip-header">
-                (Un)wrap Header
+        <div class="content">
+            <div class="introduction-border">
+                <div class="introduction-content">
+                    <div class="text-introduction">
+                        <div class="heading-text-introduction">
+                            <p class="main-heading">Hello,<br>I'm Kristýna!</p>
+                        </div>
+                        <hr>
+                        <div class="location">
+                         <!--   <img id="location-image" src="/img/img_381347.png" alt="loc">-->
+                            <p>Pilsen, Czech Republic</p>
+                        </div>
+                        <div class="paragraph-text-introduction">
+                            <p>Czech developer and web designer with a passion for programming and technologies</p>
+                        </div>
+                    </div>
+                    <div class="photo-introduction">
+                        <img id="profile-photo" src="/img/bw.png" alt="profilephoto">
+                    </div>
+                </div>
             </div>
-            
         </div>
+        
     </body>
 </html>

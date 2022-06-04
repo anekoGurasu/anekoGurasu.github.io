@@ -1,0 +1,73 @@
+.introduction-border {
+  position: relative;
+  width: 102%;
+  -webkit-box-shadow: 3px 3px 6px black;
+          box-shadow: 3px 3px 6px black;
+  left: -1%;
+  background: rgba(68, 68, 68, 0.5);
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.introduction-border .introduction-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+}
+
+.introduction-border .introduction-content .text-introduction {
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 100%;
+}
+
+.introduction-border .introduction-content .text-introduction .heading-text-introduction {
+  font-size: 4em;
+  text-shadow: 2px 2px 5px black;
+}
+
+.introduction-border .introduction-content .text-introduction .paragraph-text-introduction {
+  font-size: 1.25em;
+}
+
+.introduction-border .introduction-content .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 1em;
+}
+
+.introduction-border .introduction-content .location #location-image {
+  width: 1em;
+  height: 1.5em;
+  padding-right: 1em;
+}
+
+.introduction-border .introduction-content .photo-introduction {
+  text-align: center;
+}
+
+.introduction-border .introduction-content .photo-introduction #profile-photo {
+  width: 100%;
+  vertical-align: middle;
+}
+
+hr {
+  margin-top: -5%;
+  border-bottom: #e0e0ff solid;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+}
+/*# sourceMappingURL=introduction.css.map */

@@ -98,7 +98,7 @@ header .menuOthers .lang .tooltip-flag {
   position: absolute;
   bottom: -3.75em;
   left: -1em;
-  font-size: .7em;
+  font-size: .6em;
   padding: .5em;
   padding-bottom: .75em;
   background-color: #111315;
@@ -132,8 +132,8 @@ header .menuOthers .lang .tooltip-flag-show {
   display: none;
   position: absolute;
   bottom: -4.05em;
-  left: -1em;
-  font-size: .85em;
+  left: -1.5em;
+  font-size: .75em;
   padding: .6em;
   background-color: #111315;
   opacity: .6;
