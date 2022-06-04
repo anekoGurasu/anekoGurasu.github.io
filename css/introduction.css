@@ -6,7 +6,7 @@
   left: -1%;
   background: rgba(68, 68, 68, 0.5);
   padding-top: 2%;
-  padding-bottom: 2%;
+  padding-bottom: 2.5%;
 }
 
 .introduction-border .introduction-content {
@@ -36,6 +36,53 @@
 
 .introduction-border .introduction-content .text-introduction .paragraph-text-introduction {
   font-size: 1.25em;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  word-spacing: 5%;
+  text-align: left;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop {
+  background-color: #446e97;
+  padding: 1em;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  -webkit-box-shadow: 0 1.5px 5px black;
+          box-shadow: 0 1.5px 5px black;
+  color: #e0e0ff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 10%;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  text-shadow: .75px .75px 5px black;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop:hover {
+  background: #0a67c2;
+  cursor: pointer;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop:active {
+  background-color: #08539f;
 }
 
 .introduction-border .introduction-content .location {

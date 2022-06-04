@@ -1,6 +1,8 @@
 $barvaPozadi:#212429;
 $barvaTextu:#e0e0ff;
-$barvaOdliseni:#5e87b0;
+$barvaOdliseni:#446e97;
+$tmavaBarvaOdliseni:#0a67c2;
+$actionbarva:#08539f;
 
 .introduction-border{
     position: relative;
@@ -9,7 +11,7 @@ $barvaOdliseni:#5e87b0;
     left:-1%;
     background: rgba(68, 68, 68, 0.5);
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 2.5%;
 
     .introduction-content{
         display: flex;
@@ -33,6 +35,42 @@ $barvaOdliseni:#5e87b0;
             .paragraph-text-introduction{
                 font-size: 1.25em;
             }
+
+            .btn-coop-div{
+                display: flex;
+                flex-direction: row;
+                word-spacing: 5%;
+                text-align: left;
+                justify-content: space-between;
+            }
+
+            .btn-coop{
+                background-color: $barvaOdliseni;
+                padding:1em;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+                box-shadow: 0 1.5px 5px black;
+                color:$barvaTextu;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.25;
+                margin-top: 10%;
+                position: relative;
+                text-decoration: none;
+                transition:all .25s;
+                touch-action: manipulation;
+                vertical-align: baseline;
+                width: auto;
+                text-shadow: .75px .75px 5px black;
+            
+                &:hover{
+                    background: $tmavaBarvaOdliseni;
+                    cursor: pointer;
+                    
+                }
+                &:active {
+                    background-color: $actionbarva;
+            }}
         }
 
         .location{
