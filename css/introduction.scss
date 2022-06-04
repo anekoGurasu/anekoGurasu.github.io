@@ -1,6 +1,7 @@
 $barvaPozadi:#212429;
 $barvaTextu:#e0e0ff;
-$barvaOdliseni:#446e97;
+$sedabarva:#2b2e34;
+$barvaOdliseni:#3c5c7c;
 $tmavaBarvaOdliseni:#0a67c2;
 $actionbarva:#08539f;
 
@@ -9,9 +10,10 @@ $actionbarva:#08539f;
     width:100%;
     box-shadow: 3px 3px 6px black;
     margin:0px;
-    background: rgba(68, 68, 68, 0.5);
-    padding-top: 2%;
-    padding-bottom: 2.5%;
+    background: rgba(5,6,7,0.4);
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+    height:77vh;
 
     .introduction-content{
         display: flex;
@@ -19,7 +21,8 @@ $actionbarva:#08539f;
         position:relative;
         margin-left:auto;
         margin-right:auto;
-        width:65%;
+        width:75%;
+        
         
         
         .text-introduction{
@@ -37,61 +40,81 @@ $actionbarva:#08539f;
             }
 
             .btn-coop-div{
-                display: flex;
-                flex-direction: row;
-                word-spacing: 5%;
+                display: inline-block;
                 text-align: left;
-                justify-content: space-between;
-            }
+                
+                
+                .btn-coop{
+                    background-color: $barvaOdliseni;
+                    padding:1em;
+                    border: 1px solid transparent;
+                    border-radius: .15rem;
+                    box-shadow: 0 1.5px 5px black;
+                    color:$barvaTextu;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 1.25;
+                    margin-top: 5vh;
+                    margin-right:1vw;
+                    position: relative;
+                    text-decoration: none;
+                    transition:all .25s;
+                    touch-action: manipulation;
+                    vertical-align: baseline;
+                    width: auto;
+                    text-shadow: .75px .75px 5px black;
+                
+                    &:hover{
+                        background: $tmavaBarvaOdliseni;
+                        cursor: pointer;
+                        
+                    }
+                    &:active {
+                        background-color: $actionbarva;
+                    }
 
-            .btn-coop{
-                background-color: $barvaOdliseni;
-                padding:1em;
-                border: 1px solid transparent;
-                border-radius: .25rem;
-                box-shadow: 0 1.5px 5px black;
-                color:$barvaTextu;
-                font-size: 16px;
-                font-weight: 600;
-                line-height: 1.25;
-                margin-top: 10%;
-                position: relative;
-                text-decoration: none;
-                transition:all .25s;
-                touch-action: manipulation;
-                vertical-align: baseline;
-                width: auto;
-                text-shadow: .75px .75px 5px black;
-            
-                &:hover{
-                    background: $tmavaBarvaOdliseni;
-                    cursor: pointer;
                     
                 }
-                &:active {
-                    background-color: $actionbarva;
-            }}
+       
+                #btn-disable{
+                    background-color: $sedabarva;
+                    border:.5px $barvaPozadi solid;
+
+                    &:hover{
+                        background-color: $barvaPozadi;
+                    }
+                    &:active {
+                        background-color: rgb(24, 24, 24);;
+                        
+                    }
+                }
+            }
+
         }
 
         .location{
             display:flex;
             flex-direction: row;
             font-size: 1em;
+            text-align: left;
             
 
             #location-image{
                 width:1em;
-                height:1.5em;
+                height:1.4em;
+                padding-top: .9em ;
                 padding-right: 1em;
             }
         }
         
         .photo-introduction{
             text-align: center;
+            width:75%;
         
             #profile-photo{
+                position:relative;
                 width: 100%;
-                vertical-align: middle;
+                top:15%;
               
             }
         }
@@ -101,7 +124,8 @@ $actionbarva:#08539f;
 
 hr{
     margin-top:-5%;
-    border-bottom: $barvaTextu solid;
+    border:0px;
+    border-bottom: $barvaOdliseni solid;
     box-shadow: 2px 2px 5px black;
 }
 

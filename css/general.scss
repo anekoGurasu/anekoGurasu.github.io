@@ -4,6 +4,7 @@ $barvaOdliseni:#5e87b0;
 
 @import "header.scss";
 @import "introduction.scss";
+@import "skills.scss";
 
 body{
     background-color: $barvaPozadi;
@@ -23,7 +24,9 @@ a{
 }
 
 .content{
-    margin-top: 10%;
+    
+    margin-top: 7vh;
+    
 }
 
 

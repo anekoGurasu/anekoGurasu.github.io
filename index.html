@@ -19,30 +19,33 @@
     </head>
     <body>
         <header id="header">
+            <!--
             <div class="logo">
                 <a href="index.html">Aneko<b style="color:#0a67c2">G</b>ur</a>
             </div>
-                
+             -->   
                 <nav class="menu">
-                    <a href="#introductionID">Introduction</a>
-                    <a href="#contactID">Contact</a>
-                    <a href="#portfolioID">Portfolio</a>
-                    <a href="#reviewsID">Reviews</a>
+                    <div class="nav-underline" id="nav-underline1"><a href="#introductionID">INTRODUCTION</a></div>
+                    <div class="nav-underline" id="nav-underline2"><a href="#contactID">CONTACT</a></div>
+                    <div class="nav-underline" id="nav-underline3"><a href="#portfolioID">PROJECTS</a></div>
+                    <div class="nav-underline" id="nav-underline4"><a href="#reviewsID">REVIEWS</a></div>
                 </nav>
-                <div class="menuOthers" id="other">
-                    <div class="lang">
-                        <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hidToolTipFlag()"/></a>
-                        <div class="tooltip-flag" id="tooltip-flag">
-                            Change Language
-                        </div>
-                    </div> 
-                </div>
+                
+                <div class="lang">
+                    <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hidToolTipFlag()"/></a>
+                    <div class="tooltip-flag" id="tooltip-flag">
+                        Change Language
+                    </div>
+                </div> 
+                
+                <!--
                 <div class="wrapper">
                     <img src="img/50-508007_arrow-of-double-angle-pointing-up-vector-double.png" alt="Arr" id="arrow" onmouseenter="hoverArrowUp(this),showToolTipHeader()" onmouseleave="unhoverArrowUp(this),hidToolTipHeader()">
                     <div class="tooltip-header" id="tooltip-header">
                         (Un)wrap Header
                     </div>
                 </div>
+            -->
         </header>
         <div class="content">
             <div class="introduction-border">
@@ -53,25 +56,41 @@
                         </div>
                         <hr>
                         <div class="location">
-                         <!--   <img id="location-image" src="/img/img_381347.png" alt="loc">-->
+                            <img id="location-image" src="/img/pngkey.com-location-icon-png-99081.png" alt="loc">
                             <p>Pilsen, Czech Republic</p>
                         </div>
+                        
                         <div class="paragraph-text-introduction">
-                            <p>Czech developer and web designer with a passion for programming and technologies</p>
+                            <p>Czech junior developer and web designer with a passion for programming and technologies</p>
+                        </div>
+                        <div class="paragraph-text-introduction">
+                            <p></p>
                         </div>
                         <div class="btn-coop-div">
-                            <form action="#contactID">
-                                <input type="button" value="WORK WITH ME" class="btn-coop"/>
-                            </form>
-                            <form action="#portfolioID">
-                                <input type="button" value="SHOW ME MORE" class="btn-coop"/>
-                            </form>
-                        </div>
+                                <input type="button" value="WORK WITH ME &nbsp ➤" class="btn-coop"/>
+                                <input type="button" value="SHOW ME MORE &nbsp ➤" class="btn-coop" id="btn-disable"/>                        </div>
                     </div>
                     <div class="photo-introduction">
                         <img id="profile-photo" src="/img/bw.png" alt="profilephoto">
                     </div>
                 </div>
+            </div>
+            <div class="skills-border" id="skillID">
+                <div class="headings-skill">
+                    <h1>What I do</h1>
+                </div>
+                <div class="paragraph-skill">
+                    <p>I never stop at self-improvement</p>
+                </div>
+                <div class="skill-grid">
+                    <div class="heading">
+                        <h3>Skills</h3>
+                    </div>
+                    <div class="grid">
+
+                    </div>
+                </div>
+                
             </div>
         </div>
         

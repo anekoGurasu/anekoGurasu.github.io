@@ -4,9 +4,10 @@
   -webkit-box-shadow: 3px 3px 6px black;
           box-shadow: 3px 3px 6px black;
   margin: 0px;
-  background: rgba(68, 68, 68, 0.5);
-  padding-top: 2%;
-  padding-bottom: 2.5%;
+  background: rgba(5, 6, 7, 0.4);
+  padding-top: 8vh;
+  padding-bottom: 8vh;
+  height: 77vh;
 }
 
 .introduction-border .introduction-content {
@@ -20,7 +21,7 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: 65%;
+  width: 75%;
 }
 
 .introduction-border .introduction-content .text-introduction {
@@ -39,32 +40,23 @@
 }
 
 .introduction-border .introduction-content .text-introduction .btn-coop-div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  word-spacing: 5%;
+  display: inline-block;
   text-align: left;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
-.introduction-border .introduction-content .text-introduction .btn-coop {
-  background-color: #446e97;
+.introduction-border .introduction-content .text-introduction .btn-coop-div .btn-coop {
+  background-color: #3c5c7c;
   padding: 1em;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: .15rem;
   -webkit-box-shadow: 0 1.5px 5px black;
           box-shadow: 0 1.5px 5px black;
   color: #e0e0ff;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.25;
-  margin-top: 10%;
+  margin-top: 5vh;
+  margin-right: 1vw;
   position: relative;
   text-decoration: none;
   -webkit-transition: all .25s;
@@ -76,13 +68,26 @@
   text-shadow: .75px .75px 5px black;
 }
 
-.introduction-border .introduction-content .text-introduction .btn-coop:hover {
+.introduction-border .introduction-content .text-introduction .btn-coop-div .btn-coop:hover {
   background: #0a67c2;
   cursor: pointer;
 }
 
-.introduction-border .introduction-content .text-introduction .btn-coop:active {
+.introduction-border .introduction-content .text-introduction .btn-coop-div .btn-coop:active {
   background-color: #08539f;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop-div #btn-disable {
+  background-color: #2b2e34;
+  border: 0.5px #212429 solid;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop-div #btn-disable:hover {
+  background-color: #212429;
+}
+
+.introduction-border .introduction-content .text-introduction .btn-coop-div #btn-disable:active {
+  background-color: #181818;
 }
 
 .introduction-border .introduction-content .location {
@@ -94,26 +99,31 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-size: 1em;
+  text-align: left;
 }
 
 .introduction-border .introduction-content .location #location-image {
   width: 1em;
-  height: 1.5em;
+  height: 1.4em;
+  padding-top: .9em;
   padding-right: 1em;
 }
 
 .introduction-border .introduction-content .photo-introduction {
   text-align: center;
+  width: 75%;
 }
 
 .introduction-border .introduction-content .photo-introduction #profile-photo {
+  position: relative;
   width: 100%;
-  vertical-align: middle;
+  top: 15%;
 }
 
 hr {
   margin-top: -5%;
-  border-bottom: #e0e0ff solid;
+  border: 0px;
+  border-bottom: #3c5c7c solid;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
 }

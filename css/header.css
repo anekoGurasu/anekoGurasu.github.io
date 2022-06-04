@@ -1,9 +1,3 @@
-/*  
-    Hlavicka stranky (header)
-
-    @author AnekoGur
-    @version 1.0 06-04-2022
-*/
 header {
   position: fixed;
   display: -webkit-box;
@@ -15,133 +9,95 @@ header {
           flex-direction: row;
   padding-left: 3em;
   padding-right: 3em;
-  padding-bottom: 2em;
   z-index: 100;
-  margin-top: 1.5em;
+  -webkit-box-align: middle;
+      -ms-flex-align: middle;
+          align-items: middle;
   margin-bottom: 1.5em;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
   top: 0;
   left: 0;
   right: 0;
-}
-
-header .logo {
-  width: 250px;
-  word-spacing: 3em;
-  font-size: 3em;
+  background-color: #0e0f12;
 }
 
 header .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   word-spacing: 3em;
   font-size: 1.25em;
-  padding-left: 5em;
-  padding-right: 5em;
+  padding-left: 27%;
+  padding-right: 17%;
   text-align: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 header .menu a:hover {
-  color: #5e87b0;
+  color: #3c5c7c;
   -webkit-transition: color .25s;
   transition: color .25s;
 }
 
-header .menuOthers {
-  width: 100px;
-  top: 0;
-  font-size: 1.25em;
-  -ms-flex-item-align: right;
-      align-self: right;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: end;
-  text-align: center;
+header .menu .nav-underline {
+  position: relative;
+  padding-top: 2vh;
+  padding-bottom: 10px;
 }
 
-header .menuOthers .lang {
+header .menu #nav-underline1 {
+  border-bottom: 4px #3c5c7c solid;
+}
+
+header .menu #nav-underline1 a {
+  color: #3c5c7c;
+}
+
+header .lang {
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 1.5vh;
+  width: 10%;
+  bottom: 0px;
+  text-align: right;
 }
 
-header .menuOthers .lang #flag {
-  height: 1.3em;
-  width: 1.3em;
+header .lang #flag {
+  height: 1.75em;
+  width: 1.75em;
 }
 
-header .menuOthers .lang #flag:hover {
+header .lang #flag:hover {
   border-radius: 50%;
-  -webkit-box-shadow: 0 0 0 3px #5e87b0;
-          box-shadow: 0 0 0 3px #5e87b0;
+  -webkit-box-shadow: 0 0 0 3px #3c5c7c;
+          box-shadow: 0 0 0 3px #3c5c7c;
   -webkit-transition: -webkit-box-shadow 0.25s ease-in-out;
   transition: -webkit-box-shadow 0.25s ease-in-out;
   transition: box-shadow 0.25s ease-in-out;
   transition: box-shadow 0.25s ease-in-out, -webkit-box-shadow 0.25s ease-in-out;
 }
 
-header .menuOthers .lang .tooltip-flag {
+header .lang .tooltip-flag {
   -webkit-transition: all 3s;
   transition: all 3s;
   display: none;
   position: absolute;
-  bottom: -3.75em;
-  left: -1em;
+  bottom: -4.5em;
+  left: 66%;
   font-size: .6em;
-  padding: .5em;
-  padding-bottom: .75em;
+  padding: 1em;
   background-color: #111315;
-  opacity: .6;
-  font-weight: 100;
-}
-
-header .menuOthers .lang .tooltip-flag-show {
-  display: block;
-}
-
-.wrapper {
-  position: fixed;
-  z-index: 101;
-  top: 3em;
-  right: 4em;
-}
-
-.wrapper #arrow {
-  height: 1.5m;
-  width: 1.5em;
-}
-
-.wrapper #arrow:hover {
-  cursor: pointer;
-}
-
-.wrapper .tooltip-header {
-  -webkit-transition: all 3s;
-  transition: all 3s;
-  display: none;
-  position: absolute;
-  bottom: -4.05em;
-  left: -1.5em;
-  font-size: .75em;
-  padding: .6em;
-  background-color: #111315;
-  opacity: .6;
+  opacity: .75;
   font-weight: 100;
   text-align: center;
 }
 
-.wrapper .tooltip-header-show {
+header .lang .tooltip-flag-show {
   display: block;
 }
 /*# sourceMappingURL=header.css.map */

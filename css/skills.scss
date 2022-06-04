@@ -1,0 +1,41 @@
+$barvaPozadi:#212429;
+$barvaTextu:#e0e0ff;
+$sedabarva:#2b2e34;
+$barvaOdliseni:#3c5c7c;
+$tmavaBarvaOdliseni:#0a67c2;
+$actionbarva:#08539f;
+$barvamenu:#0e0f12;
+
+
+.skills-border{
+    width:70vw;
+    background-color: $barvamenu;
+    padding:2em;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:15vh;
+    box-shadow: 2px 2px 5px black;
+   
+    .headings-skill{
+        text-align: center;
+        width:100%;
+        text-shadow: 2px 2px 5px black;
+    }
+
+    .paragraph-skill{
+        text-align: center;
+        width:100%;
+        font-size: 1em;
+    }
+
+    .heading{
+
+        transform: rotate(-90deg);
+    }
+
+    .grid{
+        display:grid;
+    }
+
+}
+
