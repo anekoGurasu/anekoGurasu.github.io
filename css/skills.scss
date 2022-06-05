@@ -14,8 +14,9 @@ $barvamenu:#0e0f12;
     margin-left:auto;
     margin-right:auto;
     margin-top:15vh;
-    box-shadow: 2px 2px 5px black;
-   
+    box-shadow: 3px 3px 5px black;
+    position: relative;
+
     .headings-skill{
         text-align: center;
         width:100%;
@@ -28,14 +29,50 @@ $barvamenu:#0e0f12;
         font-size: 1em;
     }
 
-    .heading{
+   
 
-        transform: rotate(-90deg);
-    }
+    .skill-grid{
+        position:relative;
+        display:flex;
+        padding:2vw;
+        width:100%;
 
-    .grid{
-        display:grid;
-    }
+        .heading{
+            position:relative;
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+            text-align: center;
+            padding-right:2.5vw;
+            border-right:2px $barvaTextu solid;
+        }
+
+        .grid{
+            display:grid;
+            column-gap: 2vw;
+            row-gap: 4vh;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding-left:4vw;
+            padding-right:4vw;
+            justify-items: center;
+            
+            .grid-item{
+                transition: color .3s;
+                border-radius: 2px;
+                text-align: center;
+                background-color: #08090a;
+                padding-left:3.5vw;
+                padding-right: 3.5vw;
+                box-shadow: 3px 3px 5px black;
+
+                &:hover{
+                    color:$barvaOdliseni;
+                    
+                    
+                }
+            }
+        }
+}
+    
 
 }
 

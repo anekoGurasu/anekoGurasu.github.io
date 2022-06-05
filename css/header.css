@@ -83,21 +83,20 @@ header .lang #flag:hover {
 }
 
 header .lang .tooltip-flag {
-  -webkit-transition: all 3s;
-  transition: all 3s;
-  display: none;
+  -webkit-transition: opacity .25s;
+  transition: opacity .25s;
   position: absolute;
   bottom: -4.5em;
   left: 66%;
   font-size: .6em;
   padding: 1em;
   background-color: #111315;
-  opacity: .75;
+  opacity: 0;
   font-weight: 100;
   text-align: center;
 }
 
 header .lang .tooltip-flag-show {
-  display: block;
+  opacity: .75;
 }
 /*# sourceMappingURL=header.css.map */

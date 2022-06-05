@@ -83,22 +83,21 @@ header .lang #flag:hover {
 }
 
 header .lang .tooltip-flag {
-  -webkit-transition: all 3s;
-  transition: all 3s;
-  display: none;
+  -webkit-transition: opacity .25s;
+  transition: opacity .25s;
   position: absolute;
   bottom: -4.5em;
   left: 66%;
   font-size: .6em;
   padding: 1em;
   background-color: #111315;
-  opacity: .75;
+  opacity: 0;
   font-weight: 100;
   text-align: center;
 }
 
 header .lang .tooltip-flag-show {
-  display: block;
+  opacity: .75;
 }
 
 .introduction-border {
@@ -238,8 +237,9 @@ hr {
   margin-left: auto;
   margin-right: auto;
   margin-top: 15vh;
-  -webkit-box-shadow: 2px 2px 5px black;
-          box-shadow: 2px 2px 5px black;
+  -webkit-box-shadow: 3px 3px 5px black;
+          box-shadow: 3px 3px 5px black;
+  position: relative;
 }
 
 .skills-border .headings-skill {
@@ -254,14 +254,53 @@ hr {
   font-size: 1em;
 }
 
-.skills-border .heading {
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+.skills-border .skill-grid {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2vw;
+  width: 100%;
 }
 
-.skills-border .grid {
+.skills-border .skill-grid .heading {
+  position: relative;
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  text-orientation: upright;
+  text-align: center;
+  padding-right: 2.5vw;
+  border-right: 2px #e0e0ff solid;
+}
+
+.skills-border .skill-grid .grid {
   display: -ms-grid;
   display: grid;
+  -webkit-column-gap: 2vw;
+          column-gap: 2vw;
+  row-gap: 4vh;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  justify-items: center;
+}
+
+.skills-border .skill-grid .grid .grid-item {
+  -webkit-transition: color .3s;
+  transition: color .3s;
+  border-radius: 2px;
+  text-align: center;
+  background-color: #08090a;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  -webkit-box-shadow: 3px 3px 5px black;
+          box-shadow: 3px 3px 5px black;
+}
+
+.skills-border .skill-grid .grid .grid-item:hover {
+  color: #3c5c7c;
 }
 
 body {
