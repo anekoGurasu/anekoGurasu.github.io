@@ -1,0 +1,46 @@
+.reviews-border {
+  width: 100%;
+  position: relative;
+}
+
+.rv-content {
+  display: inline-block;
+  padding-top: 7vh;
+  vertical-align: top;
+  position: relative;
+}
+
+.reviews-view {
+  width: 45%;
+}
+
+.table {
+  display: inline-block;
+}
+
+.reviews-form {
+  position: relative;
+  padding: 7vh;
+  width: 50%;
+  margin-left: 4vw;
+}
+
+.review {
+  margin-bottom: 5vh;
+  height: 28vh;
+  border: 2px #212429 solid;
+  border-left: none;
+  padding: 3%;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  background-color: #0e0f12;
+}
+
+.tb {
+  color: #3f3f3f;
+}
+
+#pp {
+  width: 5vw;
+}
+/*# sourceMappingURL=reviews.css.map */

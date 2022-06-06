@@ -1,0 +1,133 @@
+$barvaPozadi:#212429;
+$barvaTextu:#e0e0ff;
+$sedabarva:#2b2e34;
+$barvaOdliseni:#3c5c7c;
+$tmavaBarvaOdliseni:#0a67c2;
+$actionbarva:#08539f;
+$barvamenu:#0e0f12;
+
+.project-border{
+    width:100%;
+    position: relative;
+    margin-top:10vh;
+   
+
+    .project{
+        position: relative; 
+        margin-left:auto;
+        margin-right: auto;
+        padding:2%;
+       //background-color: $barvaPozadi;
+        width:90%;
+       // border:2px white solid;
+        text-align: center;
+
+        .project-block{
+            margin-top:5vh ;
+            display:inline-block;
+            //ustify-content: space-between;
+            vertical-align: top;
+        }
+
+        .projects-slider{
+            width: 65%;
+            background-color: $barvaPozadi;
+            //box-shadow: 2px 2px 5px black;
+            padding:5%;
+            padding-top:2%;
+        }
+        .projects-description{
+            width:32%;
+            border-left:4px $barvaOdliseni solid;
+            text-align: left;
+            padding:2.1%;
+            font-size: 1.1em;
+        }
+    }
+
+
+}
+
+*{box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  border:5px $barvaOdliseni solid;
+  
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+
+  
+}
+.prev:hover, .next:hover {
+    background-color: $barvamenu;
+  }
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+   left:0;
+   
+  }
+
+/* On hover, add a black background color with a little bit see-through */
+
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: $barvaTextu;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+
+  &:hover{
+    background-color: lightslategrey;
+}
+}
+
+.active{
+  background-color: $barvaOdliseni;
+}
+
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

@@ -1,0 +1,136 @@
+.project-border {
+  width: 100%;
+  position: relative;
+  margin-top: 10vh;
+}
+
+.project-border .project {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2%;
+  width: 90%;
+  text-align: center;
+}
+
+.project-border .project .project-block {
+  margin-top: 5vh;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.project-border .project .projects-slider {
+  width: 65%;
+  background-color: #212429;
+  padding: 5%;
+  padding-top: 2%;
+}
+
+.project-border .project .projects-description {
+  width: 32%;
+  border-left: 4px #3c5c7c solid;
+  text-align: left;
+  padding: 2.1%;
+  font-size: 1.1em;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  border: 5px #3c5c7c solid;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.prev:hover, .next:hover {
+  background-color: #0e0f12;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  left: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #e0e0ff;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-transition: background-color 0.6s ease;
+  transition: background-color 0.6s ease;
+}
+
+.dot:hover {
+  background-color: lightslategrey;
+}
+
+.active {
+  background-color: #3c5c7c;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=projects.css.map */

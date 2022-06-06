@@ -5,6 +5,8 @@ $barvaOdliseni:#5e87b0;
 @import "header.scss";
 @import "introduction.scss";
 @import "skills.scss";
+@import "projects.scss";
+@import "reviews.scss";
 
 body{
     background-color: $barvaPozadi;
@@ -23,11 +25,6 @@ a{
     }
 }
 
-.content{
-    
-    margin-top: 7vh;
-    
-}
 
 
 
