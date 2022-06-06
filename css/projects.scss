@@ -9,14 +9,14 @@ $barvamenu:#0e0f12;
 .project-border{
     width:100%;
     position: relative;
-    margin-top:10vh;
+    margin-top:20vh;
    
 
     .project{
         position: relative; 
         margin-left:auto;
         margin-right: auto;
-        padding:2%;
+       // padding:5%;
        //background-color: $barvaPozadi;
         width:90%;
        // border:2px white solid;
@@ -34,13 +34,14 @@ $barvamenu:#0e0f12;
             background-color: $barvaPozadi;
             //box-shadow: 2px 2px 5px black;
             padding:5%;
-            padding-top:2%;
+            padding-top:0;
         }
         .projects-description{
             width:32%;
             border-left:4px $barvaOdliseni solid;
             text-align: left;
             padding:2.1%;
+            padding-top:1vh;
             font-size: 1.1em;
         }
     }

@@ -204,8 +204,8 @@ header .lang .tooltip-flag-show {
 }
 
 .introduction-border .introduction-content .location #location-image {
-  width: 1em;
-  height: 1.4em;
+  width: 2.1vw;
+  height: 4.8vh;
   padding-top: .9em;
   padding-right: 1em;
 }
@@ -305,14 +305,13 @@ hr {
 .project-border {
   width: 100%;
   position: relative;
-  margin-top: 10vh;
+  margin-top: 20vh;
 }
 
 .project-border .project {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding: 2%;
   width: 90%;
   text-align: center;
 }
@@ -327,7 +326,7 @@ hr {
   width: 65%;
   background-color: #212429;
   padding: 5%;
-  padding-top: 2%;
+  padding-top: 0;
 }
 
 .project-border .project .projects-description {
@@ -335,6 +334,7 @@ hr {
   border-left: 4px #3c5c7c solid;
   text-align: left;
   padding: 2.1%;
+  padding-top: 1vh;
   font-size: 1.1em;
 }
 
@@ -441,11 +441,11 @@ hr {
 .reviews-border {
   width: 100%;
   position: relative;
+  margin-top: 20vh;
 }
 
 .rv-content {
   display: inline-block;
-  padding-top: 7vh;
   vertical-align: top;
   position: relative;
 }
@@ -461,8 +461,8 @@ hr {
 .reviews-form {
   position: relative;
   padding: 7vh;
-  width: 50%;
-  margin-left: 4vw;
+  width: 49%;
+  margin-left: 5vw;
 }
 
 .review {
@@ -476,12 +476,62 @@ hr {
   background-color: #0e0f12;
 }
 
+.text {
+  margin-top: 5vh;
+}
+
 .tb {
-  color: #3f3f3f;
+  color: gray;
+  padding: 2%;
+}
+
+.btn-rv-sm {
+  background-color: #3c5c7c;
+  padding: 1em;
+  border: 1px solid transparent;
+  border-radius: .15rem;
+  -webkit-box-shadow: 0 1.5px 5px black;
+          box-shadow: 0 1.5px 5px black;
+  color: #e0e0ff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 5vh;
+  margin-right: 1vw;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  vertical-align: baseline;
+  width: 35vw;
+  text-shadow: .75px .75px 5px black;
+}
+
+.btn-rv-sm:hover {
+  background: #0a67c2;
+  cursor: pointer;
+}
+
+.btn-rv-sm:active {
+  background-color: #08539f;
 }
 
 #pp {
   width: 5vw;
+}
+
+#tb-name {
+  width: 20vw;
+  height: 5vh;
+}
+
+#tb-text {
+  min-width: 35vw;
+  min-height: 25vh;
+  max-width: 35vw;
+  max-height: 35vh;
 }
 
 body {
