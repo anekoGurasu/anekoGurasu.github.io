@@ -1,0 +1,15 @@
+.contact-border {
+  width: 100%;
+  margin-top: 15vh;
+  position: relative;
+  height: auto;
+}
+
+.contact {
+  position: relative;
+  width: 25%;
+  margin: auto;
+  height: 100%;
+  text-align: justify;
+}
+/*# sourceMappingURL=contact.css.map */

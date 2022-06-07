@@ -9,7 +9,7 @@ $barvamenu:#0e0f12;
 .reviews-border{
     width:100%;
     position:relative;
-    margin-top:20vh;
+    margin-top:25vh;
     
 }
 .rv-content{
@@ -29,18 +29,20 @@ $barvamenu:#0e0f12;
 .reviews-form{
     position: relative;
     padding:7vh;
+    padding-top:2vh;
    //padding-top:10vh;
     //border:2px white solid;
     width:49%;
     margin-left:5vw;
+    
 }
 
 .review{
     margin-bottom:5vh;
-    height:28vh;
+    height:25vh;
     border:2px $barvaPozadi solid;
     border-left:none;
-    padding: 3%;
+    padding: 2.5%;
     box-shadow: 2px 2px 5px black;
     background-color: $barvamenu;
 }
@@ -83,8 +85,26 @@ $barvamenu:#0e0f12;
                     }
 }
 
+.profile-p{
+    width:7vw;
+   // border:2px white solid;
+    position:relative;
+    top:15%;
+    margin:auto;
+}
+
 #pp{
-    width:5vw;
+    position:relative;
+    width:6vw;
+    //border-radius: 3vw;
+   // box-shadow:2px 2px 5px black;
+    
+}
+.tb{
+    box-shadow: 2px 2px 5px black;
+    border:none;
+    background-color: $barvaTextu;
+    
 }
 
 #tb-name{

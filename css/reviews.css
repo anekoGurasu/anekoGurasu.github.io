@@ -1,7 +1,7 @@
 .reviews-border {
   width: 100%;
   position: relative;
-  margin-top: 20vh;
+  margin-top: 25vh;
 }
 
 .rv-content {
@@ -21,16 +21,17 @@
 .reviews-form {
   position: relative;
   padding: 7vh;
+  padding-top: 2vh;
   width: 49%;
   margin-left: 5vw;
 }
 
 .review {
   margin-bottom: 5vh;
-  height: 28vh;
+  height: 25vh;
   border: 2px #212429 solid;
   border-left: none;
-  padding: 3%;
+  padding: 2.5%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #0e0f12;
@@ -78,8 +79,23 @@
   background-color: #08539f;
 }
 
+.profile-p {
+  width: 7vw;
+  position: relative;
+  top: 15%;
+  margin: auto;
+}
+
 #pp {
-  width: 5vw;
+  position: relative;
+  width: 6vw;
+}
+
+.tb {
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  border: none;
+  background-color: #e0e0ff;
 }
 
 #tb-name {

@@ -204,8 +204,8 @@ header .lang .tooltip-flag-show {
 }
 
 .introduction-border .introduction-content .location #location-image {
-  width: 2.1vw;
-  height: 4.8vh;
+  width: 2vw;
+  height: 4.4vh;
   padding-top: .9em;
   padding-right: 1em;
 }
@@ -335,7 +335,9 @@ hr {
   text-align: left;
   padding: 2.1%;
   padding-top: 1vh;
+  padding-left: 4vw;
   font-size: 1.1em;
+  height: 100%;
 }
 
 * {
@@ -441,7 +443,7 @@ hr {
 .reviews-border {
   width: 100%;
   position: relative;
-  margin-top: 20vh;
+  margin-top: 25vh;
 }
 
 .rv-content {
@@ -461,16 +463,17 @@ hr {
 .reviews-form {
   position: relative;
   padding: 7vh;
+  padding-top: 2vh;
   width: 49%;
   margin-left: 5vw;
 }
 
 .review {
   margin-bottom: 5vh;
-  height: 28vh;
+  height: 25vh;
   border: 2px #212429 solid;
   border-left: none;
-  padding: 3%;
+  padding: 2.5%;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #0e0f12;
@@ -518,8 +521,23 @@ hr {
   background-color: #08539f;
 }
 
+.profile-p {
+  width: 7vw;
+  position: relative;
+  top: 15%;
+  margin: auto;
+}
+
 #pp {
-  width: 5vw;
+  position: relative;
+  width: 6vw;
+}
+
+.tb {
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
+  border: none;
+  background-color: #e0e0ff;
 }
 
 #tb-name {
@@ -532,6 +550,21 @@ hr {
   min-height: 25vh;
   max-width: 35vw;
   max-height: 35vh;
+}
+
+.contact-border {
+  width: 100%;
+  margin-top: 15vh;
+  position: relative;
+  height: auto;
+}
+
+.contact {
+  position: relative;
+  width: 25%;
+  margin: auto;
+  height: 100%;
+  text-align: justify;
 }
 
 body {
@@ -549,5 +582,17 @@ a {
 
 a:active {
   color: #e0e0ff;
+}
+
+.content {
+  padding-bottom: 5vh;
+}
+
+footer {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 2.5rem;
+  padding-bottom: 7vh;
 }
 /*# sourceMappingURL=general.css.map */
