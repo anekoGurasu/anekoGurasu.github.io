@@ -1,15 +1,29 @@
 .contact-border {
   width: 100%;
-  margin-top: 15vh;
+  margin-top: 20vh;
+  margin-bottom: 15vh;
   position: relative;
   height: auto;
 }
 
 .contact {
   position: relative;
-  width: 25%;
+  width: 50%;
   margin: auto;
   height: 100%;
-  text-align: justify;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.hereclass {
+  color: #3c5c7c;
+}
+
+.hereclass:hover {
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #3c5c7c;
 }
 /*# sourceMappingURL=contact.css.map */

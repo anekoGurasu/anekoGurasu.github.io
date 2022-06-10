@@ -42,7 +42,7 @@
 }
 
 .tb {
-  color: gray;
+  color: #0e0f12;
   padding: 2%;
 }
 
@@ -98,9 +98,30 @@
   background-color: #e0e0ff;
 }
 
+.star {
+  color: #3c5c7c;
+  font-size: .9em;
+}
+
 #tb-name {
   width: 20vw;
   height: 5vh;
+}
+
+#tb-name::-webkit-input-placeholder {
+  color: gray;
+}
+
+#tb-name:-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-name::-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-name::placeholder {
+  color: gray;
 }
 
 #tb-text {
@@ -108,5 +129,21 @@
   min-height: 25vh;
   max-width: 35vw;
   max-height: 35vh;
+}
+
+#tb-text::-webkit-input-placeholder {
+  color: gray;
+}
+
+#tb-text:-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-text::-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-text::placeholder {
+  color: gray;
 }
 /*# sourceMappingURL=reviews.css.map */

@@ -484,7 +484,7 @@ hr {
 }
 
 .tb {
-  color: gray;
+  color: #0e0f12;
   padding: 2%;
 }
 
@@ -540,9 +540,30 @@ hr {
   background-color: #e0e0ff;
 }
 
+.star {
+  color: #3c5c7c;
+  font-size: .9em;
+}
+
 #tb-name {
   width: 20vw;
   height: 5vh;
+}
+
+#tb-name::-webkit-input-placeholder {
+  color: gray;
+}
+
+#tb-name:-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-name::-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-name::placeholder {
+  color: gray;
 }
 
 #tb-text {
@@ -552,19 +573,49 @@ hr {
   max-height: 35vh;
 }
 
+#tb-text::-webkit-input-placeholder {
+  color: gray;
+}
+
+#tb-text:-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-text::-ms-input-placeholder {
+  color: gray;
+}
+
+#tb-text::placeholder {
+  color: gray;
+}
+
 .contact-border {
   width: 100%;
-  margin-top: 15vh;
+  margin-top: 20vh;
+  margin-bottom: 15vh;
   position: relative;
   height: auto;
 }
 
 .contact {
   position: relative;
-  width: 25%;
+  width: 50%;
   margin: auto;
   height: 100%;
-  text-align: justify;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.hereclass {
+  color: #3c5c7c;
+}
+
+.hereclass:hover {
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #3c5c7c;
 }
 
 body {

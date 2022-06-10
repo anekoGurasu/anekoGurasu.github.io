@@ -51,7 +51,7 @@ $barvamenu:#0e0f12;
     margin-top:5vh;
 }
 .tb{
-    color:gray;
+    color:$barvamenu;
     padding:2%;
 }
 
@@ -106,10 +106,18 @@ $barvamenu:#0e0f12;
     background-color: $barvaTextu;
     
 }
+.star{
+    color:$barvaOdliseni;
+    font-size: .9em;
+    
+}
 
 #tb-name{
     width:20vw;
     height:5vh;
+    &::placeholder{
+        color:gray;;
+    }
 }
 
 #tb-text{
@@ -117,4 +125,9 @@ $barvamenu:#0e0f12;
     min-height:25vh;
     max-width: 35vw;
     max-height:35vh;
+
+    &::placeholder{
+        color:gray;;
+    }
 }
+
