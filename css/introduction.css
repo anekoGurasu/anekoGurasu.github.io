@@ -97,15 +97,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: left;
 }
 
-.introduction-border .introduction-content .location #location-image {
-  width: 2vw;
-  height: 4.4vh;
-  padding-top: .9em;
-  padding-right: 1em;
+.introduction-border .introduction-content .location .location-p::before {
+  font-family: "unicons";
+  content: "\e8ec";
 }
 
 .introduction-border .introduction-content .photo-introduction {

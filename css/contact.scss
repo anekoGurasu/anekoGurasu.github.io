@@ -21,6 +21,14 @@ $barvamenu:#0e0f12;
     height:100%;
     text-align:center;
     font-size: 1.2em;
+
+    .contact-icons{
+        position: relative;
+        display:flex;
+        margin:auto;
+        width:40%;
+        justify-content: space-between;
+    }
 }
 
 .hereclass{
@@ -32,4 +40,28 @@ $barvamenu:#0e0f12;
 
 a:hover{
     color:$barvaOdliseni
+}
+
+
+.linkedin-icon::before{
+    font-family: "unicons";
+    content:"\ec03";
+    font-size:2em;
+
+}
+
+.dc-icon::before{
+    font-family: "unicons";
+    content:"\ec8f";
+    font-size:2em;
+}
+.ig-icon::before{
+    font-family: "unicons";
+    content:"\ebfe";
+    font-size:2em;
+}
+.gh-icon::before{
+    font-family: "unicons";
+    content:"\ec1d";
+    font-size:2em;
 }

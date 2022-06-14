@@ -98,6 +98,8 @@ header .lang .tooltip-flag {
 
 header .lang .tooltip-flag-show {
   opacity: .75;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
 }
 
 .introduction-border {
@@ -199,15 +201,13 @@ header .lang .tooltip-flag-show {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: left;
 }
 
-.introduction-border .introduction-content .location #location-image {
-  width: 2vw;
-  height: 4.4vh;
-  padding-top: .9em;
-  padding-right: 1em;
+.introduction-border .introduction-content .location .location-p::before {
+  font-family: "unicons";
+  content: "\e8ec";
 }
 
 .introduction-border .introduction-content .photo-introduction {
@@ -305,7 +305,7 @@ hr {
 .project-border {
   width: 100%;
   position: relative;
-  margin-top: 20vh;
+  margin-top: 25vh;
 }
 
 .project-border .project {
@@ -313,11 +313,23 @@ hr {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-  text-align: center;
+  border-top: 3px #3c5c7c solid;
+  text-align: left;
+}
+
+.project-border .project .project-h-div {
+  position: relative;
+  top: -5vh;
+  margin-left: 5%;
+  background-color: #212429;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 .project-border .project .project-block {
-  margin-top: 5vh;
   display: inline-block;
   vertical-align: top;
 }
@@ -327,16 +339,15 @@ hr {
   background-color: #212429;
   padding: 5%;
   padding-top: 0;
+  padding-right: 3%;
 }
 
 .project-border .project .projects-description {
   width: 32%;
-  border-left: 4px #3c5c7c solid;
   text-align: left;
-  padding: 2.1%;
-  padding-top: 1vh;
-  padding-left: 4vw;
-  font-size: 1.1em;
+  padding-left: 1vw;
+  font-size: 1em;
+  font-weight: 500;
   height: 100%;
 }
 
@@ -440,6 +451,15 @@ hr {
   }
 }
 
+.point::before {
+  font-family: "unicons";
+  font-size: .5em;
+  color: #3c5c7c;
+  top: -.3em;
+  position: relative;
+  content: "\ecb7";
+}
+
 .reviews-border {
   width: 100%;
   position: relative;
@@ -452,8 +472,19 @@ hr {
   position: relative;
 }
 
+.rv-content .rv-h::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: -.55em;
+  width: 41.25%;
+  height: 2.5px;
+  margin-left: 8.5em;
+  background-color: #3c5c7c;
+}
+
 .reviews-view {
-  width: 45%;
+  width: 45vw;
 }
 
 .table {
@@ -477,6 +508,10 @@ hr {
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #0e0f12;
+}
+
+.rv {
+  width: 35vw;
 }
 
 .text {
@@ -530,7 +565,10 @@ hr {
 
 #pp {
   position: relative;
-  width: 6vw;
+  width: 5vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
 }
 
 .tb {
@@ -606,6 +644,18 @@ hr {
   font-size: 1.2em;
 }
 
+.contact .contact-icons {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  width: 40%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .hereclass {
   color: #3c5c7c;
 }
@@ -616,6 +666,30 @@ hr {
 
 a:hover {
   color: #3c5c7c;
+}
+
+.linkedin-icon::before {
+  font-family: "unicons";
+  content: "\ec03";
+  font-size: 2em;
+}
+
+.dc-icon::before {
+  font-family: "unicons";
+  content: "\ec8f";
+  font-size: 2em;
+}
+
+.ig-icon::before {
+  font-family: "unicons";
+  content: "\ebfe";
+  font-size: 2em;
+}
+
+.gh-icon::before {
+  font-family: "unicons";
+  content: "\ec1d";
+  font-size: 2em;
 }
 
 body {
@@ -645,5 +719,10 @@ footer {
   width: 100%;
   height: 2.5rem;
   padding-bottom: 7vh;
+}
+
+@font-face {
+  font-family: "unicons";
+  src: url("/fonts/unicons.ttf");
 }
 /*# sourceMappingURL=general.css.map */

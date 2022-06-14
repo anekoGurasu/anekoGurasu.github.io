@@ -9,7 +9,7 @@ $barvamenu:#0e0f12;
 .project-border{
     width:100%;
     position: relative;
-    margin-top:20vh;
+    margin-top:25vh;
    
 
     .project{
@@ -19,11 +19,22 @@ $barvamenu:#0e0f12;
        // padding:5%;
        //background-color: $barvaPozadi;
         width:90%;
-       // border:2px white solid;
-        text-align: center;
+        border-top:3px $barvaOdliseni solid;
+        //border-bottom:3px $barvaOdliseni solid;
+        text-align: left;
+
+        .project-h-div{
+          position:relative;
+          top:-5vh;
+          margin-left:5%;
+          background-color: $barvaPozadi;
+          width:max-content;
+          padding-left:1vw;
+          padding-right:1vw;
+        }
 
         .project-block{
-            margin-top:5vh ;
+            //margin-top:5vh ;
             display:inline-block;
             //ustify-content: space-between;
             vertical-align: top;
@@ -35,15 +46,21 @@ $barvamenu:#0e0f12;
             //box-shadow: 2px 2px 5px black;
             padding:5%;
             padding-top:0;
+            padding-right:3%;
+
+           
         }
         .projects-description{
             width:32%;
-            border-left:4px $barvaOdliseni solid;
+           // border-left:3px $barvaOdliseni solid;
+            //box-shadow: 3px 3px 5px $barvaOdliseni;
+            //background-color: #0e0f1282;
             text-align: left;
-            padding:2.1%;
-            padding-top:1vh;
-            padding-left: 4vw;
-            font-size: 1.1em;
+            //padding:2.1%;
+            //padding-top:12vh;
+            padding-left: 1vw;
+            font-size: 1em;
+            font-weight:500;
             height:100%;
         }
     }
@@ -133,4 +150,13 @@ $barvamenu:#0e0f12;
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+.point::before{
+  font-family: "unicons";
+  font-size: .5em;
+  color:$barvaOdliseni;
+  top:-.3em;
+  position:relative;
+  content:"\ecb7";
 }

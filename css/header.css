@@ -98,5 +98,7 @@ header .lang .tooltip-flag {
 
 header .lang .tooltip-flag-show {
   opacity: .75;
+  -webkit-transition: opacity .75s;
+  transition: opacity .75s;
 }
 /*# sourceMappingURL=header.css.map */

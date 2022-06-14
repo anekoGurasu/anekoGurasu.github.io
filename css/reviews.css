@@ -10,8 +10,19 @@
   position: relative;
 }
 
+.rv-content .rv-h::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: -.55em;
+  width: 41.25%;
+  height: 2.5px;
+  margin-left: 8.5em;
+  background-color: #3c5c7c;
+}
+
 .reviews-view {
-  width: 45%;
+  width: 45vw;
 }
 
 .table {
@@ -35,6 +46,10 @@
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
   background-color: #0e0f12;
+}
+
+.rv {
+  width: 35vw;
 }
 
 .text {
@@ -88,7 +103,10 @@
 
 #pp {
   position: relative;
-  width: 6vw;
+  width: 5vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
 }
 
 .tb {

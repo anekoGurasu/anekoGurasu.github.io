@@ -1,7 +1,7 @@
 .project-border {
   width: 100%;
   position: relative;
-  margin-top: 20vh;
+  margin-top: 25vh;
 }
 
 .project-border .project {
@@ -9,11 +9,23 @@
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-  text-align: center;
+  border-top: 3px #3c5c7c solid;
+  text-align: left;
+}
+
+.project-border .project .project-h-div {
+  position: relative;
+  top: -5vh;
+  margin-left: 5%;
+  background-color: #212429;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 .project-border .project .project-block {
-  margin-top: 5vh;
   display: inline-block;
   vertical-align: top;
 }
@@ -23,16 +35,15 @@
   background-color: #212429;
   padding: 5%;
   padding-top: 0;
+  padding-right: 3%;
 }
 
 .project-border .project .projects-description {
   width: 32%;
-  border-left: 4px #3c5c7c solid;
   text-align: left;
-  padding: 2.1%;
-  padding-top: 1vh;
-  padding-left: 4vw;
-  font-size: 1.1em;
+  padding-left: 1vw;
+  font-size: 1em;
+  font-weight: 500;
   height: 100%;
 }
 
@@ -134,5 +145,14 @@
   to {
     opacity: 1;
   }
+}
+
+.point::before {
+  font-family: "unicons";
+  font-size: .5em;
+  color: #3c5c7c;
+  top: -.3em;
+  position: relative;
+  content: "\ecb7";
 }
 /*# sourceMappingURL=projects.css.map */

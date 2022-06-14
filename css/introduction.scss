@@ -95,15 +95,14 @@ $actionbarva:#08539f;
         .location{
             display:flex;
             flex-direction: row;
-            font-size: 1em;
+            font-size: 1.2em;
             text-align: left;
             
 
-            #location-image{
-                width:2vw;
-                height:4.4vh;
-                padding-top: .9em ;
-                padding-right: 1em;
+            .location-p::before{
+                font-family: "unicons";
+                content: "\e8ec";
+                
             }
         }
         
