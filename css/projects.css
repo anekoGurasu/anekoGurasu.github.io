@@ -1,7 +1,7 @@
 .project-border {
   width: 100%;
   position: relative;
-  margin-top: 25vh;
+  margin-top: 15vh;
 }
 
 .project-border .project {
@@ -9,7 +9,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-  border-top: 3px #3c5c7c solid;
+  border-top: 4px #3c5c7c solid;
   text-align: left;
 }
 
@@ -23,6 +23,7 @@
   width: max-content;
   padding-left: 1vw;
   padding-right: 1vw;
+  text-shadow: 2px 2px 4px black;
 }
 
 .project-border .project .project-block {
@@ -147,12 +148,13 @@
   }
 }
 
-.point::before {
+/*
+//.point::before{
   font-family: "unicons";
   font-size: .5em;
-  color: #3c5c7c;
-  top: -.3em;
-  position: relative;
-  content: "\ecb7";
-}
+  color:$barvaOdliseni;
+  top:-.3em;
+  position:relative;
+  content:"\ecb7";
+//}*/
 /*# sourceMappingURL=projects.css.map */

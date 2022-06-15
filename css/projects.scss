@@ -9,7 +9,7 @@ $barvamenu:#0e0f12;
 .project-border{
     width:100%;
     position: relative;
-    margin-top:25vh;
+    margin-top:15vh;
    
 
     .project{
@@ -19,7 +19,7 @@ $barvamenu:#0e0f12;
        // padding:5%;
        //background-color: $barvaPozadi;
         width:90%;
-        border-top:3px $barvaOdliseni solid;
+        border-top:4px $barvaOdliseni solid;
         //border-bottom:3px $barvaOdliseni solid;
         text-align: left;
 
@@ -31,6 +31,7 @@ $barvamenu:#0e0f12;
           width:max-content;
           padding-left:1vw;
           padding-right:1vw;
+          text-shadow: 2px 2px 4px black;
         }
 
         .project-block{
@@ -151,12 +152,12 @@ $barvamenu:#0e0f12;
   from {opacity: .4}
   to {opacity: 1}
 }
-
-.point::before{
+/*
+//.point::before{
   font-family: "unicons";
   font-size: .5em;
   color:$barvaOdliseni;
   top:-.3em;
   position:relative;
   content:"\ecb7";
-}
+//}*/

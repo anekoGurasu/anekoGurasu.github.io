@@ -8,8 +8,8 @@ $barvamenu:#0e0f12;
 
 .contact-border{
     width:100%;
-    margin-top:20vh;
-    margin-bottom:15vh;
+    margin-top:25vh;
+    margin-bottom:20vh;
     position:relative;
     height:auto;
 }
@@ -21,6 +21,9 @@ $barvamenu:#0e0f12;
     height:100%;
     text-align:center;
     font-size: 1.2em;
+    border:4px $barvaOdliseni solid;
+    padding-bottom:10vh;
+    box-shadow: 2px 2px 5px black;
 
     .contact-icons{
         position: relative;
@@ -28,6 +31,24 @@ $barvamenu:#0e0f12;
         margin:auto;
         width:40%;
         justify-content: space-between;
+        padding-top:3vh;
+    }
+
+    .contact-h{
+        position:relative;
+        top:-3.5vh;
+        height:auto;
+        width:max-content;
+        background-color: $barvaPozadi;
+        margin:auto;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        text-shadow: 2px 2px 4px black;
+    }
+
+    .ctnct-mail::before{
+        font-family: "unicons";
+        content:"\e9e6";
     }
 }
 
@@ -39,7 +60,8 @@ $barvamenu:#0e0f12;
 }
 
 a:hover{
-    color:$barvaOdliseni
+    color:$barvaOdliseni;
+    transition:color .25s;
 }
 
 

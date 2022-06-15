@@ -76,23 +76,20 @@ header{
 
         .tooltip-flag{
             
-            transition:opacity .25s; 
+            transition:opacity .5s; 
             position: absolute;
             bottom:-4.5em;
-            left:66%;
+            left:62%;
             font-size: .6em;
             padding:1em;
             background-color: #111315;
             opacity:0;
             font-weight: 100;
             text-align: center;
+            z-index: 200;
             
         }
-
-        .tooltip-flag-show{
-            opacity:.75;
-            transition:opacity .75s;               
-        }          
+       
     }
 }
 

@@ -1,6 +1,10 @@
 $barvaPozadi:#212429;
 $barvaTextu:#e0e0ff;
-$barvaOdliseni:#5e87b0;
+$sedabarva:#2b2e34;
+$barvaOdliseni:#3c5c7c;
+$tmavaBarvaOdliseni:#0a67c2;
+$actionbarva:#08539f;
+$barvamenu:#0e0f12;
 
 @import "header.scss";
 @import "introduction.scss";
@@ -36,6 +40,13 @@ footer{
   width: 100%;
   height: 2.5rem; 
   padding-bottom: 7vh;
+  background-color: $barvamenu;
+  box-shadow: -2px -2px 5px black;
+
+  .ftr::before{
+    font-family: "unicons";
+    content:"\e85a ";
+  }
 
 }
 

@@ -6,29 +6,29 @@
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="cs">
     <head>
         <meta name="author" content="Kristyna Travnickova">
-        <meta name="version" content="1.0">
+        <meta name="version" content="2.0">
         <title>Portfolio</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <link href="/css/general.css" rel="stylesheet">
-        <script src="/js/script.js"></script>
+        <script src="/js/jquery-3.6.0.min.js" type="text/javascript"></script>
     </head>
     <body onload="currentSlide(1)">
         <header id="header">
             
                 <nav class="menu">
-                    <div class="nav-underline" id="nav-underline1"><a href="#introductionID">INTRODUCTION</a></div>
-                    <div class="nav-underline" id="nav-underline3"><a href="#portfolioID">PROJECTS</a></div>
-                    <div class="nav-underline" id="nav-underline4"><a href="#reviewsID">REVIEWS</a></div>
-                    <div class="nav-underline" id="nav-underline2"><a href="#contactID">CONTACT</a></div>
+                    <div class="nav-underline" id="nav-underline1"><a href="#introductionID" id="a-active1">INTRODUCTION</a></div>
+                    <div class="nav-underline" id="nav-underline2"><a href="#portfolioID" id="a-active2">PROJECTS</a></div>
+                    <div class="nav-underline" id="nav-underline3"><a href="#reviewsID" id="a-active3">REVIEWS</a></div>
+                    <div class="nav-underline" id="nav-underline4"><a href="#contactID" id="a-active4">CONTACT</a></div>
                 </nav>
                 
                 <div class="lang">
-                    <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hidToolTipFlag()"/></a>
+                    <a href="/cs/.html"><img src="img/flags/czech-republic-flag-3d-round-xs.png" alt="csflag" id="flag" onmouseenter="showToolTipFlag()" onmouseleave="hideToolTipFlag()"/></a>
                     <div class="tooltip-flag" id="tooltip-flag">
                         Change Language
                     </div>
@@ -63,7 +63,8 @@
                     </div>
                 </div>
             </div>
-            <div class="skills-border" id="skillID">
+            <span id="skillID"></span>
+            <div class="skills-border">
                 <div class="headings-skill">
                     <h1>What I do?</h1>
                 </div>
@@ -103,12 +104,17 @@
                             <h2>HTML</h2>
                             <h3>95%</h3>
                         </div>
-
+                        <div class="grid-item">
+                            <h2>WordPress</h2>
+                            <h3>25%</h3>
+                        </div>
                     </div>
                 </div>
                 
             </div>
-            <div class="project-border" id="portfolioID">
+            <br><br><br><br><br><br>
+            <span id="portfolioID"></span>
+            <div class="project-border">
                 <div class="project"><div class="project-h-div"><h1 class="project-h">MY PROJECTS</h1></div>
                     <div class="project-block projects-slider">
                         
@@ -169,8 +175,9 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <span id="reviewsID"></span>
             <div class="reviews-border">
-                
                 <div class="rv-content reviews-view">
                     <div class="review review-1">
                         <div class="table profile-p">
@@ -233,11 +240,13 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-border" id="contactID">
+            <br>
+            <span  id="contactID"></span>
+            <div class="contact-border">
                 <div class="contact">
-                    <h1>Contact me</h1>
+                    <h1 class="contact-h">Contact me</h1>
                     <br>
-                    <p>&#9993; travnickova-kristyna@seznam.cz</p>
+                    <p class="ctnct-mail">&nbsp;travnickova-kristyna@seznam.cz</p>
 
                     <div class="contact-icons">
                     <p><a href="https://www.linkedin.com/in/krist%C3%BDna-tr%C3%A1vn%C3%AD%C4%8Dkov%C3%A1-46718422a" class="linkedin-icon"></a></p>
@@ -247,12 +256,13 @@
                 </div>
                     
                     <br>
-                    <p>Also check out my colleague Lucien's portfolio <a href="" class="hereclass">here</a>.</p>
+                    <p>Also check out my colleague Lucien's portfolio <a href="https://unlucky.life" class="hereclass">here</a>.</p>
                 </div>
             </div>
         </div>
         <footer id="footer">
-            <p>&#169; 2022 by Kristýna Trávníčková. All rights reserved.</p>
+            <p class="ftr">&nbsp;2022 by Kristýna Trávníčková. All rights reserved.</p>
         </footer>
+        <script src="/js/script.js" type="text/javascript"></script>
     </body>
 </html>
