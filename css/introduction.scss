@@ -113,7 +113,16 @@ $actionbarva:#08539f;
             #profile-photo{
                 position:relative;
                 width: 100%;
-                top:15%;
+                top:10%;
+                border-radius: 50%;
+                box-shadow: 5px 5px 10px black;
+                border:6px $barvaOdliseni solid;
+                transition:box-shadow .5s;
+
+                &:hover{
+                    transition:box-shadow .5s;
+                    box-shadow: 10px 10px 20px black;
+                }
               
             }
         }

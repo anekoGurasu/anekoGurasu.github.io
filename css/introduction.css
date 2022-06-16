@@ -114,7 +114,24 @@
 .introduction-border .introduction-content .photo-introduction #profile-photo {
   position: relative;
   width: 100%;
-  top: 15%;
+  top: 10%;
+  border-radius: 50%;
+  -webkit-box-shadow: 5px 5px 10px black;
+          box-shadow: 5px 5px 10px black;
+  border: 6px #3c5c7c solid;
+  -webkit-transition: -webkit-box-shadow .5s;
+  transition: -webkit-box-shadow .5s;
+  transition: box-shadow .5s;
+  transition: box-shadow .5s, -webkit-box-shadow .5s;
+}
+
+.introduction-border .introduction-content .photo-introduction #profile-photo:hover {
+  -webkit-transition: -webkit-box-shadow .5s;
+  transition: -webkit-box-shadow .5s;
+  transition: box-shadow .5s;
+  transition: box-shadow .5s, -webkit-box-shadow .5s;
+  -webkit-box-shadow: 10px 10px 20px black;
+          box-shadow: 10px 10px 20px black;
 }
 
 hr {

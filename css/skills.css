@@ -57,8 +57,10 @@
 }
 
 .skills-border .skill-grid .grid .grid-item {
-  -webkit-transition: color .3s;
-  transition: color .3s;
+  -webkit-transition: color .3s,-webkit-box-shadow .5s;
+  transition: color .3s,-webkit-box-shadow .5s;
+  transition: box-shadow .5s,color .3s;
+  transition: box-shadow .5s,color .3s,-webkit-box-shadow .5s;
   border-radius: 2px;
   text-align: center;
   background-color: #08090a;
@@ -70,5 +72,7 @@
 
 .skills-border .skill-grid .grid .grid-item:hover {
   color: #3c5c7c;
+  -webkit-box-shadow: 5px 5px 6px black;
+          box-shadow: 5px 5px 6px black;
 }
 /*# sourceMappingURL=skills.css.map */

@@ -57,7 +57,7 @@ $barvamenu:#0e0f12;
             justify-items: center;
             
             .grid-item{
-                transition: color .3s;
+                transition: box-shadow .5s,color .3s;
                 border-radius: 2px;
                 text-align: center;
                 background-color: #08090a;
@@ -67,7 +67,7 @@ $barvamenu:#0e0f12;
 
                 &:hover{
                     color:$barvaOdliseni;
-                    
+                    box-shadow: 5px 5px 6px black;
                     
                 }
             }

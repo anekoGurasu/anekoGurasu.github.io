@@ -10,7 +10,8 @@ $barvamenu:#0e0f12;
     width:100%;
     position: relative;
     margin-top:15vh;
-   
+   border-top:4px $barvaOdliseni solid;
+   //box-shadow: inset 0px 0px 3px black;
 
     .project{
         position: relative; 
@@ -19,13 +20,16 @@ $barvamenu:#0e0f12;
        // padding:5%;
        //background-color: $barvaPozadi;
         width:90%;
-        border-top:4px $barvaOdliseni solid;
+        
         //border-bottom:3px $barvaOdliseni solid;
         text-align: left;
+
+        
 
         .project-h-div{
           position:relative;
           top:-5vh;
+          left:-1vw;
           margin-left:5%;
           background-color: $barvaPozadi;
           width:max-content;

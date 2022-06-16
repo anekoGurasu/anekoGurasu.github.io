@@ -13,12 +13,14 @@ $barvamenu:#0e0f12;
 @import "reviews.scss";
 @import "contact.scss";
 
+
 body{
     background-color: $barvaPozadi;
     color:$barvaTextu;
     font-family: 'Ubuntu', sans-serif;
     width:100%;
     margin:0;
+    
 }
 
 a{
