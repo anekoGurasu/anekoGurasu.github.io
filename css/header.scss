@@ -1,10 +1,10 @@
 $barvaPozadi:#212429;
 $barvaTextu:#e0e0ff;
 $sedabarva:#2b2e34;
-$barvaOdliseni:#3c5c7c;
+$barvaOdliseni:#537994;
 $tmavaBarvaOdliseni:#0a67c2;
 $actionbarva:#08539f;
-$barvamenu:#0e0f12;
+$barvamenu:#212429;
 
 header{
     position:fixed;
@@ -21,6 +21,7 @@ header{
     left:0;
     right:0;
     background-color: $barvamenu;
+    box-shadow: 2px 2px 5px #0e0f12;
 
     
     .menu{

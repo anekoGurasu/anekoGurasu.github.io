@@ -2,7 +2,7 @@
   width: 100%;
   position: relative;
   margin-top: 15vh;
-  border-top: 4px #3c5c7c solid;
+  border-top: 4px #537994 solid;
 }
 
 .project-border .project {
@@ -59,7 +59,7 @@
   max-width: 1000px;
   position: relative;
   margin: auto;
-  border: 5px #3c5c7c solid;
+  border: 5px #537994 solid;
 }
 
 /* Hide the images by default */
@@ -120,7 +120,7 @@
 }
 
 .active {
-  background-color: #3c5c7c;
+  background-color: #537994;
 }
 
 /* Fading animation */

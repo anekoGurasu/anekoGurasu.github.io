@@ -13,7 +13,7 @@
   height: 100%;
   text-align: center;
   font-size: 1.2em;
-  border: 4px #3c5c7c solid;
+  border: 4px #537994 solid;
   padding-bottom: 10vh;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
@@ -52,7 +52,7 @@
 }
 
 .hereclass {
-  color: #3c5c7c;
+  color: #537994;
 }
 
 .hereclass:hover {
@@ -60,7 +60,7 @@
 }
 
 a:hover {
-  color: #3c5c7c;
+  color: #537994;
   -webkit-transition: color .25s;
   transition: color .25s;
 }

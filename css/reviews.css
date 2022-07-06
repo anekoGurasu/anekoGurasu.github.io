@@ -2,7 +2,7 @@
   width: 100%;
   position: relative;
   margin-top: 15vh;
-  border-top: 4px solid #3c5c7c;
+  border-top: 4px solid #537994;
 }
 
 .rv-content {
@@ -80,7 +80,7 @@
 }
 
 .btn-rv-sm {
-  background-color: #3c5c7c;
+  background-color: #537994;
   padding: 1em;
   border: 1px solid transparent;
   border-radius: .15rem;
@@ -135,7 +135,7 @@
 }
 
 .star {
-  color: #3c5c7c;
+  color: #537994;
   font-size: .9em;
 }
 

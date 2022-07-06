@@ -85,7 +85,7 @@ function underlineMenuItem(){
     $(document).scroll(function() {
       if (($(this).scrollTop() >= intro.offsetTop)&&($(this).scrollTop() < project.offsetTop)) {
         $("#nav-underline1").css("border-bottom", "4px solid #3c5c7c"); 
-        $("#a-active1").css("color","#3c5c7c");
+        $("#a-active1").css("color","#537994");
 
         $("#nav-underline2").css("border-bottom", "none");
         $("#nav-underline3").css("border-bottom", "none"); 
@@ -96,7 +96,7 @@ function underlineMenuItem(){
         $("#a-active4").css("color","#e0e0ff");
       } else if(($(this).scrollTop() >= project.offsetTop)&&($(this).scrollTop() < review.offsetTop-10)){
         $("#nav-underline2").css("border-bottom", "4px solid #3c5c7c"); 
-        $("#a-active2").css("color","#3c5c7c");
+        $("#a-active2").css("color","#537994");
 
         $("#nav-underline1").css("border-bottom", "none");
         $("#nav-underline3").css("border-bottom", "none"); 
@@ -107,7 +107,7 @@ function underlineMenuItem(){
         $("#a-active4").css("color","#e0e0ff");
       } else if(($(this).scrollTop() >= review.offsetTop-10)&&($(this).scrollTop() < contact.offsetTop-10)){
         $("#nav-underline3").css("border-bottom", "4px solid #3c5c7c"); 
-        $("#a-active3").css("color","#3c5c7c");
+        $("#a-active3").css("color","#537994");
 
         $("#nav-underline1").css("border-bottom", "none");
         $("#nav-underline2").css("border-bottom", "none"); 
@@ -118,7 +118,7 @@ function underlineMenuItem(){
         $("#a-active4").css("color","#e0e0ff");
       }else {
         $("#nav-underline4").css("border-bottom", "4px solid #3c5c7c"); 
-        $("#a-active4").css("color","#3c5c7c");
+        $("#a-active4").css("color","#537994");
 
         $("#nav-underline1").css("border-bottom", "none");
         $("#nav-underline2").css("border-bottom", "none"); 

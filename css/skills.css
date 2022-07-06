@@ -1,6 +1,6 @@
 .skills-border {
   width: 70vw;
-  background-color: #0e0f12;
+  background-color: #0e0f129f;
   padding: 2em;
   margin-left: auto;
   margin-right: auto;
@@ -63,7 +63,7 @@
   transition: box-shadow .5s,color .3s,-webkit-box-shadow .5s;
   border-radius: 2px;
   text-align: center;
-  background-color: #08090a;
+  background-color: #0e0f12;
   padding-left: 3.5vw;
   padding-right: 3.5vw;
   -webkit-box-shadow: 3px 3px 5px black;
@@ -71,7 +71,7 @@
 }
 
 .skills-border .skill-grid .grid .grid-item:hover {
-  color: #3c5c7c;
+  color: #537994;
   -webkit-box-shadow: 5px 5px 6px black;
           box-shadow: 5px 5px 6px black;
 }

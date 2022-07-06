@@ -1,15 +1,15 @@
 $barvaPozadi:#212429;
 $barvaTextu:#e0e0ff;
 $sedabarva:#2b2e34;
-$barvaOdliseni:#3c5c7c;
+$barvaOdliseni:#537994;
 $tmavaBarvaOdliseni:#0a67c2;
 $actionbarva:#08539f;
-$barvamenu:#0e0f12;
+$barvagridu:#0e0f12;
 
 
 .skills-border{
     width:70vw;
-    background-color: $barvamenu;
+    background-color: #0e0f129f;
     padding:2em;
     margin-left:auto;
     margin-right:auto;
@@ -60,7 +60,7 @@ $barvamenu:#0e0f12;
                 transition: box-shadow .5s,color .3s;
                 border-radius: 2px;
                 text-align: center;
-                background-color: #08090a;
+                background-color: $barvagridu;
                 padding-left:3.5vw;
                 padding-right: 3.5vw;
                 box-shadow: 3px 3px 5px black;

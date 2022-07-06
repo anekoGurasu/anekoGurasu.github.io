@@ -17,7 +17,9 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #0e0f12;
+  background-color: #212429;
+  -webkit-box-shadow: 2px 2px 5px #0e0f12;
+          box-shadow: 2px 2px 5px #0e0f12;
 }
 
 header .menu {
@@ -38,7 +40,7 @@ header .menu {
 }
 
 header .menu a:hover {
-  color: #3c5c7c;
+  color: #537994;
   -webkit-transition: color .25s;
   transition: color .25s;
 }
@@ -50,11 +52,11 @@ header .menu .nav-underline {
 }
 
 header .menu #nav-underline1 {
-  border-bottom: 4px #3c5c7c solid;
+  border-bottom: 4px #537994 solid;
 }
 
 header .menu #nav-underline1 a {
-  color: #3c5c7c;
+  color: #537994;
 }
 
 header .lang {
@@ -74,8 +76,8 @@ header .lang #flag {
 
 header .lang #flag:hover {
   border-radius: 50%;
-  -webkit-box-shadow: 0 0 0 3px #3c5c7c;
-          box-shadow: 0 0 0 3px #3c5c7c;
+  -webkit-box-shadow: 0 0 0 3px #537994;
+          box-shadow: 0 0 0 3px #537994;
   -webkit-transition: -webkit-box-shadow 0.25s ease-in-out;
   transition: -webkit-box-shadow 0.25s ease-in-out;
   transition: box-shadow 0.25s ease-in-out;
