@@ -17,7 +17,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #212429;
+  background-color: #151e25;
   -webkit-box-shadow: 2px 2px 5px #0e0f12;
           box-shadow: 2px 2px 5px #0e0f12;
 }
@@ -72,10 +72,12 @@ header .lang {
 header .lang #flag {
   height: 1.75em;
   width: 1.75em;
+  -webkit-box-shadow: inset 2px 2px 5px black;
+          box-shadow: inset 2px 2px 5px black;
+  border-radius: 50%;
 }
 
 header .lang #flag:hover {
-  border-radius: 50%;
   -webkit-box-shadow: 0 0 0 3px #537994;
           box-shadow: 0 0 0 3px #537994;
   -webkit-transition: -webkit-box-shadow 0.25s ease-in-out;
@@ -106,7 +108,7 @@ header .lang .tooltip-flag {
           box-shadow: 3px 3px 6px black;
   margin: 0px;
   background: #2d3037;
-  padding-top: 17vh;
+  padding-top: 14vh;
   height: 100vh;
 }
 
@@ -125,56 +127,60 @@ header .lang .tooltip-flag {
 }
 
 .introduction-border .introduction-content .text-introduction {
-  padding-left: 5%;
-  padding-right: 5%;
-  width: 100%;
+  padding: 5%;
+  padding-top: 0;
+  width: 55vw;
+  height: 80vh;
+  margin-right: 5vw;
+  background-color: #2f404d;
+}
+
+.introduction-border .introduction-content .text-introduction .head-hello {
+  margin-top: 5vh;
+  padding: 3%;
+  background-color: #283642;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.5em;
+  color: #537994;
 }
 
 .introduction-border .introduction-content .text-introduction .heading-text-introduction {
-  font-size: 4em;
+  font-size: 2.5em;
   text-shadow: 2px 2px 5px black;
+  width: 100%;
+}
+
+.introduction-border .introduction-content .text-introduction .heading-text-introduction .name {
+  font-family: 'The Nautigal', cursive;
+  font-size: 3em;
+}
+
+.introduction-border .introduction-content .text-introduction .heading-text-introduction .main-heading {
+  margin-top: -1vh;
+  margin-bottom: 7vh;
+  padding-right: 3vw;
+  text-align: right;
 }
 
 .introduction-border .introduction-content .text-introduction .paragraph-text-introduction {
-  font-size: 1.25em;
+  margin-top: 5vh;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  background-color: #283642;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-right: 2vw;
+  padding-left: 2vw;
 }
 
 .introduction-border .introduction-content .text-introduction .btn-coop-div {
   display: inline-block;
-  text-align: left;
-}
-
-.introduction-border .introduction-content .text-introduction .btn-coop-div .btn-coop {
-  background-color: #537994;
-  padding: 1em;
-  border: 1px solid transparent;
-  border-radius: .15rem;
-  -webkit-box-shadow: 0 1.5px 5px black;
-          box-shadow: 0 1.5px 5px black;
-  color: #e0e0ff;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.25;
-  margin-top: 5vh;
-  margin-right: 1vw;
+  text-align: center;
+  margin: auto;
   position: relative;
-  text-decoration: none;
-  -webkit-transition: all .25s;
-  transition: all .25s;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
-  text-shadow: .75px .75px 5px black;
-}
-
-.introduction-border .introduction-content .text-introduction .btn-coop-div .btn-coop:hover {
-  background: #0a67c2;
-  cursor: pointer;
-}
-
-.introduction-border .introduction-content .text-introduction .btn-coop-div .btn-coop:active {
-  background-color: #08539f;
+  width: 100%;
 }
 
 .introduction-border .introduction-content .text-introduction .btn-coop-div #btn-disable {
@@ -189,16 +195,45 @@ header .lang .tooltip-flag {
   background-color: #181818;
 }
 
+.introduction-border .introduction-content .btn-coop {
+  background-color: #537994;
+  padding: 1em;
+  border: 1px solid transparent;
+  border-radius: .15rem;
+  -webkit-box-shadow: 0 1.5px 5px black;
+          box-shadow: 0 1.5px 5px black;
+  color: #e0e0ff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 5.5vh;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  text-shadow: .75px .75px 5px black;
+}
+
+.introduction-border .introduction-content .btn-coop:hover {
+  background: #0a67c2;
+  cursor: pointer;
+}
+
+.introduction-border .introduction-content .btn-coop:active {
+  background-color: #08539f;
+}
+
+.introduction-border .introduction-content #download-cv {
+  margin-top: 3.5vh;
+}
+
 .introduction-border .introduction-content .location {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   font-size: 1.2em;
-  text-align: left;
+  text-align: center;
 }
 
 .introduction-border .introduction-content .location .location-p::before {
@@ -208,48 +243,32 @@ header .lang .tooltip-flag {
 
 .introduction-border .introduction-content .photo-introduction {
   text-align: center;
-  width: 75%;
+  width: 35vw;
   position: relative;
+  height: 80vh;
 }
 
 .introduction-border .introduction-content .photo-introduction .bckground-border {
   position: absolute;
   width: 100%;
-  height: 95%;
-  border-radius: .5rem;
-  -webkit-box-shadow: 5px 5px 10px black;
-          box-shadow: 5px 5px 10px black;
-  bottom: -9%;
-  right: -6%;
-  background: linear-gradient(125deg, #2e4251 50%, #537994 100%);
-  -webkit-transition: -webkit-box-shadow .5s;
-  transition: -webkit-box-shadow .5s;
-  transition: box-shadow .5s;
-  transition: box-shadow .5s, -webkit-box-shadow .5s;
-  opacity: 70%;
-}
-
-.introduction-border .introduction-content .photo-introduction .bckground-border:hover {
-  -webkit-transition: -webkit-box-shadow .5s;
-  transition: -webkit-box-shadow .5s;
-  transition: box-shadow .5s;
-  transition: box-shadow .5s, -webkit-box-shadow .5s;
-  -webkit-box-shadow: 10px 10px 20px black;
-          box-shadow: 10px 10px 20px black;
+  padding: 6%;
+  padding-bottom: 8%;
+  background-color: #2f404d;
+  height: 80vh;
 }
 
 .introduction-border .introduction-content .photo-introduction #profile-photo {
   position: relative;
   width: 100%;
-  top: 10%;
-  border-radius: .5rem;
-  -webkit-box-shadow: 3px 3px 8px black;
-          box-shadow: 3px 3px 8px black;
+  top: 2vh;
+  -webkit-box-shadow: 2px 2px 5px black;
+          box-shadow: 2px 2px 5px black;
   -webkit-transition: -webkit-box-shadow .5s;
   transition: -webkit-box-shadow .5s;
   transition: box-shadow .5s;
   transition: box-shadow .5s, -webkit-box-shadow .5s;
   z-index: 20;
+  margin-bottom: 5vh;
 }
 
 .introduction-border .introduction-content .photo-introduction #profile-photo:hover {
@@ -261,10 +280,14 @@ header .lang .tooltip-flag {
           box-shadow: 10px 10px 20px black;
 }
 
+.zvyrazneni {
+  color: #537994;
+}
+
 hr {
   margin-top: -5%;
   border: 0px;
-  border-bottom: #537994 solid;
+  border-bottom: #e0e0ff solid;
   -webkit-box-shadow: 2px 2px 5px black;
           box-shadow: 2px 2px 5px black;
 }

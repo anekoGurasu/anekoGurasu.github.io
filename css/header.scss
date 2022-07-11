@@ -4,7 +4,7 @@ $sedabarva:#2b2e34;
 $barvaOdliseni:#537994;
 $tmavaBarvaOdliseni:#0a67c2;
 $actionbarva:#08539f;
-$barvamenu:#212429;
+$barvamenu:#151e25;
 
 header{
     position:fixed;
@@ -67,9 +67,10 @@ header{
         #flag{
             height:1.75em;
             width:1.75em;
-
+            box-shadow: inset 2px 2px 5px black;
+            border-radius:50%;
             &:hover{
-                border-radius:50%;
+                
                 box-shadow: 0 0 0 3px $barvaOdliseni;
                 transition: box-shadow 0.25s ease-in-out;
             }

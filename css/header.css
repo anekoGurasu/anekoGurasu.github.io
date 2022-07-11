@@ -17,7 +17,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #212429;
+  background-color: #151e25;
   -webkit-box-shadow: 2px 2px 5px #0e0f12;
           box-shadow: 2px 2px 5px #0e0f12;
 }
@@ -72,10 +72,12 @@ header .lang {
 header .lang #flag {
   height: 1.75em;
   width: 1.75em;
+  -webkit-box-shadow: inset 2px 2px 5px black;
+          box-shadow: inset 2px 2px 5px black;
+  border-radius: 50%;
 }
 
 header .lang #flag:hover {
-  border-radius: 50%;
   -webkit-box-shadow: 0 0 0 3px #537994;
           box-shadow: 0 0 0 3px #537994;
   -webkit-transition: -webkit-box-shadow 0.25s ease-in-out;
