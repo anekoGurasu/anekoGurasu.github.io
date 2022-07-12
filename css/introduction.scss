@@ -14,7 +14,7 @@ $tmavyBlok: #283642;
     box-shadow: 3px 3px 6px black;
     margin:0px;
     background: $barvaPozadi;
-    padding-top: 14vh;
+    padding-top: 13vh;
     //padding-bottom: 17vh;
     height:100vh;
 
@@ -167,19 +167,19 @@ $tmavyBlok: #283642;
             #profile-photo{
                 position:relative;
                 width: 100%;
-                top:2vh;
-                
-                box-shadow: 2px 2px 5px black;
-                //border:3px #212429 solid;
-                transition:box-shadow .5s;
-                z-index: 20;
-                margin-bottom:5vh;
-
-                &:hover{
-                    transition:box-shadow .5s;
-                    box-shadow: 10px 10px 20px black;
-                }
+               
               
+            }
+
+            .shadow{
+                position: absolute;
+                width: 88%;
+                height:47vh;
+                box-shadow: inset 0px 0px 20px  #000000;
+                margin:6%;
+                top: 0;
+                left: 0;
+                
             }
         }
         

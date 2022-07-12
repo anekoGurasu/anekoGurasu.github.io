@@ -108,7 +108,7 @@ header .lang .tooltip-flag {
           box-shadow: 3px 3px 6px black;
   margin: 0px;
   background: #2d3037;
-  padding-top: 14vh;
+  padding-top: 13vh;
   height: 100vh;
 }
 
@@ -260,24 +260,17 @@ header .lang .tooltip-flag {
 .introduction-border .introduction-content .photo-introduction #profile-photo {
   position: relative;
   width: 100%;
-  top: 2vh;
-  -webkit-box-shadow: 2px 2px 5px black;
-          box-shadow: 2px 2px 5px black;
-  -webkit-transition: -webkit-box-shadow .5s;
-  transition: -webkit-box-shadow .5s;
-  transition: box-shadow .5s;
-  transition: box-shadow .5s, -webkit-box-shadow .5s;
-  z-index: 20;
-  margin-bottom: 5vh;
 }
 
-.introduction-border .introduction-content .photo-introduction #profile-photo:hover {
-  -webkit-transition: -webkit-box-shadow .5s;
-  transition: -webkit-box-shadow .5s;
-  transition: box-shadow .5s;
-  transition: box-shadow .5s, -webkit-box-shadow .5s;
-  -webkit-box-shadow: 10px 10px 20px black;
-          box-shadow: 10px 10px 20px black;
+.introduction-border .introduction-content .photo-introduction .shadow {
+  position: absolute;
+  width: 88%;
+  height: 47vh;
+  -webkit-box-shadow: inset 0px 0px 20px  #000000;
+          box-shadow: inset 0px 0px 20px  #000000;
+  margin: 6%;
+  top: 0;
+  left: 0;
 }
 
 .zvyrazneni {
@@ -357,7 +350,7 @@ hr {
   transition: box-shadow .5s,color .3s,-webkit-box-shadow .5s;
   border-radius: 2px;
   text-align: center;
-  background-color: #0e0f12;
+  background-color: #151e25;
   padding-left: 3.5vw;
   padding-right: 3.5vw;
   -webkit-box-shadow: 3px 3px 5px black;
