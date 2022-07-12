@@ -260,17 +260,7 @@ header .lang .tooltip-flag {
 .introduction-border .introduction-content .photo-introduction #profile-photo {
   position: relative;
   width: 100%;
-}
-
-.introduction-border .introduction-content .photo-introduction .shadow {
-  position: absolute;
-  width: 88%;
-  height: 47vh;
-  -webkit-box-shadow: inset 0px 0px 20px  #000000;
-          box-shadow: inset 0px 0px 20px  #000000;
-  margin: 6%;
-  top: 0;
-  left: 0;
+  margin-bottom: 2vh;
 }
 
 .zvyrazneni {
