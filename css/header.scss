@@ -1,0 +1,95 @@
+$RussianVioletHex:#201B4E;
+$RussianVioletRGBa:rgba(32, 27, 78, 1);
+$ByzantiumHex:#7f2b5e;
+$ByzantiumRGBa:rgba(127, 43, 94, 1);
+$DarkPurpleHex:#291438;
+$DarkPurpleRGBa:rgba(41, 20, 56, 1);
+$XiketicHex:#0b060c;
+$XiketicRGBa:rgba(11, 6, 12, 1);
+$MaximumPurpleHex:#683676;
+$MaximumPurpleRGBa:rgba(104, 54, 118, 1);
+
+header{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    color:aliceblue;
+    background-color: $XiketicHex;
+    z-index:100;
+    box-shadow: 3px 3px 5px $XiketicHex;
+
+
+    nav{
+        position:relative;
+        width:60%;
+        margin-left:auto;
+        margin-right:auto;
+        font-family: Hardigan;
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding:0;
+            display: flex;
+            justify-content: space-between;
+            padding:2vh 0;
+
+            a{
+                font-size:1.6rem;
+                text-decoration: none;
+                color:inherit;
+                padding:2vh 2vw;
+                transition: all 500ms;
+
+                &:hover{
+                    background-color:$RussianVioletHex;
+                }
+            }
+    
+            .dropdown {
+                border: none;
+                outline: none;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+                padding-right: 0 ;
+
+                .a-project{
+                    &:after{
+                        font-family: unicons;
+                        content:"\eb3a";
+                    }
+                }
+            }
+    
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: $XiketicHex;
+                min-width: 5vw;
+                box-shadow: 0px 8px 16px 0px black;
+                z-index: 101;
+                margin-top: 2vh;
+
+                a {
+                    float: none;
+                    color: inherit;
+                    padding: 2vh 2vw;
+                    text-decoration: none;
+                    display: block;
+                    text-align: left;
+                    font-size: 1.5rem;
+                    transition: all 500ms;
+                }
+            }
+            .dropdown-content a:hover {
+                background-color:$MaximumPurpleHex;
+            }
+    
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+    }    
+}

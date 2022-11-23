@@ -8,17 +8,39 @@
         <meta name="author" content="Aneko Gurasu">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="img/Untitled_Artwork-croped.png" />
+        <link rel="stylesheet" href="css/main.css" />
     </head>
     <body>
         <header>
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Projects</li>
-                    <li>Price list</li>
-                    <li>Contact</li>
+                    <li><a href="https://anekogurasu.github.io">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#price">Price list</a></li>
+                    <li><a href="contact">Contact</a></li>
+                    <li class="dropdown"><a href="#" class="a-project">Projects</a>
+                        <div class="dropdown-content">
+                            <a href="#">Website projects</a>
+                            <a href="#">UI projects</a>
+                            <a href="#">Art</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
+        <div class="intro">
+            <div class="headers">
+                <h1>My name is Kristýna</h1>
+                <h2>I am a full stack developer and artist.</h2>
+                <br>
+                <button>Show me more</button>
+            </div>  
+        </div>
+        <div class="content" id="content">
+
+        </div>
+        <footer>
+            <p> 2022 AnekoGurasu</p>
+        </footer>
     </body>
 </html>
