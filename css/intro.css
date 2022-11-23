@@ -5,6 +5,9 @@
   background-repeat: no-repeat;
   height: 100vh;
   text-align: center;
+  z-index: 99;
+  -webkit-box-shadow: 4px 4px 8px #0b060c;
+          box-shadow: 4px 4px 8px #0b060c;
 }
 
 .intro .headers {

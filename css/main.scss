@@ -1,5 +1,5 @@
 
-
+@import "about.scss";
 @import "header.scss";
 @import "intro.scss";
 
@@ -25,6 +25,17 @@
 
 body{
     margin:0;
+}
+
+.content{
+    position:relative;
+    max-width:100vw;
+    z-index: 98;
+    h1{
+        font-family:LaserCorps3D;
+        color:aliceblue;
+        font-size: 3em;
+    }
 }
 
 footer{

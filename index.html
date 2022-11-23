@@ -10,19 +10,19 @@
         <link rel="shortcut icon" href="img/Untitled_Artwork-croped.png" />
         <link rel="stylesheet" href="css/main.css" />
     </head>
-    <body>
+    <body onload="showAbout()">
         <header>
             <nav>
                 <ul>
                     <li><a href="https://anekogurasu.github.io">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#price">Price list</a></li>
-                    <li><a href="contact">Contact</a></li>
+                    <li><a href="#about" onclick="showAbout()">About</a></li>
+                    <li><a href="#price" onclick="showAbout()">Price list</a></li>
+                    <li><a href="#contact" onclick="showAbout()">Contact</a></li>
                     <li class="dropdown"><a href="#" class="a-project">Projects</a>
                         <div class="dropdown-content">
-                            <a href="#">Website projects</a>
+                            <a href="#" onclick="showwebprojects()">Website projects</a>
                             <a href="#">UI projects</a>
-                            <a href="#">Art</a>
+                            <a href="#" onclick="showart()">Art</a>
                         </div>
                     </li>
                 </ul>
@@ -36,11 +36,11 @@
                 <button>Show me more</button>
             </div>  
         </div>
-        <div class="content" id="content">
-
-        </div>
+        <div class="content" id="content"></div>
         <footer>
             <p> 2022 AnekoGurasu</p>
         </footer>
+        <script src="/js/jquery-3.6.1.js"></script>
+        <script src="/js/script.js"></script>
     </body>
 </html>

@@ -1,0 +1,85 @@
+$RussianVioletHex:#201B4E;
+$RussianVioletRGBa:rgba(32, 27, 78, 1);
+$ByzantiumHex:#7f2b5e;
+$ByzantiumRGBa:rgb(162, 101, 138);
+$DarkPurpleHex:#291438;
+$DarkPurpleRGBa:rgba(41, 20, 56, 1);
+$XiketicHex:#0b060c;
+$XiketicRGBa:rgba(11, 6, 12, 1);
+$MaximumPurpleHex:#683676;
+$MaximumPurpleRGBa:rgba(104, 54, 118, 1);
+
+.about{
+    position:relative;
+    background-color: $DarkPurpleHex;
+    height:95vh;
+    width:100%;
+    color:aliceblue;
+    font-size: 1.15rem;
+    font-family: Hardigan;
+    z-index: 90;
+
+    .about-border{
+        position:absolute;
+        left:10%;
+        right:10%;
+        top:12%;
+        display: flex;
+        align-items:flex-start;
+
+        .about-infomation{
+            position: relative;
+            width:40vw;
+        }
+
+        .img-head{
+            position:relative;
+           // padding-top:4vh;
+            width:30vw;
+            text-align: right;
+            margin-left:3vw;
+            
+
+            .circle-one{
+                position:absolute;
+                background-color:#7f2b5dc9;
+                height:42vh;
+                width:42vh;
+                border-radius: 50%;
+                top:0vh;
+                right:-6vw;
+            }
+            .circle-two{
+                position:absolute;
+                background-color:#201b4ebb;
+                height:40vh;
+                width:40vh;
+                border-radius: 50%;
+                bottom:3vh;
+                right:5vw;
+            }
+            .circle-three{
+                position:absolute;
+                background-color:#6e2b7f96;
+                height:50vh;
+                width:50vh;
+                border-radius: 50%;
+                bottom:-7vh;
+                right:-8vw;
+            }
+        }
+
+        img{
+            position: inherit;
+            width:17vw;
+            filter:drop-shadow(0px 0px 5px $XiketicHex);
+        }
+    }
+
+    .skill{
+        position: absolute;
+        top:100vh;
+        left:0;
+        right:0;
+    }
+}

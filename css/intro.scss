@@ -16,6 +16,8 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
     background-repeat: no-repeat;
     height:100vh;
     text-align: center;
+    z-index: 99;
+    box-shadow: 4px 4px 8px $XiketicHex;
 
     .headers{
         position:absolute;
