@@ -12,67 +12,113 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
 .about{
     position:relative;
     background-color: $DarkPurpleHex;
-    height:95vh;
     width:100%;
+    height:198vh;
     color:aliceblue;
     font-size: 1.15rem;
     font-family: Hardigan;
     z-index: 90;
+    overflow: hidden;
 
     .about-border{
         position:absolute;
         left:10%;
         right:10%;
-        top:12%;
+        top:3%;
         display: flex;
-        align-items:flex-start;
 
         .about-infomation{
             position: relative;
             width:40vw;
+
+            h1{
+                text-shadow: 2px 2px 5px black;
+                top:0
+            }
+
+            .paragraphs{
+                position:relative;
+                padding:2% 3%;
+                border:7px solid $ByzantiumHex;
+                box-shadow: 0 0 5px rgb(211, 163, 200),
+                0 0 11px rgb(211, 163, 200),
+                0 0 17px $ByzantiumHex,
+                0 0 23px $ByzantiumHex,
+                0 0 29px $MaximumPurpleHex;
+
+                #mrak{
+                    position:absolute;
+                    width:25vw;
+                    right:-9vw;
+                    bottom:-16vh;
+                    filter: drop-shadow(0 0 3px rgb(211, 163, 200)) 
+                    drop-shadow(0 0 7px $ByzantiumHex)
+                    drop-shadow(0 0 13px $MaximumPurpleHex);
+                    animation: flicker 8s  linear infinite;
+                }
+            }
+
+            .programs{
+                display:flex;
+                position:relative;
+                width:100%;
+
+                img{
+                    width:3vw
+                }
+
+                .icon{
+                    width:5vw;
+                    height:8.75vh;
+                    background-color: $MaximumPurpleHex;
+                    margin-right:1vw;
+                    padding:10px;
+                    border-radius: 15px;
+                    text-align: center;
+                    box-shadow: 2px 2px 5px $XiketicHex;
+                    z-index: 100;
+                    transition:all 250ms;
+
+                    &:hover{
+                       box-shadow:  0 0 5px rgb(211, 163, 200),
+                        0 0 11px rgb(211, 163, 200),
+                        0 0 17px $ByzantiumHex,
+                        0 0 23px $ByzantiumHex,
+                        0 0 29px $MaximumPurpleHex;
+                    }
+                }
+            }
         }
 
         .img-head{
             position:relative;
-           // padding-top:4vh;
             width:30vw;
             text-align: right;
             margin-left:3vw;
-            
+            margin-top: 10vh;
+        }
 
-            .circle-one{
-                position:absolute;
-                background-color:#7f2b5dc9;
-                height:42vh;
-                width:42vh;
-                border-radius: 50%;
-                top:0vh;
-                right:-6vw;
-            }
-            .circle-two{
-                position:absolute;
-                background-color:#201b4ebb;
-                height:40vh;
-                width:40vh;
-                border-radius: 50%;
-                bottom:3vh;
-                right:5vw;
-            }
-            .circle-three{
-                position:absolute;
-                background-color:#6e2b7f96;
-                height:50vh;
-                width:50vh;
-                border-radius: 50%;
-                bottom:-7vh;
-                right:-8vw;
+        
+        #hlava{
+            position: absolute;
+            width:25vw;
+            right:-5vw;
+            filter:drop-shadow(0px 0px 4px $XiketicHex);
+            will-change: filter;
+            transition: filter .2s ease-out;
+
+            &:hover{
+                filter:drop-shadow(0px 0px 9px $XiketicHex);
             }
         }
 
-        img{
-            position: inherit;
-            width:17vw;
-            filter:drop-shadow(0px 0px 5px $XiketicHex);
+        #policetape{
+            position:absolute;
+            width:70vw;
+            top:0vh;
+            right:-20vw;
+            transform: rotate(25deg);
+            filter:drop-shadow(0px 0px 9px $XiketicHex);
         }
     }
 
@@ -81,5 +127,82 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
         top:100vh;
         left:0;
         right:0;
+        background-color: $MaximumPurpleHex;
+        height:95vh;
+        text-align: center;
+        margin-top:3vh;
+
+        h1{
+            font-size: 1.75rem;
+        }
+        h2{
+            font-size: 1.25rem;
+        }
+
+        .skill-border{
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width:75%;
+            height:76%;
+            background-color: $DarkPurpleHex;
+            padding:2vh 0;
+            box-shadow: 2px 2px 5px $XiketicHex;
+
+            .skill-flex{
+                display:flex;
+                width:100%;
+                padding:0vh 3vw;
+
+                h1{
+                    font-size: 3rem;
+                    padding:0 2vw;
+                    
+                }
+
+                .skill-grid{
+                    display:grid;
+                    grid-template-columns: auto auto auto auto auto;
+                    row-gap: 4vh;
+                    padding:6vh 3vw;
+                    border-left:5px solid $ByzantiumHex;
+
+                    .grid-cell{
+                        border:5px solid $ByzantiumHex;
+                        height:15vh;
+                        width:10vw;
+                        margin-right:2vw;
+                        background-color: $RussianVioletHex;
+                        box-shadow: 2px 2px 6px $XiketicHex, 2px 2px 6px $XiketicHex inset;
+                        border-radius: 7px;
+                        transition: box-shadow .5s;
+
+                        &:hover{
+                            box-shadow:  0 0 5px rgb(211, 163, 200),
+                        0 0 11px rgb(211, 163, 200),
+                        0 0 17px $ByzantiumHex,
+                        0 0 23px $ByzantiumHex,
+                        0 0 29px $MaximumPurpleHex;
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        
+        filter: drop-shadow(0 0 1px rgb(211, 163, 200))
+        drop-shadow(0 0 3px rgb(211, 163, 200)) 
+        drop-shadow(0 0 7px $ByzantiumHex)
+        drop-shadow(0 0 13px $MaximumPurpleHex);
+		
+	}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		filter: drop-shadow(0 0 1px rgb(211, 163, 200)) 
+        drop-shadow(0 0 4px $ByzantiumHex)
+        drop-shadow(0 0 7px $MaximumPurpleHex);
+	}
 }
