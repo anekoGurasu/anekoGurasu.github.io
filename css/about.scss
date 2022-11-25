@@ -13,7 +13,7 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
     position:relative;
     background-color: $DarkPurpleHex;
     width:100%;
-    height:198vh;
+    height:295vh;
     color:aliceblue;
     font-size: 1.15rem;
     font-family: Hardigan;
@@ -139,15 +139,72 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
             font-size: 1.25rem;
         }
 
+        .pyramid {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transform: rotateY(270deg) rotateX(60deg) rotateZ(50deg);
+
+            .side {
+                width: 0;
+                height: 0;
+                position: absolute;
+                opacity: 0.7;
+                border: 100px solid transparent;
+                border-bottom: 200px solid $ByzantiumHex;
+                border-top: 0px;
+            }
+
+            .one {
+                transform: rotateX(30deg);
+                transform-origin: 0 0;
+            }
+            .two {
+                transform-origin: 100px 0;
+                transform: rotateY(90deg) rotateX(-30deg);
+                border-bottom-color: $RussianVioletHex;
+            }
+            .three {
+                transform-origin: 100px 0;
+                transform: rotateY(270deg) rotateX(-30deg);
+                border-bottom-color: $DarkPurpleHex;
+            }
+            .four {
+                transform-origin: 100px 0;
+                transform: rotateY(0) rotateX(-30deg);
+                border-bottom-color: rgb(246,213,13);
+              }
+              .base {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                transform: translateY(73px) rotateX(90deg);
+                border: 0;
+                background: $MaximumPurpleHex;
+              }
+          }
+
+          .pyr-sec{
+            transform: rotateY(270deg) rotateX(250deg) rotateZ(35deg);
+            right:9vw;
+            top:56%;
+          }
+          .pyr-frst{
+            left:5vw;
+          }
+
         .skill-border{
             position: relative;
             margin-left: auto;
             margin-right: auto;
             width:75%;
             height:76%;
-            background-color: $DarkPurpleHex;
+            background-color:#291438c9;
             padding:2vh 0;
             box-shadow: 2px 2px 5px $XiketicHex;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
 
             .skill-flex{
                 display:flex;
@@ -155,7 +212,7 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
                 padding:0vh 3vw;
 
                 h1{
-                    font-size: 3rem;
+                    font-size: 2.9rem;
                     padding:0 2vw;
                     
                 }
@@ -168,24 +225,55 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
                     border-left:5px solid $ByzantiumHex;
 
                     .grid-cell{
-                        border:5px solid $ByzantiumHex;
+                        border:5px solid rgb(246,213,13);
                         height:15vh;
                         width:10vw;
                         margin-right:2vw;
                         background-color: $RussianVioletHex;
-                        box-shadow: 2px 2px 6px $XiketicHex, 2px 2px 6px $XiketicHex inset;
+                        box-shadow: 2px 2px 6px $XiketicHex;
                         border-radius: 7px;
                         transition: box-shadow .5s;
 
                         &:hover{
                             box-shadow:  0 0 5px rgb(211, 163, 200),
-                        0 0 11px rgb(211, 163, 200),
-                        0 0 17px $ByzantiumHex,
-                        0 0 23px $ByzantiumHex,
-                        0 0 29px $MaximumPurpleHex;
+                            0 0 11px rgb(211, 163, 200),
+                            0 0 17px $ByzantiumHex,
+                            0 0 23px $ByzantiumHex,
+                            0 0 29px $MaximumPurpleHex,
                         }
                     }
                 }
+            }
+        }
+    }
+    .price-list{
+        position:absolute;
+        top:195vh;
+        height:100vh;
+        left:0;
+        right:0;
+        background-color: $MaximumPurpleHex;
+        text-align: center;
+        padding-top:10vh;
+
+        
+
+        table{
+            position: relative;
+            margin-left: auto;
+            margin-right:auto;
+            background-image: url(/img/pngegg.png);
+            padding:3.5% 2%;
+            text-align: left;
+            background-repeat: no-repeat;
+
+            h1{
+                font-size: 1.75rem;
+            }
+
+            td{
+                padding:2%;
+                width:8.8vw;
             }
         }
     }

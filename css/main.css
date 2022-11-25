@@ -2,7 +2,7 @@
   position: relative;
   background-color: #291438;
   width: 100%;
-  height: 198vh;
+  height: 295vh;
   color: aliceblue;
   font-size: 1.15rem;
   font-family: Hardigan;
@@ -137,16 +137,90 @@
   font-size: 1.25rem;
 }
 
+.about .skill .pyramid {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateY(270deg) rotateX(60deg) rotateZ(50deg);
+          transform: rotateY(270deg) rotateX(60deg) rotateZ(50deg);
+}
+
+.about .skill .pyramid .side {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0.7;
+  border: 100px solid transparent;
+  border-bottom: 200px solid #7f2b5e;
+  border-top: 0px;
+}
+
+.about .skill .pyramid .one {
+  -webkit-transform: rotateX(30deg);
+          transform: rotateX(30deg);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+
+.about .skill .pyramid .two {
+  -webkit-transform-origin: 100px 0;
+          transform-origin: 100px 0;
+  -webkit-transform: rotateY(90deg) rotateX(-30deg);
+          transform: rotateY(90deg) rotateX(-30deg);
+  border-bottom-color: #201B4E;
+}
+
+.about .skill .pyramid .three {
+  -webkit-transform-origin: 100px 0;
+          transform-origin: 100px 0;
+  -webkit-transform: rotateY(270deg) rotateX(-30deg);
+          transform: rotateY(270deg) rotateX(-30deg);
+  border-bottom-color: #291438;
+}
+
+.about .skill .pyramid .four {
+  -webkit-transform-origin: 100px 0;
+          transform-origin: 100px 0;
+  -webkit-transform: rotateY(0) rotateX(-30deg);
+          transform: rotateY(0) rotateX(-30deg);
+  border-bottom-color: #f6d50d;
+}
+
+.about .skill .pyramid .base {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(73px) rotateX(90deg);
+          transform: translateY(73px) rotateX(90deg);
+  border: 0;
+  background: #683676;
+}
+
+.about .skill .pyr-sec {
+  -webkit-transform: rotateY(270deg) rotateX(250deg) rotateZ(35deg);
+          transform: rotateY(270deg) rotateX(250deg) rotateZ(35deg);
+  right: 9vw;
+  top: 56%;
+}
+
+.about .skill .pyr-frst {
+  left: 5vw;
+}
+
 .about .skill .skill-border {
   position: relative;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
   height: 76%;
-  background-color: #291438;
+  background-color: #291438c9;
   padding: 2vh 0;
   -webkit-box-shadow: 2px 2px 5px #0b060c;
           box-shadow: 2px 2px 5px #0b060c;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .about .skill .skill-border .skill-flex {
@@ -158,7 +232,7 @@
 }
 
 .about .skill .skill-border .skill-flex h1 {
-  font-size: 3rem;
+  font-size: 2.9rem;
   padding: 0 2vw;
 }
 
@@ -173,13 +247,13 @@
 }
 
 .about .skill .skill-border .skill-flex .skill-grid .grid-cell {
-  border: 5px solid #7f2b5e;
+  border: 5px solid #f6d50d;
   height: 15vh;
   width: 10vw;
   margin-right: 2vw;
   background-color: #201B4E;
-  -webkit-box-shadow: 2px 2px 6px #0b060c, 2px 2px 6px #0b060c inset;
-          box-shadow: 2px 2px 6px #0b060c, 2px 2px 6px #0b060c inset;
+  -webkit-box-shadow: 2px 2px 6px #0b060c;
+          box-shadow: 2px 2px 6px #0b060c;
   border-radius: 7px;
   -webkit-transition: -webkit-box-shadow .5s;
   transition: -webkit-box-shadow .5s;
@@ -190,6 +264,36 @@
 .about .skill .skill-border .skill-flex .skill-grid .grid-cell:hover {
   -webkit-box-shadow: 0 0 5px #d3a3c8, 0 0 11px #d3a3c8, 0 0 17px #7f2b5e, 0 0 23px #7f2b5e, 0 0 29px #683676;
           box-shadow: 0 0 5px #d3a3c8, 0 0 11px #d3a3c8, 0 0 17px #7f2b5e, 0 0 23px #7f2b5e, 0 0 29px #683676;
+}
+
+.about .price-list {
+  position: absolute;
+  top: 195vh;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  background-color: #683676;
+  text-align: center;
+  padding-top: 10vh;
+}
+
+.about .price-list table {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/img/pngegg.png);
+  padding: 3.5% 2%;
+  text-align: left;
+  background-repeat: no-repeat;
+}
+
+.about .price-list table h1 {
+  font-size: 1.75rem;
+}
+
+.about .price-list table td {
+  padding: 2%;
+  width: 8.8vw;
 }
 
 @-webkit-keyframes flicker {
@@ -383,6 +487,7 @@ header nav ul .dropdown:hover .dropdown-content {
 
 body {
   margin: 0;
+  background-color: #0b060c;
 }
 
 .content {
@@ -400,6 +505,7 @@ body {
 footer {
   text-align: center;
   font-family: Hardigan;
+  color: aliceblue;
 }
 
 footer p::before {

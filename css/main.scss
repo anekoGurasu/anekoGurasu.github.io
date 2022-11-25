@@ -1,3 +1,13 @@
+$RussianVioletHex:#201B4E;
+$RussianVioletRGBa:rgba(32, 27, 78, 1);
+$ByzantiumHex:#7f2b5e;
+$ByzantiumRGBa:rgb(162, 101, 138);
+$DarkPurpleHex:#291438;
+$DarkPurpleRGBa:rgba(41, 20, 56, 1);
+$XiketicHex:#0b060c;
+$XiketicRGBa:rgba(11, 6, 12, 1);
+$MaximumPurpleHex:#683676;
+$MaximumPurpleRGBa:rgba(104, 54, 118, 1);
 
 @import "about.scss";
 @import "header.scss";
@@ -25,6 +35,8 @@
 
 body{
     margin:0;
+    background-color: $XiketicHex;
+
 }
 
 .content{
@@ -41,6 +53,8 @@ body{
 footer{
     text-align: center;
     font-family: Hardigan;
+    color:aliceblue;
+
     p::before{
         font-family: unicons;
         content:"\e85a";
