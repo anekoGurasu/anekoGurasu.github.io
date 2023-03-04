@@ -11,17 +11,12 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
 
 @import "about.scss";
 @import "header.scss";
-@import "intro.scss";
 
 @font-face {
     font-family: "unicons";
     src: url("/fonts/unicons.ttf");
 }
 
-@font-face {
-    font-family: "LaserCorps3D";
-    src: url("/fonts/laserCorps/LaserCorps3D-X3X7j.otf");
-}
 
 @font-face {
     font-family: "Hardigan";
@@ -36,6 +31,8 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
 body{
     margin:0;
     background-color: $XiketicHex;
+    max-width: 100%;
+    overflow-x: hidden;
 
 }
 
@@ -43,11 +40,6 @@ body{
     position:relative;
     max-width:100vw;
     z-index: 98;
-    h1{
-        font-family:LaserCorps3D;
-        color:aliceblue;
-        font-size: 3em;
-    }
 }
 
 footer{

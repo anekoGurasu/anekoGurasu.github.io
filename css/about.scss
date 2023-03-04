@@ -10,22 +10,78 @@ $MaximumPurpleHex:#683676;
 $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
 
 .about{
-    position:relative;
-    background-color: $DarkPurpleHex;
-    width:100%;
-    height:295vh;
-    color:aliceblue;
-    font-size: 1.15rem;
-    font-family: Hardigan;
-    z-index: 90;
-    overflow: hidden;
+    background-color: #291438;
+    position: relative;
+    .intro{
+        position:relative;
+        width:100vw;
+        height:100vh;
+        background:url("/img/Simple Shiny.svg") no-repeat center;
+        object-fit: cover;
+        padding:12%;
+        padding-top:20vh;
+        top:50%;
+        font-family: Hardigan;
+        color:white;
+        z-index: 100;
+        
+        h1{
+            font-size: 5rem;
+        }
+
+        p{
+            margin-top:-4vh;
+            font-size: 1.25rem;
+
+            .yel{
+                color:rgb(255, 187, 0);
+            }
+        }
+
+        .btns{
+            display: flex;
+            width:45vw;
+        }
+
+        .btn{
+
+            font-family: Hardigan;
+            letter-spacing: 1px;
+            font-size: 20px;
+            color: $MaximumPurpleHex;
+            background-color: rgb(255, 187, 0);
+            padding: 10px 30px;
+            box-shadow: $DarkPurpleHex 2px 2px 5px;
+            border: solid 2px transparent;
+            border-radius: 50px;
+            transition : 300ms;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            margin-right:50px;
+        
+            &:hover{
+                transition : 300ms;
+                padding: 10px 50px;
+                background-color: #fff;
+                color: $ByzantiumHex;
+                border: solid 2px $ByzantiumHex;
+                margin-right:10px;
+            }
+        }
+
+    }
 
     .about-border{
-        position:absolute;
+        position:relative;
         left:10%;
         right:10%;
-        top:3%;
+        top:18vh;
         display: flex;
+        font-family:Hardigan;
+        color:white;
+        height:100vh;
 
         .about-infomation{
             position: relative;
@@ -49,8 +105,8 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
                 #mrak{
                     position:absolute;
                     width:25vw;
-                    right:-9vw;
-                    bottom:-16vh;
+                    right:-12vw;
+                    bottom:-18vh;
                     filter: drop-shadow(0 0 3px rgb(211, 163, 200)) 
                     drop-shadow(0 0 7px $ByzantiumHex)
                     drop-shadow(0 0 13px $MaximumPurpleHex);
@@ -94,8 +150,7 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
             position:relative;
             width:30vw;
             text-align: right;
-            margin-left:3vw;
-            margin-top: 10vh;
+            margin-left:5vw;
         }
 
         
@@ -123,20 +178,22 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
     }
 
     .skill{
-        position: absolute;
-        top:100vh;
+        position: relative;
         left:0;
         right:0;
         background-color: $MaximumPurpleHex;
-        height:95vh;
+        height:102vh;
         text-align: center;
-        margin-top:3vh;
+        color:white;
+        font-family: Hardigan;
 
         h1{
             font-size: 1.75rem;
+            letter-spacing: 2px;
         }
         h2{
             font-size: 1.25rem;
+            letter-spacing: 2px;
         }
 
         .pyramid {
@@ -198,8 +255,9 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
             position: relative;
             margin-left: auto;
             margin-right: auto;
+            margin-top:12vh;
             width:75%;
-            height:76%;
+            height:72%;
             background-color:#291438c9;
             padding:2vh 0;
             box-shadow: 2px 2px 5px $XiketicHex;
@@ -246,51 +304,4 @@ $MaximumPurpleRGBa:rgba(104, 54, 118, 1);
             }
         }
     }
-    .price-list{
-        position:absolute;
-        top:195vh;
-        height:100vh;
-        left:0;
-        right:0;
-        background-color: $MaximumPurpleHex;
-        text-align: center;
-        padding-top:10vh;
-
-        
-
-        table{
-            position: relative;
-            margin-left: auto;
-            margin-right:auto;
-            background-image: url(/img/pngegg.png);
-            padding:3.5% 2%;
-            text-align: left;
-            background-repeat: no-repeat;
-
-            h1{
-                font-size: 1.75rem;
-            }
-
-            td{
-                padding:2%;
-                width:8.8vw;
-            }
-        }
-    }
-}
-
-@keyframes flicker {
-	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-        
-        filter: drop-shadow(0 0 1px rgb(211, 163, 200))
-        drop-shadow(0 0 3px rgb(211, 163, 200)) 
-        drop-shadow(0 0 7px $ByzantiumHex)
-        drop-shadow(0 0 13px $MaximumPurpleHex);
-		
-	}
-	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-		filter: drop-shadow(0 0 1px rgb(211, 163, 200)) 
-        drop-shadow(0 0 4px $ByzantiumHex)
-        drop-shadow(0 0 7px $MaximumPurpleHex);
-	}
 }

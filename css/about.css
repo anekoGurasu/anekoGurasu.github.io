@@ -1,23 +1,91 @@
 .about {
-  position: relative;
   background-color: #291438;
-  width: 100%;
-  height: 295vh;
-  color: aliceblue;
-  font-size: 1.15rem;
-  font-family: Hardigan;
-  z-index: 90;
-  overflow: hidden;
+  position: relative;
 }
 
-.about .about-border {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 3%;
+.about .intro {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("/img/Simple Shiny.svg") no-repeat center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 12%;
+  padding-top: 20vh;
+  top: 50%;
+  font-family: Hardigan;
+  color: white;
+  z-index: 100;
+}
+
+.about .intro h1 {
+  font-size: 5rem;
+}
+
+.about .intro p {
+  margin-top: -4vh;
+  font-size: 1.25rem;
+}
+
+.about .intro p .yel {
+  color: #ffbb00;
+}
+
+.about .intro .btns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 45vw;
+}
+
+.about .intro .btn {
+  font-family: Hardigan;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: #683676;
+  background-color: #ffbb00;
+  padding: 10px 30px;
+  -webkit-box-shadow: #291438 2px 2px 5px;
+          box-shadow: #291438 2px 2px 5px;
+  border: solid 2px transparent;
+  border-radius: 50px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.about .intro .btn:hover {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  padding: 10px 50px;
+  background-color: #fff;
+  color: #7f2b5e;
+  border: solid 2px #7f2b5e;
+  margin-right: 10px;
+}
+
+.about .about-border {
+  position: relative;
+  left: 10%;
+  right: 10%;
+  top: 18vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: Hardigan;
+  color: white;
+  height: 100vh;
 }
 
 .about .about-border .about-infomation {
@@ -41,8 +109,8 @@
 .about .about-border .about-infomation .paragraphs #mrak {
   position: absolute;
   width: 25vw;
-  right: -9vw;
-  bottom: -16vh;
+  right: -12vw;
+  bottom: -18vh;
   -webkit-filter: drop-shadow(0 0 3px #d3a3c8) drop-shadow(0 0 7px #7f2b5e) drop-shadow(0 0 13px #683676);
           filter: drop-shadow(0 0 3px #d3a3c8) drop-shadow(0 0 7px #7f2b5e) drop-shadow(0 0 13px #683676);
   -webkit-animation: flicker 8s  linear infinite;
@@ -85,8 +153,7 @@
   position: relative;
   width: 30vw;
   text-align: right;
-  margin-left: 3vw;
-  margin-top: 10vh;
+  margin-left: 5vw;
 }
 
 .about .about-border #hlava {
@@ -119,22 +186,24 @@
 }
 
 .about .skill {
-  position: absolute;
-  top: 100vh;
+  position: relative;
   left: 0;
   right: 0;
   background-color: #683676;
-  height: 95vh;
+  height: 102vh;
   text-align: center;
-  margin-top: 3vh;
+  color: white;
+  font-family: Hardigan;
 }
 
 .about .skill h1 {
   font-size: 1.75rem;
+  letter-spacing: 2px;
 }
 
 .about .skill h2 {
   font-size: 1.25rem;
+  letter-spacing: 2px;
 }
 
 .about .skill .pyramid {
@@ -213,8 +282,9 @@
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 12vh;
   width: 75%;
-  height: 76%;
+  height: 72%;
   background-color: #291438c9;
   padding: 2vh 0;
   -webkit-box-shadow: 2px 2px 5px #0b060c;
@@ -264,57 +334,5 @@
 .about .skill .skill-border .skill-flex .skill-grid .grid-cell:hover {
   -webkit-box-shadow: 0 0 5px #d3a3c8, 0 0 11px #d3a3c8, 0 0 17px #7f2b5e, 0 0 23px #7f2b5e, 0 0 29px #683676;
           box-shadow: 0 0 5px #d3a3c8, 0 0 11px #d3a3c8, 0 0 17px #7f2b5e, 0 0 23px #7f2b5e, 0 0 29px #683676;
-}
-
-.about .price-list {
-  position: absolute;
-  top: 195vh;
-  height: 100vh;
-  left: 0;
-  right: 0;
-  background-color: #683676;
-  text-align: center;
-  padding-top: 10vh;
-}
-
-.about .price-list table {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url(/img/pngegg.png);
-  padding: 3.5% 2%;
-  text-align: left;
-  background-repeat: no-repeat;
-}
-
-.about .price-list table h1 {
-  font-size: 1.75rem;
-}
-
-.about .price-list table td {
-  padding: 2%;
-  width: 8.8vw;
-}
-
-@-webkit-keyframes flicker {
-  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-    -webkit-filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 3px #d3a3c8) drop-shadow(0 0 7px #7f2b5e) drop-shadow(0 0 13px #683676);
-            filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 3px #d3a3c8) drop-shadow(0 0 7px #7f2b5e) drop-shadow(0 0 13px #683676);
-  }
-  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-    -webkit-filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 4px #7f2b5e) drop-shadow(0 0 7px #683676);
-            filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 4px #7f2b5e) drop-shadow(0 0 7px #683676);
-  }
-}
-
-@keyframes flicker {
-  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-    -webkit-filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 3px #d3a3c8) drop-shadow(0 0 7px #7f2b5e) drop-shadow(0 0 13px #683676);
-            filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 3px #d3a3c8) drop-shadow(0 0 7px #7f2b5e) drop-shadow(0 0 13px #683676);
-  }
-  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-    -webkit-filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 4px #7f2b5e) drop-shadow(0 0 7px #683676);
-            filter: drop-shadow(0 0 1px #d3a3c8) drop-shadow(0 0 4px #7f2b5e) drop-shadow(0 0 7px #683676);
-  }
 }
 /*# sourceMappingURL=about.css.map */

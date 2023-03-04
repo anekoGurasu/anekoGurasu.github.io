@@ -8,3 +8,4 @@ function showwebprojects(){
 function showart(){
     $("#content").load("/subpages/art.html");
 }
+

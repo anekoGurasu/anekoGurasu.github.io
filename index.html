@@ -12,12 +12,15 @@
     </head>
     <body onload="showAbout()">
         <header>
+            <div class="logo">
+                <img src="/img/logo.png" alt="travniczek" id="logo">
+            </div>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#about" onclick="showAbout()">About</a></li>
-                    <li><a href="#price" onclick="showAbout()">Price list</a></li>
-                    <li><a href="#contact" onclick="showAbout()">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Price list</a></li>
+                    <li><a href="#">Contact</a></li>
                     <li class="dropdown"><a href="#" class="a-project">Projects</a>
                         <div class="dropdown-content">
                             <a href="#" onclick="showwebprojects()">Website projects</a>
@@ -28,17 +31,9 @@
                 </ul>
             </nav>
         </header>
-        <div class="intro">
-            <div class="headers">
-                <h1>Welcome to my <br>portfolio!</h1>
-                <h2>I am Kristyna, a full stack developer and artist.</h2>
-                <br>
-                <button onclick="location.href='#about'">Show me more</button>
-            </div>  
-        </div>
         <div class="content" id="content"></div>
         <footer>
-            <p> 2022 AnekoGurasu</p>
+            <p> 2023 AnekoGurasu</p>
         </footer>
         <script src="/js/jquery-3.6.1.js"></script>
         <script src="/js/script.js"></script>

@@ -14,18 +14,27 @@ header{
     left:0;
     right:0;
     top:0;
-    color:aliceblue;
-    background-color: $XiketicHex;
+    color:white;
+    width:100%;
     z-index:100;
-    box-shadow: 3px 3px 5px $XiketicHex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:2.5%;
+    padding-top:1%;
 
+
+    #logo{
+        width:15vw;
+        height:6vh;
+        margin:10%;
+    }
 
     nav{
         position:relative;
         width:60%;
-        margin-left:auto;
-        margin-right:auto;
         font-family: Hardigan;
+        
 
         ul {
             list-style-type: none;
@@ -33,7 +42,6 @@ header{
             padding:0;
             display: flex;
             justify-content: space-between;
-            padding:2vh 0;
 
             a{
                 font-size:1.6rem;
@@ -41,10 +49,6 @@ header{
                 color:inherit;
                 padding:2vh 2vw;
                 transition: all 500ms;
-
-                &:hover{
-                    background-color:$RussianVioletHex;
-                }
             }
     
             .dropdown {
@@ -54,6 +58,7 @@ header{
                 font-family: inherit;
                 margin: 0;
                 padding-right: 0 ;
+                
 
                 .a-project{
                     &:after{
@@ -66,11 +71,12 @@ header{
             .dropdown-content {
                 display: none;
                 position: absolute;
-                background-color: $XiketicHex;
+                background-color: $DarkPurpleHex;
                 min-width: 5vw;
                 box-shadow: 0px 8px 16px 0px black;
                 z-index: 101;
-                margin-top: 2vh;
+                margin-top: 1vh;
+                
 
                 a {
                     float: none;
@@ -81,6 +87,7 @@ header{
                     text-align: left;
                     font-size: 1.5rem;
                     transition: all 500ms;
+                    border-bottom: white 2px solid;
                 }
             }
             .dropdown-content a:hover {
