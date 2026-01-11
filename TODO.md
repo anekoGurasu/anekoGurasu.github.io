@@ -1,0 +1,4 @@
+- [x] Update dashboard.jsx to add report preview and share report boxes with matching heights
+- [x] Add a bar chart in the report preview box
+- [x] Style the boxes in index.css for responsive layout
+- [ ] Test the layout and chart display
