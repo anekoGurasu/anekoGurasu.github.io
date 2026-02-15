@@ -1,8 +1,8 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import { useState } from "react";
-import "../resources/css/app.css";
-import "../resources/css/home.css";
+import "../../../resources/css/app.css";
+import "../../../resources/css/home.css";
 
 export default function Home() {
     const { token, user, setDifficulty } = useStateContext();

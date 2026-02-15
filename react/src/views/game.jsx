@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { OrbitProgress } from "react-loading-indicators";
 import { useStateContext } from "../contexts/ContextProvider";
-import "../resources/css/app.css";
-import "../resources/css/game.css";
+import "../../../resources/css/app.css";
+import "../../../resources/css/game.css";
 
 export default function Game() {
   const { difficulty, user } = useStateContext();

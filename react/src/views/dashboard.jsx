@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
-import "../resources/css/app.css";
-import "../resources/css/dashboard.css";
+import "../../../resources/css/app.css";
+import "../../../resources/css/dashboard.css";
 
 export default function Dashboard() {
   const { token } = useStateContext();

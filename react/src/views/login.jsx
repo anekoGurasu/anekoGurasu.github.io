@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
-import "../resources/css/app.css"; 
-import "../resources/css/login.css"; 
+import "../../../resources/css/app.css"; 
+import "../../../resources/css/login.css"; 
 
 export default function Login() {
     const [username, setUsername] = useState("");
