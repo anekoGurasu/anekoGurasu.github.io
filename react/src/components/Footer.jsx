@@ -1,5 +1,4 @@
-import "../../../resources/css/app.css"; 
-
+import "../resources/css/app.css";
 export default function Footer() {
     return (
         <footer className="site-footer">

@@ -1,4 +1,4 @@
-- [x] Update dashboard.jsx to add report preview and share report boxes with matching heights
-- [x] Add a bar chart in the report preview box
-- [x] Style the boxes in index.css for responsive layout
-- [ ] Test the layout and chart display
+# TODO: Allow Vertical Scrollbar
+
+- [x] Edit react/src/resources/css/app.css to change overflow from hidden to auto on html, body, #root
+- [x] Test the application to ensure vertical scrolling is enabled

@@ -5,13 +5,20 @@ const StateContext = createContext({
     user: null,
     token: null,
     setUser: () => {},
-    setToken: () => {}
+    setToken: () => {},
+    difficulty: null,
+    setDifficulty: () => {}
 })
 
 export const ContextProvider = ({children}) => {
     const [user, setUser] = useState(() => {
         const storedUser = localStorage.getItem('USER_DATA');
         return storedUser ? JSON.parse(storedUser) : {};
+    });
+    const [difficulty, setDifficulty] = useState(() => {
+        const storedUser = localStorage.getItem('USER_DATA');
+        const userData = storedUser ? JSON.parse(storedUser) : {};
+        return userData.difficulty !== undefined ? userData.difficulty : null;
     });
     const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
     const setToken = (token) => {
@@ -43,13 +50,24 @@ export const ContextProvider = ({children}) => {
         }
     }
 
+    const setDifficultyAndStore = (diff) => {
+        setDifficulty(diff);
+        const storedUser = localStorage.getItem('USER_DATA');
+        const userData = storedUser ? JSON.parse(storedUser) : {};
+        userData.difficulty = diff;
+        setUser(userData);
+        localStorage.setItem('USER_DATA', JSON.stringify(userData));
+    }
+
     return (
         <StateContext.Provider value={{
             user,
             token,
             setUser: setUserAndStore,
             setToken,
-            login
+            login,
+            difficulty,
+            setDifficulty: setDifficultyAndStore
         }}>
 
         {children}

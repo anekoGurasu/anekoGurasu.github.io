@@ -1,0 +1,117 @@
+@import "app.css";
+
+.home-content-container{
+    padding: 2rem;
+    max-width: 50rem;
+    text-align: block;
+    margin: 2.25rem auto;
+    display: flex;
+    flex-direction: column; /* nadpis nad formulář */
+    justify-content: start;
+}
+
+.home-content-container h1 {
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.user-highlight {
+    color: var(--button-bg);
+    font-weight: 700;
+}
+
+
+.rules ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.rules li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    color: var(--heading-color);
+    display: flex;
+    align-items: center;
+}
+
+.rules li:before {
+    content: "◉";
+    color: var(--button-bg);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.rules h2{
+    color: var(--button-bg)
+}
+
+/* obtiznost */
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.modal-content{
+    background-color: #141c21;
+    color: var(--text-color, #fff);
+    width: min(420px, 92vw);
+    padding: 35px 25px;
+    border:2px solid var(--button-bg);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+}
+
+.modal-content h2{
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.difficulty-options{
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+
+  padding: 6px 0 2px;
+}
+
+.difficulty-options label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.difficulty-options input[type="radio"]{
+  transform: scale(1.05);
+}
+
+
+.modal-buttons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+

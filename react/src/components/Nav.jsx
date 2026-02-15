@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Nav() {
@@ -16,7 +16,8 @@ export default function Nav() {
                         <span className="logo-first">.</span>cz
                     </div>
                     <ul className="menu-items">
-                        <li><Link to="/dashboard">Výsledky</Link></li>
+                        <li><NavLink to="/">Domů</NavLink></li>
+                        <li><NavLink to="/dashboard">Výsledky</NavLink></li>
                     </ul>
                 </div>
                 {token && (

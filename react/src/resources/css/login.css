@@ -4,7 +4,6 @@
 /* --- Obecné styly --- */
 .login-wrapper {
     min-height: 100vh;
-    background-color: var(--bg-page); /* nebo #FFF8EB */
     display: flex;
     flex-direction: column; /* nadpis nad formulář */
     justify-content: start;
@@ -12,10 +11,7 @@
 
 .login-form {
     background: var(--card-bg);
-    padding: 1.5rem 3rem 3.5rem 3rem;
-    border-radius: 20px;
-    border-style: none;
-    box-shadow: 0 0 20px var(--button-shadow), 0 0 10px var(--button-bg);
+    padding: 1.5rem 3rem 3.5rem 3rem !important;
     width: 340px;
     margin-left: auto;
     margin-right: auto;
@@ -79,15 +75,15 @@
     color: var(--heading-color); 
     text-align: center;
     margin-top: 5rem;
-    margin-bottom: 7rem;
+    margin-bottom: 6rem;
 }
 
 .site-title-first {
     color: var(--button-bg);
     text-shadow:
+        0 0 2px var(--button-shadow),
         0 0 5px var(--button-shadow),
         0 0 10px var(--button-shadow),
-        0 0 20px var(--button-shadow),
-        0 0 30px var(--button-shadow);
+        0 0 15px var(--button-shadow);
 }
 

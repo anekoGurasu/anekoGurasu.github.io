@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
-import "../../../resources/css/app.css"; 
-import "../../../resources/css/login.css"; 
+import "../resources/css/app.css"; 
+import "../resources/css/login.css"; 
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -30,7 +30,7 @@ export default function Login() {
                 <span className="site-title-first">O</span>bav
                 <span className="site-title-first">.</span>cz
             </h1>
-            <div className="login-form">
+            <div className="login-form cust-box">
                 <p className="login-error">{error || "\u00A0"}</p>
                 <h1>Přihlášení</h1>
                 <input

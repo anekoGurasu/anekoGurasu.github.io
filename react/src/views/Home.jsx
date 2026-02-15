@@ -1,19 +1,40 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
-import "../../../resources/css/app.css";
-import "../../../resources/css/home.css";
+import { useState } from "react";
+import "../resources/css/app.css";
+import "../resources/css/home.css";
 
 export default function Home() {
-    const { token, user } = useStateContext();
+    const { token, user, setDifficulty } = useStateContext();
     const navigate = useNavigate();
-    
+    const [showModal, setShowModal] = useState(false);
+    const [selectedDifficulty, setSelectedDifficulty] = useState(0);
+
+    const handlePlayClick = () => {
+        setShowModal(true);
+    };
+
+    const handleCancel = () => {
+        setShowModal(false);
+        setSelectedDifficulty(0);
+    };
+
+    const handleConfirm = () => {
+        if (selectedDifficulty !== null) {
+            setDifficulty(selectedDifficulty);
+            navigate("/game");
+            setShowModal(false);
+            setSelectedDifficulty(0);
+        }
+    };
+
     if (!token) {
         return <Navigate to="/login" />;
     }
     
     return (
         <div className="home-page">
-            <div className="home-content-container">
+            <div className="home-content-container cust-box">
                 <h1>Vítej, hráči <span className="user-highlight">{user?.name}</span>!</h1>
                 <section class="intro">
                     <p>
@@ -39,10 +60,54 @@ export default function Home() {
 
                 </section>
                 <div className="button-group">
-                    <button className="btn-primary" onClick={() => navigate("/dashboard")}>Hraj</button>
+                    <button className="btn-primary" onClick={handlePlayClick}>Hraj</button>
                     <button className="btn-secondary" onClick={() => navigate("/dashboard")}>Výsledky</button>
                 </div>
             </div>
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>Vyber obtížnost</h2>
+                        <div className="difficulty-options">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="difficulty"
+                                    value={0}
+                                    checked={selectedDifficulty === 0}
+                                    onChange={() => setSelectedDifficulty(0)}
+                                />
+                                Lehká
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="difficulty"
+                                    value={1}
+                                    checked={selectedDifficulty === 1}
+                                    onChange={() => setSelectedDifficulty(1)}
+                                />
+                                Střední
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="difficulty"
+                                    value={2}
+                                    checked={selectedDifficulty === 2}
+                                    onChange={() => setSelectedDifficulty(2)}
+                                />
+                                Těžká
+                            </label>
+                        </div>
+                        <div className="modal-buttons">
+                            <button className="btn-primary" onClick={handleConfirm} disabled={selectedDifficulty === null}>Potvrdit</button>
+                            <button className="btn-secondary" onClick={handleCancel}>Zrušit</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
