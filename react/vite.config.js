@@ -4,7 +4,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   envDir: "..",
-  base: '/anekoGurasu.github.io/',
 
   server: {
     port: 3000,
