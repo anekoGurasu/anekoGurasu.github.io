@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Internet bez obav</title>
         @viteReactRefresh
-        @vite(['resources/js/app.tsx')
+        @vite(['resources/js/app.tsx'])
         @inertiaHead
     </head>
     <body>
