@@ -17,7 +17,7 @@ createInertiaApp({
         // Načtení komponenty stránky
         const page: any = await resolvePageComponent(
             `./Pages/${name}.jsx`,
-            import.meta.glob('./Pages/**/*.jsx')
+            import.meta.glob('./pages/**/*.jsx')
         );
 
         // PŘIŘAZENÍ LAYOUTU:
