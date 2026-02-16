@@ -121,16 +121,6 @@ export default function Dashboard() {
           )}
         </tbody>
       </table>
-      
-      {/* 3. Tip: Přidala jsi v Home tlačítko zpět, 
-          možná by se hodilo i tady tlačítko pro návrat na Home? */}
-      <button 
-        className="btn-secondary" 
-        onClick={() => router.visit("/")}
-        style={{marginTop: '20px'}}
-      >
-        Zpět do menu
-      </button>
     </div>
   );
 }

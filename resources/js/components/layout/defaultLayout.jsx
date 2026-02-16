@@ -1,19 +1,22 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { usePage } from "@inertiajs/react"; // Změna importu
 import { useStateContext } from "../../contexts/ContextProvider";
 import Nav from "../Nav";
 import Footer from "../Footer";
 
-export default function DefaultLayout() {
+export default function DefaultLayout({ children }) { // Přidán parametr { children }
   const { user, token, setUser, setToken } = useStateContext();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const hideNav = location.pathname === "/game" || location.pathname.startsWith("/game/");
-  const hideFoot = location.pathname === "/game" || location.pathname.startsWith("/game/");
+  
+  // V Inertii získáme aktuální cestu přes usePage().url
+  const { url } = usePage(); 
+  
+  const hideNav = url === "/game" || url.startsWith("/game");
+  const hideFoot = url === "/game" || url.startsWith("/game");
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       {!hideNav && <Nav />}
-      <Outlet />
+      {children} 
+      
       {!hideFoot && <Footer />}
     </div>
   );

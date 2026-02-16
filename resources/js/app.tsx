@@ -4,19 +4,35 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
-// 1. IMPORTUJ SVŮJ CONTEXT
-import { ContextProvider } from './contexts/ContextProvider'; // Uprav cestu podle reality
+// Importy tvých opravených layoutů a contextu
+import { ContextProvider } from './contexts/ContextProvider';
+import DefaultLayout from './components/layout/defaultLayout';
+import GuestLayout from './components/layout/guestLayout';
 
-const appName = 'Internet bez obav';
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),
+    resolve: async (name) => {
+        // Načtení komponenty stránky
+        const page: any = await resolvePageComponent(
+            `./Pages/${name}.jsx`,
+            import.meta.glob('./Pages/**/*.jsx')
+        );
+
+        // PŘIŘAZENÍ LAYOUTU:
+        // Pokud je stránka 'Login', použije GuestLayout. 
+        // Všechny ostatní (Home, Dashboard, Game) použijí DefaultLayout.
+        page.default.layout = name === 'Login' 
+            ? (page: any) => <GuestLayout children={page} />
+            : (page: any) => <DefaultLayout children={page} />;
+
+        return page;
+    },
     setup({ el, App, props }) {
         const root = createRoot(el);
 
         root.render(
-            // 2. OBAL APLIKACI ZDE
             <ContextProvider>
                 <App {...props} />
             </ContextProvider>

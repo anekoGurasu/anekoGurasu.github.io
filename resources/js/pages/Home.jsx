@@ -57,10 +57,12 @@ export default function Home() {
                 <section className="rules">
                     <h2>Základní pravidla hry</h2>
                     <ul>
-                        <li><span className="highlight">Pečlivě</span>&nbsp;si čti každou situaci.</li>
-                        <li>Vybírej odpověď, která je&nbsp;<span className="highlight">nejbezpečnější</span>.</li>
-                        <li>Chraň své&nbsp;<span className="highlight">osobní údaje</span>.</li>
-                        <li>Cílem je&nbsp;<span className="highlight">naučit se</span>, jak být v bezpečí.</li>
+                        <li><span className="highlight">Pečlivě</span>&nbsp;si čti každou situaci a zamysli se, co bys udělal/a ve skutečnosti.</li>
+                        <li>Vybírej odpověď, která je&nbsp;<span className="highlight">nejbezpečnější</span>&nbsp;a&nbsp;<span className="highlight">nejzodpovědnější</span>.</li>
+                        <li>Chraň své&nbsp;<span className="highlight">osobní údaje</span>&nbsp;a nikdy je&nbsp;<span className="highlight">nesdílej</span>&nbsp;s cizími lidmi.</li>
+                        <li>Nenech se nachytat&nbsp;<span className="highlight">podvodníky</span>&nbsp;a&nbsp;<span className="highlight">podezřelými odkazy</span>.</li>
+                        <li>Za&nbsp;<span className="highlight">správné</span>&nbsp;odpovědi získáváš&nbsp;<span className="highlight">body</span>, za špatné se můžeš poučit z vysvětlení.</li>
+                        <li>Cílem není vyhrát, ale&nbsp;<span className="highlight">naučit se</span>, jak být na internetu v bezpečí.</li>
                     </ul>
                 </section>
                 <div className="button-group">

@@ -1,4 +1,3 @@
-@ -0,0 +1,23 @@
 <?php
 
 use App\Http\Middleware\HandleInertiaRequests;

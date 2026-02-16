@@ -1,22 +1,26 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { router, usePage } from "@inertiajs/react"; // Inertia náhrada za router-dom
 import { useStateContext } from "../../contexts/ContextProvider";
-import Nav from "../Nav";
-import Footer from "../Footer"
+import Footer from "../Footer";
 
-export default function GuestLayout() {
-    const {token} = useStateContext();
-    const location = useLocation();
+export default function GuestLayout({ children }) { // Přidán parametr { children }
+    const { token } = useStateContext();
+    const { url } = usePage();
 
-    if(token && location.pathname !== '/dashboard' && location.pathname !== '/rules'){
-        return <Navigate to="/" />
-    }
+    // Přesměrování řešíme přes useEffect, ne v renderu
+    useEffect(() => {
+        if (token && url !== '/dashboard' && url !== '/rules') {
+            router.visit("/"); // Inertia náhrada za <Navigate />
+        }
+    }, [token, url]);
 
-    return(
+    return (
         <>
             <div style={{ flex: 1 }}>
-                <Outlet/>
+                {/* Místo <Outlet /> dáme {children} */}
+                {children}
             </div>
             <Footer />
         </>
-    )
+    );
 }
