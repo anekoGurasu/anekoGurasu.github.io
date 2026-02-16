@@ -1,23 +1,15 @@
 import { useState } from "react";
-// 1. Změna: Importujeme router místo useNavigate a Navigate
-import { router } from "@inertiajs/react"; 
+// 1. Změna: Místo routeru z Inertie používáme useNavigate a Link z React Routeru
+import { useNavigate, Link } from "react-router-dom"; 
 import { useStateContext } from "../contexts/ContextProvider";
-import { useEffect } from "react"; // Přidáme pro kontrolu tokenu
 import "../../css/app.css";
 import "../../css/home.css";
 
 export default function Home() {
-    const { token, user, setDifficulty } = useStateContext();
+    const { user, setDifficulty } = useStateContext();
     const [showModal, setShowModal] = useState(false);
     const [selectedDifficulty, setSelectedDifficulty] = useState(0);
-
-    // 2. Kontrola tokenu: V Inertii nemůžeme jen tak vrátit <Navigate /> uprostřed renderu.
-    // Použijeme useEffect, aby nás to vykoplo, pokud nejsme přihlášení.
-    useEffect(() => {
-        if (!token) {
-            router.visit("/login");
-        }
-    }, [token]);
+    const navigate = useNavigate(); // Hook pro rychlé přesměrování v rámci SPA
 
     const handlePlayClick = () => {
         setShowModal(true);
@@ -31,15 +23,11 @@ export default function Home() {
     const handleConfirm = () => {
         if (selectedDifficulty !== null) {
             setDifficulty(selectedDifficulty);
-            // 3. Změna: router.visit místo navigate
-            router.visit("/game"); 
+            // 2. Změna: navigate("/") místo router.visit("/")
+            navigate("/game"); 
             setShowModal(false);
-            setSelectedDifficulty(0);
         }
     };
-
-    // Pokud nemáme token, zatím nic nevykreslujeme (než nás useEffect přesměruje)
-    if (!token) return null;
 
     return (
         <div className="home-page">
@@ -67,8 +55,9 @@ export default function Home() {
                 </section>
                 <div className="button-group">
                     <button className="btn-primary" onClick={handlePlayClick}>Hraj</button>
-                    {/* 4. Změna: Tady taky router.visit */}
-                    <button className="btn-secondary" onClick={() => router.visit("/dashboard")}>Výsledky</button>
+                    {/* 3. Změna: Pro vnitřní odkazy je nejrychlejší použít Link komponentu, 
+                        nebo navigate v onClick */}
+                    <button className="btn-secondary" onClick={() => navigate("/dashboard")}>Výsledky</button>
                 </div>
             </div>
 

@@ -1,8 +1,7 @@
 import { useState } from "react";
-// 1. Změna: Místo react-router-dom použijeme router z Inertie
-import { router } from "@inertiajs/react"; 
+// 1. Změna: Místo Inertia routeru používáme useNavigate z react-router-dom
+import { useNavigate } from "react-router-dom"; 
 import { useStateContext } from "../contexts/ContextProvider";
-// 2. Tip: Cesty k CSS zkontroluj, jestli sedí po přesunu (pravděpodobně ../../css/...)
 import "../../css/app.css";
 import "../../css/login.css";
 
@@ -10,6 +9,7 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [error, setError] = useState("");
     const { login } = useStateContext();
+    const navigate = useNavigate(); // Hook pro navigaci
 
     const handleLogin = () => {
         if (username.trim() === "") {
@@ -17,11 +17,19 @@ export default function Login() {
             return;
         }
         
+        // Předpokládáme, že funkce login v ContextProvideru uloží token/jméno do localStorage
         if (login(username)) {
-            // 3. Změna: Místo navigate("/dashboard") použijeme router.visit
-            router.visit("/dashboard");
+            // 2. Změna: Čisté SPA přesměrování
+            navigate("/"); 
         } else {
             setError("Nepodařilo se přihlásit.");
+        }
+    };
+
+    // Bonus: Přihlášení stisknutím klávesy Enter
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleLogin();
         }
     };
 
@@ -40,10 +48,12 @@ export default function Login() {
                     type="text"
                     placeholder="Uživatelské jméno"
                     value={username}
+                    onKeyDown={handleKeyDown}
                     onChange={(e) => {
                         setUsername(e.target.value);
                         setError(""); 
                     }}
+                    autoFocus
                 />
                 <button onClick={handleLogin}>Hrát</button>
             </div>

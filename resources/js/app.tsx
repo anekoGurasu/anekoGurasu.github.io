@@ -1,44 +1,82 @@
 import '../css/app.css';
-
 import { createRoot } from 'react-dom/client';
-import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-// Importy tvých opravených layoutů a contextu
-import { ContextProvider } from './contexts/ContextProvider';
+// Importy tvých komponent (stránek)
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Game from './pages/Game';
+
+// Importy tvých layoutů a contextu
+import { ContextProvider, useStateContext } from './contexts/ContextProvider';
 import DefaultLayout from './components/layout/defaultLayout';
 import GuestLayout from './components/layout/guestLayout';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+// Pomocná komponenta pro ochranu cest (Protected Routes)
+const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+    const { token } = useStateContext();
+    if (!token) {
+        return <Navigate to="/login" replace />;
+    }
+    return children;
+};
 
-createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: async (name) => {
-        // Načtení komponenty stránky
-        const page: any = await resolvePageComponent(
-            `./pages/${name}.jsx`,
-            import.meta.glob('./pages/**/*.jsx')
-        );
+// Pomocná komponenta pro hosty (aby přihlášený nelezl na Login)
+const GuestRoute = ({ children }: { children: JSX.Element }) => {
+    const { token } = useStateContext();
+    if (token) {
+        return <Navigate to="/" replace />;
+    }
+    return children;
+};
 
-        // PŘIŘAZENÍ LAYOUTU:
-        // Pokud je stránka 'Login', použije GuestLayout. 
-        // Všechny ostatní (Home, Dashboard, Game) použijí DefaultLayout.
-        page.default.layout = name === 'Login' 
-            ? (page: any) => <GuestLayout children={page} />
-            : (page: any) => <DefaultLayout children={page} />;
+const container = document.getElementById('app');
+if (container) {
+    const root = createRoot(container);
 
-        return page;
-    },
-    setup({ el, App, props }) {
-        const root = createRoot(el);
+    root.render(
+        <ContextProvider>
+            <BrowserRouter>
+                <Routes>
+                    {/* Cesty pro hosty (Login) */}
+                    <Route path="/login" element={
+                        <GuestRoute>
+                            <GuestLayout>
+                                <Login />
+                            </GuestLayout>
+                        </GuestRoute>
+                    } />
 
-        root.render(
-            <ContextProvider>
-                <App {...props} />
-            </ContextProvider>
-        );
-    },
-    progress: {
-        color: '#4B5563',
-    },
-});
+                    {/* Chráněné cesty (Hra, Dashboard, Home) */}
+                    <Route path="/" element={
+                        <ProtectedRoute>
+                            <DefaultLayout>
+                                <Home />
+                            </DefaultLayout>
+                        </ProtectedRoute>
+                    } />
+                    
+                    <Route path="/game" element={
+                        <ProtectedRoute>
+                            <DefaultLayout>
+                                <Game />
+                            </DefaultLayout>
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path="/dashboard" element={
+                        <ProtectedRoute>
+                            <DefaultLayout>
+                                <Dashboard />
+                            </DefaultLayout>
+                        </ProtectedRoute>
+                    } />
+
+                    {/* Catch-all přesměrování (pokud uživatel zadá nesmysl) */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+            </BrowserRouter>
+        </ContextProvider>
+    );
+}

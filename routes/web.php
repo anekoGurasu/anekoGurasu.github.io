@@ -4,30 +4,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
-use Inertia\Inertia; // <--- TOTO JE NUTNÉ PŘIDAT
 
-// Hlavní stránka
-Route::get('/', function () {
-    return Inertia::render('Home');
-});
-
-// Hra
-Route::get('/game', function () {
-    return Inertia::render('Game');
-});
-
-// Dashboard
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-});
-
-// Login
-Route::get('/login', function () {
-    return Inertia::render('Login');
-});
-
-// API Routy (tohle je v pořádku)
+/*
+|--------------------------------------------------------------------------
+| API Routy
+|--------------------------------------------------------------------------
+| Musí být DEFINOVÁNY JAKO PRVNÍ. Laravel je projde shora dolů.
+*/
 Route::get('/api/categories', [CategoryController::class, 'index']);
 Route::get('/api/questions', [QuestionController::class, 'index']);
 Route::get('/api/dashboard', [DashboardController::class, 'index']);
 Route::post('/api/dashboard/save', [DashboardController::class, 'save']);
+
+/*
+|--------------------------------------------------------------------------
+| Catch-all pro React Router
+|--------------------------------------------------------------------------
+| Tato routa musí být ÚPLNĚ POSLEDNÍ. Vše, co není /api, 
+| pošle do Reactu (view 'app'), kde si to přebere React Router.
+*/
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*');

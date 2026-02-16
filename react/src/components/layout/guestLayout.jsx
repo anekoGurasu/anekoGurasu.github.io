@@ -1,6 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider";
-import Nav from "../Nav";
 import Footer from "../Footer"
 
 export default function GuestLayout() {

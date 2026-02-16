@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-// 1. Změna: Používáme router z Inertie
-import { router } from "@inertiajs/react"; 
+// 1. Změna: Místo Inertia routeru používáme standardní React Router
+import { useNavigate } from "react-router-dom"; 
 import { OrbitProgress } from "react-loading-indicators";
 import { useStateContext } from "../contexts/ContextProvider";
 import axios from 'axios';
@@ -9,6 +9,7 @@ import "../../css/game.css";
 
 export default function Game() {
   const { difficulty, user } = useStateContext();
+  const navigate = useNavigate(); // Hook pro navigaci
 
   const [step, setStep] = useState("intro");
   const [categories, setCategories] = useState([]);
@@ -23,19 +24,19 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [saving, setSaving] = useState(false);
 
-  // --- Kontrola obtížnosti (nahrazuje Navigate) ---
+  // --- Kontrola obtížnosti (při chybějící obtížnosti skok na menu) ---
   useEffect(() => {
     if (difficulty === null || difficulty === undefined) {
-      router.visit("/");
+      navigate("/");
     }
-  }, [difficulty]);
+  }, [difficulty, navigate]);
 
-  // --- Načtení kategorií ---
+  // --- Načtení kategorií přes standardní API ---
   useEffect(() => {
     fetch("/api/categories")
-      .then(r => r.json()) // Inertia/Laravel API vrací čisté JSON, nemusíš hledat "["
+      .then(r => r.json())
       .then(data => setCategories(data))
-      .catch(console.error);
+      .catch(err => console.error("Chyba při načítání kategorií:", err));
   }, []);
 
   if (difficulty === null || difficulty === undefined) return null;
@@ -51,7 +52,7 @@ export default function Game() {
   const category = categories[catIndex];
   const question = questions[qIndex];
 
-  // --- Start kategorie ---
+  // --- Start kategorie (načtení otázek) ---
   const startCategory = async () => {
     try {
         const res = await fetch(`/api/questions?category_id=${category.id}&difficulty=${difficulty}`);
@@ -96,26 +97,25 @@ export default function Game() {
     }
   };
 
-  // --- ULOŽENÍ SKÓRE (Zjednodušeno pomocí router.post) ---
- const saveScore = () => {
+  // --- ULOŽENÍ SKÓRE PŘES AXIOS ---
+  const saveScore = () => {
     if (!user || !user.name) return;
 
     setSaving(true);
-    // Použijeme axios.post místo router.post
     axios.post("/api/dashboard/save", {
         username: user.name,
         points: score,
         difficulty: difficulty
     })
     .then(response => {
-        console.log("Skóre uloženo přes Axios!", response.data);
+        console.log("Skóre uloženo!", response.data);
         setSaving(false);
     })
     .catch(error => {
         console.error("Chyba při ukládání", error);
         setSaving(false);
     });
-};
+  };
 
   useEffect(() => {
     if (step === "gameEnd") {
@@ -123,7 +123,7 @@ export default function Game() {
     }
   }, [step]);
 
-  // --- RENDEROVÁNÍ ---
+  // --- RENDEROVÁNÍ JEDNOTLIVÝCH KROKŮ ---
 
   if (step === "intro" && category) {
     const itemsParagraphs = extractParagraphs(category.items || "");
@@ -216,8 +216,9 @@ export default function Game() {
         <h1>Konec hry</h1>
         <p>Celkové skóre: {score}</p>
         <div className="button-group">
-          <button className="btn-primary" onClick={() => router.visit("/")}>Domů</button>
-          <button className="btn-secondary" onClick={() => router.visit("/dashboard")}>Výsledky</button>
+          {/* Navigace pomocí React Routeru */}
+          <button className="btn-primary" onClick={() => navigate("/")}>Domů</button>
+          <button className="btn-secondary" onClick={() => navigate("/dashboard")}>Výsledky</button>
         </div>
       </div>
     );

@@ -6,9 +6,8 @@
         <title>Internet bez obav</title>
         @viteReactRefresh
         @vite(['resources/js/app.tsx'])
-        @inertiaHead
     </head>
     <body>
-        @inertia
+        <div id="app"></div>
     </body>
 </html>

@@ -1,23 +1,27 @@
-import { usePage } from "@inertiajs/react"; // Změna importu
+import { useLocation } from "react-router-dom"; // Změna z usePage na useLocation
 import { useStateContext } from "../../contexts/ContextProvider";
 import Nav from "../Nav";
 import Footer from "../Footer";
 
-export default function DefaultLayout({ children }) { // Přidán parametr { children }
+export default function DefaultLayout({ children }) {
   const { user, token, setUser, setToken } = useStateContext();
   
-  // V Inertii získáme aktuální cestu přes usePage().url
-  const { url } = usePage(); 
+  // React Router ekvivalent k Inertia usePage().url
+  const location = useLocation(); 
   
-  const hideNav = url === "/game" || url.startsWith("/game");
-  const hideFoot = url === "/game" || url.startsWith("/game");
+  // Kontrolujeme, zda cesta začíná na /game
+  const isGameActive = location.pathname.startsWith("/game");
 
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {!hideNav && <Nav />}
-      {children} 
+      {/* Navigaci a Footer schováme, pokud jsme ve hře */}
+      {!isGameActive && <Nav />}
       
-      {!hideFoot && <Footer />}
+      <main style={{ flex: 1 }}>
+        {children} 
+      </main>
+      
+      {!isGameActive && <Footer />}
     </div>
   );
 }
