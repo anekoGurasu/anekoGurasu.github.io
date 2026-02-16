@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { router } from "@inertiajs/react"; 
 import { OrbitProgress } from "react-loading-indicators";
 import { useStateContext } from "../contexts/ContextProvider";
+import axios from 'axios';
 import "../../css/app.css";
 import "../../css/game.css";
 
@@ -96,21 +97,25 @@ export default function Game() {
   };
 
   // --- ULOŽENÍ SKÓRE (Zjednodušeno pomocí router.post) ---
-  const saveScore = () => {
+ const saveScore = () => {
     if (!user || !user.name) return;
 
-    // Použijeme router.post místo fetch - automaticky pošle CSRF a credentials
-    router.post("/api/dashboard/save", {
+    setSaving(true);
+    // Použijeme axios.post místo router.post
+    axios.post("/api/dashboard/save", {
         username: user.name,
         points: score,
         difficulty: difficulty
-    }, {
-        onStart: () => setSaving(true),
-        onFinish: () => setSaving(false),
-        onSuccess: () => console.log("Skóre uloženo!"),
-        onError: (errors) => console.error("Chyba při ukládání", errors)
+    })
+    .then(response => {
+        console.log("Skóre uloženo přes Axios!", response.data);
+        setSaving(false);
+    })
+    .catch(error => {
+        console.error("Chyba při ukládání", error);
+        setSaving(false);
     });
-  };
+};
 
   useEffect(() => {
     if (step === "gameEnd") {
