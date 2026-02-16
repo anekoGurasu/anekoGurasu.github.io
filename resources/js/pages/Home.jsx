@@ -1,0 +1,104 @@
+import { useState } from "react";
+// 1. Změna: Importujeme router místo useNavigate a Navigate
+import { router } from "@inertiajs/react"; 
+import { useStateContext } from "../contexts/ContextProvider";
+import { useEffect } from "react"; // Přidáme pro kontrolu tokenu
+import "../../css/app.css";
+import "../../css/home.css";
+
+export default function Home() {
+    const { token, user, setDifficulty } = useStateContext();
+    const [showModal, setShowModal] = useState(false);
+    const [selectedDifficulty, setSelectedDifficulty] = useState(0);
+
+    // 2. Kontrola tokenu: V Inertii nemůžeme jen tak vrátit <Navigate /> uprostřed renderu.
+    // Použijeme useEffect, aby nás to vykoplo, pokud nejsme přihlášení.
+    useEffect(() => {
+        if (!token) {
+            router.visit("/login");
+        }
+    }, [token]);
+
+    const handlePlayClick = () => {
+        setShowModal(true);
+    };
+
+    const handleCancel = () => {
+        setShowModal(false);
+        setSelectedDifficulty(0);
+    };
+
+    const handleConfirm = () => {
+        if (selectedDifficulty !== null) {
+            setDifficulty(selectedDifficulty);
+            // 3. Změna: router.visit místo navigate
+            router.visit("/game"); 
+            setShowModal(false);
+            setSelectedDifficulty(0);
+        }
+    };
+
+    // Pokud nemáme token, zatím nic nevykreslujeme (než nás useEffect přesměruje)
+    if (!token) return null;
+
+    return (
+        <div className="home-page">
+            <div className="home-content-container cust-box">
+                <h1>Vítej, hráči <span className="user-highlight">{user?.name}</span>!</h1>
+                <section className="intro">
+                    <p>
+                        Vítej ve vzdělávací hře, která ti pomůže lépe porozumět světu internetu
+                        a naučí tě, jak se v něm chovat bezpečně.
+                    </p>
+                    <p>
+                        Tvým úkolem je správně reagovat, rozpoznat nebezpečí a vybrat nejbezpečnější řešení.
+                    </p>
+                </section>
+                <section className="rules">
+                    <h2>Základní pravidla hry</h2>
+                    <ul>
+                        <li><span className="highlight">Pečlivě</span>&nbsp;si čti každou situaci.</li>
+                        <li>Vybírej odpověď, která je&nbsp;<span className="highlight">nejbezpečnější</span>.</li>
+                        <li>Chraň své&nbsp;<span className="highlight">osobní údaje</span>.</li>
+                        <li>Cílem je&nbsp;<span className="highlight">naučit se</span>, jak být v bezpečí.</li>
+                    </ul>
+                </section>
+                <div className="button-group">
+                    <button className="btn-primary" onClick={handlePlayClick}>Hraj</button>
+                    {/* 4. Změna: Tady taky router.visit */}
+                    <button className="btn-secondary" onClick={() => router.visit("/dashboard")}>Výsledky</button>
+                </div>
+            </div>
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>Vyber obtížnost</h2>
+                        <div className="difficulty-options">
+                            {[
+                                { val: 0, label: "Lehká" },
+                                { val: 1, label: "Střední" },
+                                { val: 2, label: "Těžká" }
+                            ].map((d) => (
+                                <label key={d.val}>
+                                    <input
+                                        type="radio"
+                                        name="difficulty"
+                                        value={d.val}
+                                        checked={selectedDifficulty === d.val}
+                                        onChange={() => setSelectedDifficulty(d.val)}
+                                    />
+                                    {d.label}
+                                </label>
+                            ))}
+                        </div>
+                        <div className="modal-buttons">
+                            <button className="btn-primary" onClick={handleConfirm} disabled={selectedDifficulty === null}>Potvrdit</button>
+                            <button className="btn-secondary" onClick={handleCancel}>Zrušit</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
