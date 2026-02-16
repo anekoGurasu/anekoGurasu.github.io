@@ -16,7 +16,7 @@ createInertiaApp({
     resolve: async (name) => {
         // Načtení komponenty stránky
         const page: any = await resolvePageComponent(
-            `./Pages/${name}.jsx`,
+            `./pages/${name}.jsx`,
             import.meta.glob('./pages/**/*.jsx')
         );
 
