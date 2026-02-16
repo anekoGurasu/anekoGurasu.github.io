@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// 1. Změna: Importujeme router místo Navigate
 import { router } from "@inertiajs/react"; 
 import { useStateContext } from "../contexts/ContextProvider";
 import "../../css/app.css";
@@ -11,6 +12,7 @@ export default function Dashboard() {
   const [fetchError, setFetchError] = useState(null);
   const [difficultyFilter, setDifficultyFilter] = useState("");
 
+  // 2. Kontrola přihlášení
   useEffect(() => {
     if (!token) {
       router.visit("/login");
@@ -19,10 +21,12 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchScores = async () => {
+      // Pokud nemáme token, ani se nepokoušíme stahovat (useEffect nahoře nás přesměruje)
       if (!token) return;
 
       try {
         setLoading(true);
+        // Tip: Ujisti se, že v Laravelu (api.php nebo web.php) máš routu /api/dashboard funkční
         const res = await fetch("/api/dashboard");
         const text = await res.text();
 
@@ -47,19 +51,16 @@ export default function Dashboard() {
     fetchScores();
   }, [token]);
 
+  // Pokud není token, nebudeme nic vykreslovat
   if (!token) return null;
 
-  // --- OPRAVENÁ ČÁST FILTROVÁNÍ ---
-  const filteredDashboard = dashboard.filter((hrac) => {
+const filteredDashboard = dashboard.filter((hrac) => {
     if (!difficultyFilter) return true;
+    return String(hrac.difficulty_text).trim() === String(difficultyFilter).trim();
+});
 
-    // Převedeme oba řetězce na malá písmena a odstraníme bílé znaky (trim)
-    // Tím zajistíme, že "Střední" bude odpovídat "střední" i "Střední "
-    const hracDiff = String(hrac.difficulty_text || "").toLowerCase().trim();
-    const filterDiff = String(difficultyFilter).toLowerCase().trim();
-
-    return hracDiff === filterDiff;
-  });
+// Zobrazíme jen prvních 6 z vyfiltrovaného seznamu
+const topSix = filteredDashboard.slice(0, 6);
 
   return (
     <div className="dashboard-content-container cust-box">
@@ -124,14 +125,6 @@ export default function Dashboard() {
           )}
         </tbody>
       </table>
-
-      <button 
-        className="btn-secondary" 
-        onClick={() => router.visit("/")}
-        style={{marginTop: '20px'}}
-      >
-        Zpět do menu
-      </button>
     </div>
   );
 }

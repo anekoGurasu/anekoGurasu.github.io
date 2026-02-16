@@ -14,7 +14,6 @@ class DashboardController extends Controller
         $scores = DB::table('dashboard_view')
             ->select('username', 'points', 'difficulty_text')
             ->orderByDesc('points')
-            ->limit(5)
             ->get();
 
         return response()->json($scores);
