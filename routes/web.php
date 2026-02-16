@@ -13,3 +13,6 @@ Route::get('/api/dashboard', [DashboardController::class, 'index']);
 Route::post('/api/dashboard/save', [DashboardController::class, 'save']);
 
 
+Route::get('/{any}', function () {
+    return view('app'); // nebo název vašeho blade souboru s div id="root"
+})->where('any', '.*');
