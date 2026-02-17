@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // Importy tvých komponent (stránek)
 import Home from './pages/Home';
-import Login from './pages/login';
-import Dashboard from './pages/dashboard';
-import Game from './pages/game';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Game from './pages/Game';
 
 // Importy tvých layoutů a contextu
 import { ContextProvider, useStateContext } from './contexts/ContextProvider';
