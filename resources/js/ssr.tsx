@@ -13,7 +13,6 @@ createServer((page) =>
         title: (title) => title ? `${title} - ${appName}` : appName,
         resolve: (name) => resolvePageComponent(`./pages/${name}.jsx`, import.meta.glob('./pages/**/*.jsx')),
         setup: ({ App, props }) => {
-            /* eslint-disable */
             // @ts-expect-error
             global.route<RouteName> = (name, params, absolute) =>
                 route(name, params as any, absolute, {
@@ -22,7 +21,6 @@ createServer((page) =>
                     // @ts-expect-error
                     location: new URL(page.props.ziggy.location),
                 });
-            /* eslint-enable */
 
             return <App {...props} />;
         },

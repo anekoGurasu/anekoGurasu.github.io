@@ -4,14 +4,15 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // Importy tvých komponent (stránek)
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Game from './pages/Game';
+import Login from './pages/login';
+import Dashboard from './pages/dashboard';
+import Game from './pages/game';
 
 // Importy tvých layoutů a contextu
 import { ContextProvider, useStateContext } from './contexts/ContextProvider';
 import DefaultLayout from './components/layout/defaultLayout';
 import GuestLayout from './components/layout/guestLayout';
+import { JSX } from 'react';
 
 // Pomocná komponenta pro ochranu cest (Protected Routes)
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {

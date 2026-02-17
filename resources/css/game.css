@@ -1,252 +1,299 @@
-.intro-shell{
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
+/* --- ZÁKLADNÍ STRUKTURA --- */
+.intro-shell {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at center, #1a242b 0%, #0b0f14 100%);
 }
 
-.intro-grid{
-  width: min(1100px, 100%);
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 18px;
-  align-items: start;
-  color: #eaf0f6;
+.intro-grid {
+    width: min(1100px, 100%);
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: start;
+    color: #eaf0f6;
+    padding: 20px;
 }
 
-@media (max-width: 900px){
-  .intro-grid{ grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; }
 }
 
-.intro-cards{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+/* --- LEVÝ SLOUPEC (Karty) --- */
+.intro-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
 }
 
-@media (max-width: 520px){
-  .intro-cards{ grid-template-columns: 1fr; }
+@media (max-width: 520px) {
+    .intro-cards { grid-template-columns: 1fr; }
 }
 
-/* ✅ Karta: vycentrování obsahu (nadpis + text) uprostřed karty */
-.tip-card{
-  position: relative;
-  padding: 18px;
-  display: flex;
-  align-items: center; /* 🔥 důležité */
-  transition: transform .15s ease, border-color .15s ease;
+/* ✅ KARTA: Flexbox zajišťuje stabilitu obsahu */
+.tip-card {
+    position: relative;
+    padding: 18px;
+    display: flex;
+    flex-direction: column; /* Řazení obsahu pod sebe */
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 20vh; /* Minimální výška, aby karty nebyly moc úzké */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.tip-card:hover{
-  transform: translateY(-2px);
-  border-color: rgba(183,243,198,.28);
+.tip-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(183, 243, 198, 0.28);
 }
 
-/* ✅ Hlavička (číslo + nadpis) je jeden řádek */
-.tip-header{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+/* ✅ STAV PŘEČTENO (item-read) */
+.tip-card.item-read {
+    opacity: 0.4;
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(62, 136, 91, 0.3);
+    transform: scale(0.98);
+    filter: grayscale(0.5);
 }
 
-.tip-badge{
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 13px;
-  color: #0b0f14;
-  background: #b7f3c6;
-  flex-shrink: 0; /* aby se badge nezmenšoval */
+.item-read .tip-title, 
+.item-read .tip-text {
+    color: rgba(234, 240, 246, 0.5);
 }
 
-/* ✅ Nadpis (vedle čísla) */
-.tip-title{
-  margin: 0;
-  font-size: 15px;
-  font-weight: 800;
-  color: #b7f3c6;
-  line-height: 1.25;
+/* --- HLAVIČKA KARTY --- */
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
-/* ✅ Text karty */
-.tip-text{
-  margin: 0;
-  line-height: 1.55;
-  color: rgba(234,240,246,.92);
-  font-size: 14px;
+.tip-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: #0b0f14;
+    background: #b7f3c6;
+    flex-shrink: 0;
 }
 
-/* ✅ když v textu zůstane <strong>, ať to ladí */
-.tip-text strong{
-  color: #b7f3c6;
-  font-weight: 800;
+.tip-badge.badge-success {
+    opacity: 1;
+    filter: none;
+    background: #3E885B !important;
+    color: #fff !important;
 }
 
-.intro-center{
-  display: grid;
-  position: sticky;
-  top: 20px;
+.tip-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 800;
+    color: #b7f3c6;
+    line-height: 1.25;
 }
 
-@media (max-width: 900px){
-  .intro-center{ position: static; }
+/* --- TEXT KARTY --- */
+.tip-text {
+    margin: 0;
+    line-height: 1.55;
+    color: rgba(234, 240, 246, 0.92);
+    font-size: 14px;
 }
 
-.intro-center-card{
-  border-radius: 18px;
-  padding: 2rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+.tip-text strong {
+    color: #b7f3c6;
+    font-weight: 800;
 }
 
-.intro-kicker{
-  display: inline-flex;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(183,243,198,.12);
-  border: 1px solid rgba(183,243,198,.22);
-  color: #b7f3c6;
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: .2px;
-  margin-bottom: 10px;
+/* ✅ NÁPOVĚDA: Visibility zajišťuje, že výška karty neposkočí */
+.read-more-hint {
+    display: block;
+    margin-top: auto; /* Přitlačí text dospod karty */
+    padding-top: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #b7f3c6;
+    opacity: 0.7;
+    font-style: italic;
+    letter-spacing: 0.2px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.intro-title{
-  margin: 0 0 10px 0;
-  font-size: 28px;
-  line-height: 1.1;
+.tip-card:hover .read-more-hint {
+    opacity: 1;
 }
 
-.intro-desc{
-  color: rgba(234,240,246,.90);
-  line-height: 1.55;
-  font-size: 14px;
+/* Třída pro skrytí nápovědy při zachování místa */
+.item-read .read-more-hint {
+    visibility: hidden;
+    opacity: 0;
 }
 
-.intro-desc p{
-  margin: 10px 0;
+/* --- PRAVÝ PANEL --- */
+.intro-center {
+    display: grid;
+    position: sticky;
+    top: 20px;
 }
 
-.intro-actions{
-  margin-top: 14px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
+@media (max-width: 900px) {
+    .intro-center { position: static; }
 }
 
-.game-question{
-    color: var(--heading-color);
+.intro-center-card {
+    border-radius: 18px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+.intro-title {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    line-height: 1.1;
+}
+
+.intro-desc {
+    color: rgba(234, 240, 246, 0.90);
+    line-height: 1.55;
+    font-size: 14px;
+}
+
+.intro-desc p { margin: 10px 0; }
+
+.intro-actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* --- OBRÁZEK --- */
+.intro-image-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.08); /* Sladěno s tmavým tématem */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.category-presentation-img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- SEKCE OTÁZEK --- */
+.game-question {
+    color: #fff;
     margin: 3rem auto;
-    padding:2rem;
-    width:50vw
+    padding: 2rem;
+    width: 50vw;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
 }
 
-.answers{
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 18px 0;
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 18px 0;
 }
 
-/* jeden řádek */
-.answer-option{
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  align-items: center;
-  gap: 14px;
-
-  padding: 14px 16px;
-  border-radius: 12px;
-
-  background: #141c21;
-  border: 1px solid rgba(255,255,255,.12);
-
-  cursor: pointer;
-  user-select: none;
-
-  transition:
-    background .15s ease,
-    border-color .15s ease,
-    transform .1s ease;
+.answer-option {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #141c21;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
 }
 
-.answer-option:hover{
-  transform: translateY(-1px);
-  border-color: rgba(183,243,198,.35);
+.answer-option:hover {
+    transform: translateY(-1px);
+    border-color: rgba(183, 243, 198, 0.35);
 }
 
-/* skryjeme default radio */
-.answer-option input{
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+.answer-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
 
-/* písmeno A B C */
-.answer-letter{
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-
-  display: grid;
-  place-items: center;
-
-  font-weight: 800;
-  font-size: 16px;
-
-  background: rgba(0,0,0,.35);
-  border: 2px solid rgba(255,255,255,.45);
-  color: #fff;
-
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.25);
+.answer-letter {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    color: #fff;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.25);
 }
 
-/* text odpovědi */
-.answer-text{
-  font-size: 15px;
-  line-height: 1.4;
+.answer-text {
+    font-size: 15px;
+    line-height: 1.4;
 }
 
-/* vybraná odpověď (před reveal) */
-.answer-option input:checked ~ .answer-letter{
-  border-color: #b7f3c6;
-  box-shadow: 0 0 14px rgba(183,243,198,.45);
+.answer-option input:checked ~ .answer-letter {
+    border-color: #b7f3c6;
+    box-shadow: 0 0 14px rgba(183, 243, 198, 0.45);
 }
 
-/* ============================= */
-/*  STAVY PO ODKRYTÍ             */
-/* ============================= */
-
-.answer-option.correct{
-  border-color: #3E885B;
-  background: rgba(62,136,91,.18);
+.answer-option.correct {
+    border-color: #3E885B;
+    background: rgba(62, 136, 91, 0.18);
 }
 
-.answer-option.correct .answer-letter{
-  background: #3E885B;
-  border-color: #3E885B;
-  color: #0b0f14;
+.answer-option.correct .answer-letter {
+    background: #3E885B;
+    border-color: #3E885B;
+    color: #0b0f14;
 }
 
-.answer-option.wrong{
-  border-color: #b84545;
-  background: rgba(184,69,69,.18);
+.answer-option.wrong {
+    border-color: #b84545;
+    background: rgba(184, 69, 69, 0.18);
 }
 
-.answer-option.wrong .answer-letter{
-  background: #b84545;
-  border-color: #b84545;
-  color: #fff;
+.answer-option.wrong .answer-letter {
+    background: #b84545;
+    border-color: #b84545;
+    color: #fff;
 }
 
-.game-end{
-  width:30vw;
-  padding:5%;
-  margin:20vh auto;
-  text-align: center;
+/* --- KONEC HRY --- */
+.game-end {
+    width: 30vw;
+    padding: 5%;
+    margin: 20vh auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
 }

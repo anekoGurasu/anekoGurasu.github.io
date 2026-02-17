@@ -42,7 +42,7 @@ export default function Dashboard() {
     return hracDiff === filterDiff;
   });
 
-  const topSix = filteredDashboard.slice(0, 6);
+  const top = filteredDashboard.slice(0, 5);
 
   return (
     <div className="dashboard-content-container cust-box">
@@ -77,9 +77,9 @@ export default function Dashboard() {
             <tr>
               <td colSpan="4" className="loading-message">Načítám výsledky...</td>
             </tr>
-          ) : topSix.length > 0 ? (
+          ) : top.length > 0 ? (
             <>
-              {topSix.map((hrac, index) => (
+              {top.map((hrac, index) => (
                 <tr key={`${hrac.username}-${index}`}>
                   <td>{index + 1}.</td>
                   <td>{hrac.username}</td>

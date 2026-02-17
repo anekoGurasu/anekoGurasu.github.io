@@ -10,6 +10,7 @@ class Category extends Model
     public const COL_TITLE = 'title';
     public const COL_DESC = 'desc';
     public const COL_ITEMS = 'items';
+    public const COL_IMG = 'img';
 
     protected $table = 'category';
     protected $primaryKey = self::COL_ID;
@@ -19,5 +20,6 @@ class Category extends Model
         self::COL_TITLE,
         self::COL_DESC,
         self::COL_ITEMS,
+        self::COL_IMG,
     ];
 }

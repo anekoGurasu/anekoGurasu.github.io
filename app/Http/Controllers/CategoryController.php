@@ -12,7 +12,8 @@ class CategoryController extends Controller
         Category::COL_ID,
         Category::COL_TITLE,
         Category::COL_DESC,
-        Category::COL_ITEMS
+        Category::COL_ITEMS,
+        Category::COL_IMG
     )
     ->orderBy(Category::COL_ID)
     ->get();
