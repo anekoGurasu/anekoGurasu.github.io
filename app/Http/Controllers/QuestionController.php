@@ -14,7 +14,6 @@ class QuestionController extends Controller
         return Question::with('answers')
             ->where(Question::COL_CATEGORY_ID, $categoryId)
             ->where(Question::COL_DIFFICULTY, $difficulty)
-            ->orderBy(Question::COL_ORDER_IDX)
             ->get();
     }
 }

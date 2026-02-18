@@ -12,7 +12,6 @@ class Question extends Model
     public const COL_DIFFICULTY = 'difficulty';
     public const COL_TEXT = 'text';
     public const COL_IMAGE_PATH = 'image_path';
-    public const COL_ORDER_IDX = 'order_idx';
 
     protected $table = 'question';
     protected $primaryKey = self::COL_ID;
@@ -23,7 +22,6 @@ class Question extends Model
         self::COL_DIFFICULTY,
         self::COL_TEXT,
         self::COL_IMAGE_PATH,
-        self::COL_ORDER_IDX,
     ];
 
     public function answers()

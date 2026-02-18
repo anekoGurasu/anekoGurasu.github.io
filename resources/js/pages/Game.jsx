@@ -6,6 +6,11 @@ import axios from 'axios';
 import "../../css/app.css";
 import "../../css/game.css";
 
+const shuffleArray = (array) => {
+  if (!array || !Array.isArray(array)) return [];
+  return [...array].sort(() => Math.random() - 0.5);
+};
+
 export default function Game() {
   const { difficulty, user } = useStateContext();
   const navigate = useNavigate();
@@ -17,24 +22,18 @@ export default function Game() {
   const [questions, setQuestions] = useState([]);
   const [qIndex, setQIndex] = useState(0);
 
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [revealed, setRevealed] = useState(false);
 
   const [score, setScore] = useState(0);
   const [saving, setSaving] = useState(false);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
-
-  // Stav pro sledování přečtených bodů v aktuální kategorii
   const [readItems, setReadItems] = useState([]);
 
-  // --- Kontrola obtížnosti ---
   useEffect(() => {
-    if (difficulty === null || difficulty === undefined) {
-      navigate("/");
-    }
+    if (difficulty === null || difficulty === undefined) navigate("/");
   }, [difficulty, navigate]);
 
-  // --- Načtení kategorií ---
   useEffect(() => {
     fetch("/api/categories")
       .then(r => r.json())
@@ -42,7 +41,6 @@ export default function Game() {
       .catch(err => console.error("Chyba při načítání kategorií:", err));
   }, []);
 
-  // Reset přečtených bodů při změně kategorie
   useEffect(() => {
     setReadItems([]);
   }, [catIndex]);
@@ -68,93 +66,72 @@ export default function Game() {
   const category = categories[catIndex];
   const question = questions[qIndex];
 
-  // --- START KATEGORIE (Načtení otázek z API) ---
   const startCategory = async () => {
     if (!category) return;
-    
-    setLoadingQuestions(true); // Zapne loading kolečko
-    
+    setLoadingQuestions(true);
     try {
       const res = await fetch(`/api/questions?category_id=${category.id}&difficulty=${difficulty}`);
-      
-      if (!res.ok) {
-        throw new Error("Nepodařilo se spojit se serverem");
-      }
-
+      if (!res.ok) throw new Error("Chyba serveru");
       const data = await res.json();
-      
       if (data && data.length > 0) {
-        setQuestions(data);
+        const shuffled = shuffleArray(data).map(q => ({
+          ...q,
+          answers: q.answers ? shuffleArray(q.answers) : []
+        }));
+        setQuestions(shuffled);
         setQIndex(0);
         setStep("question");
-      } else {
-        alert("Pro tuto kategorii a obtížnost nebyly nalezeny žádné otázky.");
-        // Pokud nejsou otázky, zůstaneme na intru, ale vypneme loading
       }
     } catch (err) {
-      console.error("Chyba při načítání otázek:", err);
-      alert("Došlo k chybě při načítání otázek. Zkontroluj konzoli.");
+      alert("Došlo k chybě při načítání otázek.");
     } finally {
-      // Tato část se spustí VŽDY (při úspěchu i chybě)
-      // Tím se vyřeší problém s nekonečným načítáním
       setLoadingQuestions(false);
     }
   };
 
   const pickAnswer = (answer) => {
     if (revealed) return;
-    setSelectedAnswer(answer.id);
+    if (question.type === 1) {
+      if (selectedAnswers.includes(answer.id)) {
+        setSelectedAnswers(selectedAnswers.filter(id => id !== answer.id));
+      } else {
+        setSelectedAnswers([...selectedAnswers, answer.id]);
+      }
+    } else {
+      setSelectedAnswers([answer.id]);
+    }
   };
 
   const confirmAnswer = () => {
-    if (revealed || selectedAnswer == null) return;
-    const chosen = question.answers.find(a => a.id === selectedAnswer);
-    if (!chosen) return;
+    if (revealed || selectedAnswers.length === 0) return;
+    let earned = 0;
+    if (question.type === 1) {
+      question.answers.forEach(a => {
+        if (selectedAnswers.includes(a.id) && a.is_correct) earned += (a.points || 0);
+      });
+    } else {
+      const chosen = question.answers.find(a => a.id === selectedAnswers[0]);
+      if (chosen && chosen.is_correct) earned = chosen.points || 0;
+    }
     setRevealed(true);
-    setScore(s => s + (chosen.points || 0));
+    setScore(s => s + earned);
   };
 
   const nextQuestion = () => {
-    setSelectedAnswer(null);
+    setSelectedAnswers([]);
     setRevealed(false);
     if (qIndex + 1 < questions.length) {
       setQIndex(i => i + 1);
     } else {
-      nextCategory();
+      if (catIndex + 1 < categories.length) {
+        setCatIndex(i => i + 1);
+        setStep("intro");
+      } else {
+        setStep("gameEnd");
+      }
     }
   };
 
-  const nextCategory = () => {
-    if (catIndex + 1 < categories.length) {
-      setCatIndex(i => i + 1);
-      setStep("intro");
-    } else {
-      setStep("gameEnd");
-    }
-  };
-
-  const saveScore = () => {
-    if (!user || !user.name) return;
-    setSaving(true);
-    axios.post("/api/dashboard/save", {
-      username: user.name,
-      points: score,
-      difficulty: difficulty
-    })
-      .then(() => setSaving(false))
-      .catch(error => {
-        console.error("Chyba při ukládání", error);
-        setSaving(false);
-      });
-  };
-
-  useEffect(() => {
-    if (step === "gameEnd") {
-      saveScore();
-    }
-  }, [step]);
-
-  // --- LOADING OBRAZOVKA ---
   if (saving || loadingQuestions) {
     return (
       <div className="loading">
@@ -163,130 +140,156 @@ export default function Game() {
     );
   }
 
-  // --- KROK 1: INTRO (Edukativní body) ---
-  if (step === "intro" && category) {
-    const itemsParagraphs = extractParagraphs(category.items || "");
-    const allRead = readItems.length === itemsParagraphs.length && itemsParagraphs.length > 0;
-
-    return (
-      <div className="intro-shell">
-        <div className="intro-grid">
-          <div className="intro-cards">
-            {itemsParagraphs.length === 0 ? (
-              <div className="tip-card cust-box">
-                <div className="tip-badge">i</div>
-                <p className="tip-text">V této kategorii zatím nejsou žádné výukové body.</p>
+  // --- RENDEROVÁNÍ KROKU OTÁZKY ---
+  // --- RENDEROVÁNÍ KROKU OTÁZKY ---
+// --- RENDEROVÁNÍ KROKU OTÁZKY ---
+if (step === "question" && question) {
+  return (
+    <div className="game-container"> {/* Obal pro celou sekci */}
+      <div className={`game-question cust-box ${question.img ? 'has-image' : 'no-image'}`}>
+        <div className={question.img ? "question-layout" : "question-simple"}>
+          
+          {/* Obrázek a zdroj */}
+          {question.img && (
+            <div className="question-image-container">
+              <div className="question-img-wrapper">
+                <img src={question.img} alt="Úkol" className="question-img" />
               </div>
-            ) : (
-              itemsParagraphs.map((html, i) => {
-                const isRead = readItems.includes(i);
-                const doc = new DOMParser().parseFromString(html, "text/html");
-                const strong = doc.querySelector("strong");
-                const title = strong ? strong.innerText : `Bod ${i + 1}`;
-                if (strong) strong.remove();
-                const content = doc.body.innerHTML.replace(/^<br\s*\/?>/, "").trim();
+              {question.img_src && (
+                <p className="image-source">Zdroj: {question.img_src}</p>
+              )}
+            </div>
+          )}
+
+          <div className="question-content">
+            <div className="question-header">
+              <h2>{question.text}</h2>
+              {question.type === 1 && <span className="multi-hint">Vyberte všechny správné odpovědi</span>}
+            </div>
+            
+            <div className="answers">
+              {question.answers.map((a, i) => {
+                const letter = String.fromCharCode(65 + i);
+                const isSelected = selectedAnswers.includes(a.id);
+                
+                let state = "";
+                if (revealed) {
+                  if (a.is_correct) {
+                    state = (question.type === 1 && !isSelected) ? "missed" : "correct";
+                  } else if (isSelected) {
+                    state = "wrong";
+                  }
+                }
 
                 return (
-                  <div 
-                    className={`tip-card cust-box ${isRead ? 'item-read' : ''}`} 
-                    key={i}
-                    onClick={() => toggleRead(i)}
-                  >
-                    <div className="tip-content">
-                      <div className="tip-header">
-                        <div className={`tip-badge ${isRead ? 'badge-success' : ''}`}>
-                          {isRead ? '✓' : i + 1}
-                        </div>
-                        <h3 className="tip-title">{title}</h3>
-                      </div>
-                      <p className="tip-text" dangerouslySetInnerHTML={{ __html: content }} />
-
-                      {/* Podmínka !isRead zmizela, třída se mění dynamicky */}
-                      <span className={`read-more-hint ${isRead ? 'is-hidden' : ''}`}>
-                          Kliknutím potvrď přečtení
-                      </span>
-                    </div>
-                  </div>
+                  <label key={a.id} className={`answer-option ${state} ${isSelected ? 'selected' : ''}`}>
+                    <input
+                      type={question.type === 1 ? "checkbox" : "radio"}
+                      name="answer"
+                      disabled={revealed}
+                      checked={isSelected}
+                      onChange={() => pickAnswer(a)}
+                    />
+                    <span className="answer-letter">{letter}</span>
+                    <span className="answer-text">{a.text}</span>
+                  </label>
                 );
-              })
-            )}
+              })}
+            </div>
+            
+            <button className="btn-primary" onClick={revealed ? nextQuestion : confirmAnswer} disabled={selectedAnswers.length === 0}>
+              {revealed ? "Další otázka" : "Potvrdit odpověď"}
+            </button>
           </div>
+        </div>
+      </div>
 
-          <div className="intro-center">
-            <div className="intro-center-card cust-box">
-              <h1 className="intro-title">{category.title}</h1>
-              <div className="intro-desc" dangerouslySetInnerHTML={{ __html: category.desc }} />
-              <div className="intro-actions">
-                <button 
-                  className="btn-primary" 
-                  onClick={startCategory}
-                  disabled={!allRead && itemsParagraphs.length > 0}
-                >
-                  {allRead || itemsParagraphs.length === 0 ? "Pokračovat k otázkám" : `Prostuduj si body (${readItems.length}/${itemsParagraphs.length})`}
-                </button>
+      {/* --- BOX PRO VYSVĚTLENÍ POD CELÝM BOXEM --- */}
+      {revealed && (
+        <div className="explanations-outer">
+          {question.answers
+            .filter(a => (selectedAnswers.includes(a.id) || (question.type === 1 && a.is_correct && !selectedAnswers.includes(a.id))) && a.explanation)
+            .map(a => (
+              <div key={`exp-${a.id}`} className={`explanation-box ${a.is_correct ? 'is-missed-exp' : 'is-wrong-exp'}`}>
+                <div className="explanation-icon">{a.is_correct ? "?" : "!"}</div>
+                <div className="explanation-content">
+                  <strong>{a.is_correct ? `Proč byla správně: „${a.text}“` : `Proč je špatně: „${a.text}“`}</strong>
+                  <p>{a.explanation}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      )}
+    </div>
+  );
+}
+
+  // --- OSTATNÍ KROKY (INTRO / KONEC) ---
+  // --- KROK 1: INTRO (Edukativní body) ---
+if (step === "intro" && category) {
+  const itemsParagraphs = extractParagraphs(category.items || "");
+  const allRead = readItems.length === itemsParagraphs.length && itemsParagraphs.length > 0;
+
+  return (
+    <div className="intro-shell">
+      <div className="intro-grid">
+        <div className="intro-cards">
+          {itemsParagraphs.map((html, i) => (
+            <div 
+              className={`tip-card cust-box ${readItems.includes(i) ? 'item-read' : ''}`} 
+              key={i} 
+              onClick={() => toggleRead(i)}
+            >
+              <div className="tip-content">
+                <div className="tip-header">
+                  <div className={`tip-badge ${readItems.includes(i) ? 'badge-success' : ''}`}>
+                    {readItems.includes(i) ? '✓' : i + 1}
+                  </div>
+                  <h3 className="tip-title">Bod {i + 1}</h3>
+                </div>
+                <p className="tip-text" dangerouslySetInnerHTML={{ __html: html }} />
+                <span className={`read-more-hint ${readItems.includes(i) ? 'is-hidden' : ''}`}>
+                  Kliknutím potvrď přečtení
+                </span>
               </div>
             </div>
+          ))}
+        </div>
 
-            {category.img && (
-              <div className="intro-image-box cust-box">
-                <img src={category.img} alt={category.title} className="category-presentation-img" />
-              </div>
-            )}
+        <div className="intro-center">
+          <div className="intro-center-card cust-box">
+            <h1 className="intro-title">{category.title}</h1>
+            <div className="intro-desc" dangerouslySetInnerHTML={{ __html: category.desc }} />
+            <div className="intro-actions">
+              <button 
+                className="btn-primary" 
+                onClick={startCategory} 
+                disabled={!allRead && itemsParagraphs.length > 0}
+              >
+                {allRead || itemsParagraphs.length === 0 ? "Pokračovat k otázkám" : `Prostuduj si body (${readItems.length}/${itemsParagraphs.length})`}
+              </button>
+            </div>
           </div>
+
+          {/* TADY JE TEN OBRÁZEK INTRA */}
+          {category.img && (
+            <div className="intro-image-box cust-box">
+              <img src={category.img} alt={category.title} className="category-presentation-img" />
+            </div>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  // --- KROK 2: OTÁZKY (Kvíz) ---
-  if (step === "question" && question) {
-    return (
-      <div className="game-question cust-box">
-        <h2>{question.text}</h2>
-        <div className="answers">
-          {question.answers.map((a, i) => {
-            const letter = String.fromCharCode(65 + i);
-            let state = "";
-            if (revealed) {
-              if (a.is_correct) state = "correct";
-              else if (a.id === selectedAnswer) state = "wrong";
-            }
-            return (
-              <label key={a.id} className={`answer-option ${state}`}>
-                <input
-                  type="radio"
-                  name="answer"
-                  disabled={revealed}
-                  checked={selectedAnswer === a.id}
-                  onChange={() => pickAnswer(a)}
-                />
-                <span className="answer-letter">{letter}</span>
-                <span className="answer-text">{a.text}</span>
-              </label>
-            );
-          })}
-        </div>
-        {!revealed ? (
-          <button className="btn-primary" onClick={confirmAnswer} disabled={selectedAnswer == null}>
-            Potvrdit odpověď
-          </button>
-        ) : (
-          <button className="btn-primary" onClick={nextQuestion}>Další otázka</button>
-        )}
-      </div>
-    );
-  }
-
-  // --- KROK 3: KONEC ---
   if (step === "gameEnd") {
     return (
       <div className="game-end cust-box">
         <h1>Konec hry</h1>
         <p>Celkové skóre: {score}</p>
-        <div className="button-group" style={{marginTop: '20px', display: 'flex', gap: '10px', justifyContent: 'center'}}>
-          <button className="btn-primary" onClick={() => navigate("/")}>Domů</button>
-          <button className="btn-secondary" onClick={() => navigate("/dashboard")}>Výsledky</button>
-        </div>
+        <button className="btn-primary" onClick={() => navigate("/")}>Domů</button>
       </div>
     );
   }
