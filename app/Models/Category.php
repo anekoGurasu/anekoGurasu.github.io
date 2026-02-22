@@ -9,7 +9,6 @@ class Category extends Model
     public const COL_ID = 'id';
     public const COL_TITLE = 'title';
     public const COL_DESC = 'desc';
-    public const COL_ITEMS = 'items';
     public const COL_IMG = 'img';
 
     protected $table = 'category';
@@ -19,7 +18,11 @@ class Category extends Model
     protected $fillable = [
         self::COL_TITLE,
         self::COL_DESC,
-        self::COL_ITEMS,
         self::COL_IMG,
     ];
+
+    public function items()
+    {
+        return $this->hasMany(CategoryItem::class, 'category_id');
+    }
 }

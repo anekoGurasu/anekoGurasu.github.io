@@ -1,176 +1,187 @@
-.dashboard-content-container{
-    margin:auto;
-    padding: 2rem;
-    max-width: 40rem;
-    width:50vw;
-    min-height: 59vh;
-    text-align: block;
-    margin:4rem auto;
+/* dashboard.css - Kompletní pročištěná verze */
+
+/* 1. HLAVIČKA (Nadpis a filtr v jedné lajně) */
+.dashboard-header {
     display: flex;
-    flex-direction: column;
-    justify-content: start;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(183, 243, 198, 0.15);
 }
 
-.dashboard-content-container h1 {
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
     color: var(--heading-color);
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-}   
-
-.score-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-top: 2rem;
-margin-bottom: 2rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(183,243,198,0.18);
-  border-radius: 14px;
-  overflow: hidden;
-
-  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
 }
 
-/* hlavička */
-.score-table thead th {
-  background: rgba(62,136,91,0.85); /* tvůj zelený akcent */
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-
-  padding: 0.9rem 0.8rem;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-}
-
-/* buňky */
-.score-table tbody td {
-  padding: 0.9rem 0.8rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: rgba(234,240,246,0.95);
-
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-/* poslední řádek bez spodní čáry */
-.score-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* zebra efekt – velmi jemný */
-.score-table tbody tr:nth-child(even) {
-  background: rgba(255,255,255,0.03);
-}
-
-/* hover – decentní */
-.score-table tbody tr:hover {
-  background: rgba(183,243,198,0.08);
-}
-
-/* sloupec pořadí */
-.score-table td:first-child {
-  font-weight: 700;
-  color: #b7f3c6;
-}
-
-/* body – zvýraznění skóre */
-.score-table td:last-child {
-  font-weight: 800;
-  color: #b7f3c6;
-}
-
-/* responzivní drobnost */
-@media (max-width: 600px) {
-  .score-table thead {
-    display: none;
-  }
-
-  .score-table,
-  .score-table tbody,
-  .score-table tr,
-  .score-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .score-table tr {
-    margin-bottom: 10px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.05);
-  }
-
-  .score-table td {
-    text-align: right;
-    padding: 0.6rem 0.8rem;
-    position: relative;
-  }
-
-  .score-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0.8rem;
-    font-weight: 700;
-    color: rgba(183,243,198,0.9);
-    text-transform: uppercase;
-    font-size: 0.7rem;
-  }
-}
-
-
-.error-message {
-    color: var(--error-color);
-    text-align: center;
-    padding: 1rem;
-    background-color: rgba(255, 65, 62, 0.1);
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.loading-message,
-.no-results {
-    text-align: center;
-    padding: 2rem;
-    color: var(--heading-color);
-    font-style: italic;
-}
-
-/* Styl pro filtr nad tabulkou */
-.dashboard-filter {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  color: #ffffff; /* bílý text */
-}
-
+/* 2. FILTR */
 .dashboard-filter label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--heading-color);
+    opacity: 0.8;
 }
 
-.dashboard-filter select {
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  border: 1px solid rgba(62,136,91,1); /* ladíme se zeleným headerem tabulky */
-  background-color: #2c2c2c; /* tmavé pozadí, ladí s tabulkou */
-  color: #ffffff;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+.select-custom-wrapper {
+    position: relative;
+    display: inline-block;
 }
 
-.dashboard-filter select:hover {
-  border-color: rgba(62,136,91,1); /* světlejší zelená při hover */
+.select-custom-wrapper select {
+    background: #161b22; 
+    border: 1px solid rgba(183, 243, 198, 0.3);
+    border-radius: 8px;
+    padding: 6px 20px 6px 12px; /* 30px vpravo drží odstup pro šipku */
+    color: var(--heading-color);
+    cursor: pointer;
+    outline: none;
+    
+    /* Skryje systémovou šipku */
+    appearance: none;
+    -webkit-appearance: none;
+    
+    /* Fixní šířka zajistí, že šipka nebude "létat" daleko při krátkém textu */
+    width: 100px; 
+    transition: all 0.2s ease;
 }
 
-.dashboard-filter select:focus {
-  outline: none;
-  border-color: rgba(62,136,91,1); /* jemný efekt při focus */
+/* VYTVOŘENÍ ŠIPKY POMOCÍ BORDERU */
+.select-custom-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    margin-top: -2px; /* Vycentrování výškově */
+    
+    /* Vytvoření trojúhelníku */
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--button-bg); /* Tvá zelená barva */
+    
+    pointer-events: none; /* Kliknutí projde skrz na select */
 }
 
+.select-custom-wrapper:hover select {
+    border-color: var(--button-bg);
+}
+
+/* 3. TABULKA */
+.score-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Vytvoří mezery mezi řádky - klíč k vzhledu */
+    margin-top: 5px;
+}
+
+/* Hlavička tabulky */
+.score-table thead th {
+    background: transparent;
+    color: var(--button-bg);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 10px 20px;
+    font-weight: 800;
+    letter-spacing: 1.15px;
+    text-align: center; /* Zarovnání na střed pro hlavičky */
+}
+
+/* Zarovnání názvu hráče doleva pro lepší čitelnost */
+.score-table thead th:nth-child(2),
+.score-table tbody td:nth-child(2) {
+    text-align: left;
+}
+
+/* Tělo tabulky - řádky jako karty */
+.score-table tbody tr {
+    background: rgba(255, 255, 255, 0.04); /* Jemně prosvětlené řádky */
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.score-table tbody tr:hover {
+    background: rgba(183, 243, 198, 0.08);
+}
+
+.score-table tbody td {
+    padding: 1.1rem 20px;
+    border: none;
+    color: var(--heading-color);
+    text-align: center; /* Výchozí zarovnání */
+}
+
+/* Zaoblení rohů řádků */
+.score-table tbody tr td:first-child { 
+    border-radius: 12px 0 0 12px; 
+    font-weight: 800;
+    color: var(--button-bg);
+    width: 80px;
+}
+
+.score-table tbody tr td:last-child { 
+    border-radius: 0 12px 12px 0; 
+    font-weight: 700;
+    color: var(--button-bg);
+    font-size: 1.1rem;
+}
+
+/* 4. SPECIÁLNÍ STAVY */
+.no-results, .loading-message {
+    text-align: center !important;
+    background: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.4);
+    border-radius:12px !important;
+    font-weight: 00 !important;
+    font-size: 0.9rem !important;
+}
+
+/* Odznaky obtížnosti (Badges) */
+.badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.diff-lehká { color: #81c784; border-color: rgba(129, 199, 132, 0.3); }
+.diff-střední { color: #ffb74d; border-color: rgba(255, 183, 77, 0.3); }
+.diff-těžká { color: #e57373; border-color: rgba(229, 115, 115, 0.3); }
+
+/* 5. RESPONZIVITA */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .score-table thead {
+        display: none;
+    }
+
+    .score-table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        padding: 10px 0;
+    }
+
+    .score-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 20px;
+        text-align: right;
+    }
+
+    .score-table td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--button-bg);
+        text-transform: uppercase;
+        font-size: 0.7rem;
+    }
+}

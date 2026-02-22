@@ -1,14 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"; // Změna importu
+import { NavLink, useNavigate } from "react-router-dom"; // Změna na NavLink
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Nav() {
     const { token, setUser, setToken } = useStateContext();
-    const navigate = useNavigate(); // Hook pro SPA navigaci
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         setUser(null);
         setToken(null);
-        // Čisté SPA přesměrování bez reloadu
         navigate('/login');
     };
 
@@ -16,7 +15,6 @@ export default function Nav() {
         <nav className="top-menu">
             <div className="nav-container">
                 <div className="nav-left">
-                    {/* Logo nyní používá navigate() pro okamžitý návrat domů */}
                     <div 
                         className="logo" 
                         onClick={() => navigate('/')} 
@@ -28,9 +26,10 @@ export default function Nav() {
                         <span className="logo-first">.</span>cz
                     </div>
                     <ul className="menu-items">
-                        {/* Link s parametrem 'to' místo 'href' */}
-                        <li><Link to="/">Domů</Link></li>
-                        <li><Link to="/dashboard">Výsledky</Link></li>
+                        {/* NavLink automaticky přidá třídu 'active' */}
+                        <li><NavLink to="/" end>Domů</NavLink></li>
+                        <li><NavLink to="/dashboard">Výsledky</NavLink></li>
+                        <li><NavLink to="/contact">Kontakt</NavLink></li>
                     </ul>
                 </div>
                 {token && (

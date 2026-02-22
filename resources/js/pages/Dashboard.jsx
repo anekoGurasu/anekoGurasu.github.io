@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Změna z router na useNavigate
+import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import "../../css/app.css";
 import "../../css/dashboard.css";
@@ -8,12 +8,10 @@ export default function Dashboard() {
   const { token } = useStateContext();
   const navigate = useNavigate();
   
-  // Stavy pro data a načítání
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [difficultyFilter, setDifficultyFilter] = useState("");
+  const [difficultyFilter, setDifficultyFilter] = useState("Lehká");
 
-  // 1. Fetch dat z API (v čistém Reactu si o ně musíme říct)
   useEffect(() => {
     const fetchScores = async () => {
       try {
@@ -34,7 +32,6 @@ export default function Dashboard() {
     }
   }, [token]);
 
-  // 2. Filtrování (zůstává stejné, jen pracujeme se stavem 'scores')
   const filteredDashboard = scores.filter((hrac) => {
     if (!difficultyFilter) return true;
     const hracDiff = String(hrac.difficulty_text || "").trim();
@@ -45,22 +42,26 @@ export default function Dashboard() {
   const top = filteredDashboard.slice(0, 5);
 
   return (
-    <div className="dashboard-content-container cust-box">
-      <h1>Výsledky hráčů</h1>
+    <div className="content-container cust-box">
+      <div className="dashboard-header">
+        <h1>Výsledky hráčů</h1>
 
-      <div className="dashboard-filter">
-        <label>
-          Filtr obtížnosti:{" "}
-          <select
-            value={difficultyFilter}
-            onChange={(e) => setDifficultyFilter(e.target.value)}
-          >
-            <option value="">Vše</option>
-            <option value="Lehká">Lehká</option>
-            <option value="Střední">Střední</option>
-            <option value="Těžká">Těžká</option>
-          </select>
-        </label>
+        <div className="dashboard-filter">
+          <label>
+            Filtr obtížnosti:
+            <div className="select-custom-wrapper">
+            <select
+              value={difficultyFilter}
+              onChange={(e) => setDifficultyFilter(e.target.value)}
+            >
+              <option value="">Vše</option>
+              <option value="Lehká">Lehká</option>
+              <option value="Střední">Střední</option>
+              <option value="Těžká">Těžká</option>
+            </select>
+            </div>
+          </label>
+        </div>
       </div>
 
       <table className="score-table">
@@ -79,17 +80,37 @@ export default function Dashboard() {
             </tr>
           ) : top.length > 0 ? (
             <>
-              {top.map((hrac, index) => (
-                <tr key={`${hrac.username}-${index}`}>
-                  <td>{index + 1}.</td>
-                  <td>{hrac.username}</td>
-                  <td>{hrac.difficulty_text}</td>
-                  <td>{hrac.points}</td>
-                </tr>
-              ))}
-              {filteredDashboard.length > 6 && (
+              {top.map((hrac, index) => {
+                const rank = index + 1;
+                const rowClass = rank <= 3 ? `top-rank rank-${rank}` : "";
+                
+                return (
+                  <tr key={`${hrac.username}-${index}`} className={rowClass}>
+                    <td data-label="Pořadí">{rank}.</td>
+                    <td data-label="Hráč" className="username-cell">{hrac.username}</td>
+                    <td data-label="Obtížnost">
+                      <span className={`badge diff-${hrac.difficulty_text?.toLowerCase()}`}>
+                        {hrac.difficulty_text}
+                      </span>
+                    </td>
+                    <td data-label="Body" className="points-cell">{hrac.points}</td>
+                  </tr>
+                );
+              })}
+              {filteredDashboard.length > 5 && (
                 <tr className="more-records-row">
-                  <td colSpan="4" style={{ textAlign: "center" }}>...</td>
+                  <td style={{ textAlign: "center", opacity: 0.5 }}>
+                    ...
+                  </td>
+                  <td style={{ textAlign: "left", opacity: 0.5 }}>
+                    ...
+                  </td>
+                  <td style={{ textAlign: "center", opacity: 0.5 }}>
+                    ...
+                  </td>
+                  <td style={{ textAlign: "center", opacity: 0.5 }}>
+                    ...
+                  </td>
                 </tr>
               )}
             </>

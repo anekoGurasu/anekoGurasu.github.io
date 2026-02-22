@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Game from './pages/Game';
+import Contact from './pages/Contact';
 
 // Importy tvých layoutů a contextu
 import { ContextProvider, useStateContext } from './contexts/ContextProvider';
@@ -70,6 +71,14 @@ if (container) {
                         <ProtectedRoute>
                             <DefaultLayout>
                                 <Dashboard />
+                            </DefaultLayout>
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path="/contact" element={
+                        <ProtectedRoute>
+                            <DefaultLayout>
+                                <Contact />
                             </DefaultLayout>
                         </ProtectedRoute>
                     } />

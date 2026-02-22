@@ -1,0 +1,190 @@
+/* ==========================================================================
+   CONTACT PAGE - FINAL DASHBOARD LAYOUT
+   ========================================================================== */
+
+/* 1. HLAVIČKA (Nadpis a Status) */
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(183, 243, 198, 0.15)
+}
+
+.contact-header h1 {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin: 0;
+}
+
+.status-message-inline {
+    background: rgba(62, 136, 91, 0.15);
+    border: 1px solid var(--button-bg);
+    color: var(--button-bg);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    animation: fadeInRight 0.3s ease-out;
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* 2. HLAVNÍ LAYOUT */
+.contact-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    width: 100%;
+    align-items: stretch; /* Aby sloupce lícovaly výškou */
+    padding-top: 3vh;
+}
+
+/* 3. LEVÝ SLOUPEC - FORMULÁŘ */
+.contact-form-section {
+    flex: 1.4;
+    text-align: left;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-left: 3px;
+}
+
+.form-input {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--input-bg); 
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: var(--heading-color);
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--button-bg);
+    background: rgba(183, 243, 198, 0.05);
+    box-shadow: 0 0 10px var(--button-shadow);
+}
+
+textarea.form-input {
+    min-height: 150px; /* Trochu vyšší pro lepší poměr k pravé straně */
+    resize: vertical;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.button-group .btn-primary {
+    padding: 14px 45px;
+    width: 100% ;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 4. PRAVÝ SLOUPEC - INFO & POBÍDKA */
+.contact-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.detail-item-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 2px solid rgba(183, 243, 198, 0.2);
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.detail-item-modern:hover {
+    border-left-color: var(--button-bg);
+    background: rgba(183, 243, 198, 0.02);
+}
+
+.detail-item-modern strong {
+    color: var(--button-bg); 
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.15px;
+    font-weight: 800;
+}
+
+.detail-item-modern span {
+    color: var(--heading-color); 
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Stylový box s textem (Pobídka) */
+.contact-prompt-box {
+    margin-top: auto; /* Tlačí box k dolnímu okraji sloupce */
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(183, 243, 198, 0.15);
+    border-radius: 20px;
+}
+
+.contact-prompt-box p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--heading-color);
+    opacity: 0.7;
+    margin: 0 0 12px 0;
+}
+
+.contact-prompt-box .highlight-text {
+    color: var(--button-bg);
+    font-weight: 600;
+    opacity: 1;
+    margin-bottom: 0;
+}
+
+/* 5. RESPONZIVITA */
+@media (max-width: 900px) {
+    .contact-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .contact-prompt-box {
+        margin-top: 20px;
+    }
+
+    .button-group .btn-primary {
+        width: 100%;
+    }
+}

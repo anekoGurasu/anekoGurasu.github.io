@@ -1,7 +1,6 @@
 :root {
-    --page-bg: #53687E;        /* pozadí webu*/
-    --card-bg: #424C55;        /* tmavá karta */
-    --input-bg: #E8EBE4;       /* pozadí inputu */
+    --input-bg: rgba(20, 28, 33, 0.5);  
+    --input-border: rgba(255, 255, 255, 0.1);     /* pozadí inputu */
     --input-text: #424C55;     /* text v inputu */
     --heading-color: #E8EBE4;  /* barva nadpisu */
     --button-bg: #3E885B;      /* barva tlačítka */
@@ -9,6 +8,9 @@
     --button-text: #E8EBE4;    /* text tlačítka */
     --error-color: #ff413e;    /* chybová zpráva */
     --button-shadow: rgba(90, 255, 170, 0.5); /* glow efekt */
+    --warning-color: #f39c12;  /* varování */
+    --small-details: rgba(183, 243, 198, 0.15);
+    --inner-box-bg: rgba(255, 255, 255, 0.08)
 }
 
 html, body, #root {
@@ -31,6 +33,14 @@ body {
     radial-gradient(900px 500px at 80% 30%, rgba(80,120,255,.10), transparent 55%),
     #0b0f14;
     font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    color: var(--heading-color);
+    margin-bottom: 5vh;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
 }
 
 /* ---------- TOP MENU ---------- */
@@ -90,7 +100,7 @@ body {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
   margin: 0;
   padding: 0;
 }
@@ -99,21 +109,18 @@ body {
   color: var(--heading-color);
   text-decoration: none;
   font-weight: 600;
-  padding: 0.25rem 0.3rem;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  padding: 0.5rem 0; /* Vertikální padding pro linku */
+  transition: all 0.2s ease;
 }
 
 .menu-items a:hover {
   color: var(--button-bg);
-  opacity: 0.95;
 }
 
-/* jemné zvýraznění aktivní položky */
+/* Automaticky aplikovaná třída od NavLink */
 .menu-items a.active {
   color: var(--button-bg);
-  font-weight: 700;
-  border-bottom: 2px solid var(--button-bg);
-  padding-bottom: 2px;
+  opacity: 1;
 }
 
 /* ===== TLAČÍTKO V MENU (pokud máš) ===== */
@@ -158,7 +165,7 @@ body {
 @media (max-width: 680px) {
   .nav-container { gap: 1rem; }
   .nav-left { gap: 1rem; }
-  .menu-items { gap: 0.8rem; }
+  .menu-items { gap: 1rem; }
 }
 
 
@@ -166,7 +173,7 @@ body {
 
 .site-footer {
   background-color: #0b0f14; /* pevná tmavá barva – bez průhlednosti */
-  color: #b7f3c6;           /* ladí s badge / akcenty */
+  color: var(--button-bg);           /* ladí s badge / akcenty */
 position: fixed;
   bottom: 0;
   left: 0;
@@ -258,6 +265,12 @@ position: fixed;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .cust-box
@@ -268,6 +281,17 @@ position: fixed;
     border: 1px solid rgba(255,255,255,0.10);
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0,0,0,.30);
+}
+
+.content-container{
+  padding: 3rem;
+    max-width: 55rem;
+    text-align: block;
+    margin:4rem auto;
+    display: flex;
+    flex-direction: column; /* nadpis nad formulář */
+    justify-content: start;
+    box-sizing: border-box;
 }
 
 

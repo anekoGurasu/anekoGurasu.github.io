@@ -9,11 +9,11 @@ class QuestionController extends Controller
     public function index()
     {
         $categoryId = request(Question::COL_CATEGORY_ID);
-        $difficulty = request(Question::COL_DIFFICULTY);
+        $difficulty = request(Question::COL_DIFFICULTY_ID);
 
         return Question::with('answers')
             ->where(Question::COL_CATEGORY_ID, $categoryId)
-            ->where(Question::COL_DIFFICULTY, $difficulty)
+            ->where(Question::COL_DIFFICULTY_ID, $difficulty)
             ->get();
     }
 }

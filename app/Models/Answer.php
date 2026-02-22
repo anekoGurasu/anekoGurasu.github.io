@@ -11,6 +11,7 @@ class Answer extends Model
     public const COL_TEXT = 'text';
     public const COL_IS_CORRECT = 'is_correct';
     public const COL_POINTS = 'points';
+    public const COL_EXPLANATION = 'explanation';
 
     protected $table = 'answer';
     protected $primaryKey = self::COL_ID;
@@ -21,6 +22,7 @@ class Answer extends Model
         self::COL_TEXT,
         self::COL_IS_CORRECT,
         self::COL_POINTS,
+        self::COL_EXPLANATION,
     ];
 
     protected $casts = [

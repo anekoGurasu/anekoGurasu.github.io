@@ -1,19 +1,37 @@
-.home-content-container{
-    padding: 2rem;
-    max-width: 50rem;
-    text-align: block;
-    margin: 2.25rem auto;
-    display: flex;
-    flex-direction: column; /* nadpis nad formulář */
-    justify-content: start;
+/* ==========================================================================
+   HOME PAGE - COMPACT DASHBOARD STYLE
+   ========================================================================== */
+
+.home-content-container.cust-box {
+    padding: 3.5rem;
+    max-width: 1150px;
+    margin: 4rem auto;
+    box-sizing: border-box;
+    background: rgba(20, 28, 33, 0.95); /* Sjednocení pozadí */
 }
 
-.home-content-container h1 {
-    color: var(--heading-color);
-    margin-bottom: 1.5rem;
+.home-main-split {
+    display: flex;
+    gap: 60px;
+    align-items: center; /* Vycentrování pro vizuální balanc */
+    text-align: left;
+}
+
+/* --- LEVÝ SLOUPEC (Intro & Stats) --- */
+
+.home-intro-column {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.welcome-title-small {
     font-size: 2rem;
     font-weight: 700;
-    text-align: center;
+    color: var(--heading-color);
+    margin: 0;
+    letter-spacing: -0.5px;
 }
 
 .user-highlight {
@@ -21,95 +39,252 @@
     font-weight: 700;
 }
 
-
-.rules ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.rules li {
-    padding-left: 1.5rem;
-    margin-bottom: 0.8rem;
-    position: relative;
+.intro-text-compact p {
+    font-size: 1.05rem;
+    line-height: 1.6;
     color: var(--heading-color);
-    display: flex;
-    align-items: center;
+    opacity: 0.85;
+    margin-bottom: 10px;
 }
 
-.rules li:before {
-    content: "◉";
+/* Quick Stats Boxy */
+.quick-stats {
+    display: flex;
+    gap: 16px;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.stat-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(183, 243, 198, 0.12);
+    border-radius: 14px;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    background: rgba(183, 243, 198, 0.05);
+    border-color: rgba(183, 243, 198, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
     color: var(--button-bg);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: var(--heading-color);
+    font-size: 0.7rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.5;
+}
+
+.button-group-centered {
+    display: flex;
+    justify-content: center; /* Vycentrování horizontálně */
+    gap: 20px;               /* Mezera mezi tlačítky */
+    margin-top: 40px;        /* Odstup od statistik a pravidel */
+    width: 100%;             /* Aby flexbox centroval vůči celé šířce */
+}
+
+/* Úprava hlavního splitu, aby tlačítka pod ním seděla */
+.home-main-split {
+    display: flex;
+    gap: 60px;
+    align-items: stretch; /* Aby oba sloupce byly stejně vysoké */
+    margin-bottom: 20px;  /* Prostor pro tlačítka */
+}
+
+/* Volitelná úprava tlačítek, aby byla trochu výraznější, když jsou uprostřed */
+.button-group-centered .btn-primary,
+.button-group-centered .btn-secondary {
+    padding: 14px 40px;      /* Širší tlačítka vypadají v centru lépe */
+    min-width: 180px;
+    font-weight: 700;
+}
+
+/* --- PRAVÝ SLOUPEC (Pravidla & Timeline) --- */
+
+.home-rules-column {
+    flex: 1;
+}
+
+.rules-card-compact {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(183, 243, 198, 0.15);
+    padding: 30px;
+    border-radius: 24px;
+}
+
+.rules-card-compact h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--button-bg);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.rules-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+/* Vertikální propojovací linka */
+.rules-timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(183, 243, 198, 0.2), transparent);
+}
+
+.rules-timeline li {
+    padding-left: 2.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--heading-color);
+    opacity: 0.9;
+}
+
+.rules-timeline li:last-child {
+    margin-bottom: 0;
+}
+
+/* Svítící body timeline */
+.rules-timeline li::before {
+    content: "";
     position: absolute;
     left: 0;
-    font-size: 1.2rem;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background: #141c21;
+    border: 2px solid var(--button-bg);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px var(--button-bg);
 }
 
-.rules h2{
-    color: var(--button-bg)
-}
+/* --- MODÁLNÍ OKNO (Výběr obtížnosti) --- */
 
-/* obtiznost */
-.modal-overlay{
+.modal-overlay {
     position: fixed;
     inset: 0;
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.7);
 }
 
-.modal-content{
+.modal-content {
     background-color: #141c21;
-    color: var(--text-color, #fff);
+    color: var(--heading-color);
     width: min(420px, 92vw);
     padding: 35px 25px;
-    border:2px solid var(--button-bg);
-    border-radius: 12px;
+    border: 2px solid var(--button-bg);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 20px;
     text-align: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
-.modal-content h2{
-  margin: 0;
-  font-size: 22px;
-  line-height: 1.2;
+.modal-content h2 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 1px;
 }
 
-.difficulty-options{
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-
-  padding: 6px 0 2px;
+.difficulty-options {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 10px 0;
 }
 
-.difficulty-options label{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.06);
-  cursor: pointer;
-
-  user-select: none;
+.difficulty-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.difficulty-options input[type="radio"]{
-  transform: scale(1.05);
+.difficulty-options label:hover {
+    background: rgba(183, 243, 198, 0.1);
+    border-color: var(--button-bg);
 }
 
-
-.modal-buttons{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 6px;
+.difficulty-options input[type="radio"] {
+    accent-color: var(--button-bg);
+    transform: scale(1.2);
 }
 
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* --- RESPONZIVITA --- */
+
+@media (max-width: 950px) {
+    .home-main-split {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .button-group-left, .quick-stats {
+        justify-content: center;
+    }
+
+    .welcome-title-small {
+        text-align: center;
+    }
+
+    .rules-timeline li {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .home-content-container.cust-box {
+        padding: 2rem 1.5rem;
+    }
+}
