@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function index()
     {
         $scores = DB::table('dashboard_view')
-            ->select('username', 'points', 'points','difficulty_text')
+            ->select('username', 'points', 'difficulty_text')
             ->orderByDesc('points')
             ->get();
 
