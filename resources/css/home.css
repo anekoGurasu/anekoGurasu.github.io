@@ -7,7 +7,6 @@
     max-width: 1150px;
     margin: 4rem auto;
     box-sizing: border-box;
-    background: rgba(20, 28, 33, 0.95); /* Sjednocení pozadí */
 }
 
 .home-main-split {
@@ -259,6 +258,11 @@
 /* --- RESPONZIVITA --- */
 
 @media (max-width: 950px) {
+    .home-content-container.cust-box {
+        margin: 5px !important;
+        padding: 1.5rem 1rem !important;
+        overflow-x: hidden !important;
+    }
     .home-main-split {
         flex-direction: column;
         text-align: center;

@@ -13,9 +13,11 @@ const shuffleArray = (array) => {
 };
 
 export default function Game() {
-  const { difficulty, user } = useStateContext();
+  // Přidáno setMaxScore do destrukturalizace kontextu
+  const { difficulty, user, setScore, setMaxScore } = useStateContext();
   const navigate = useNavigate();
 
+  // --- STAVY PRO PRŮBĚH HRY ---
   const [step, setStep] = useState("intro");
   const [categories, setCategories] = useState([]);
   const [catIndex, setCatIndex] = useState(0);
@@ -28,18 +30,23 @@ export default function Game() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [revealed, setRevealed] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [score, setScore] = useState(0);
+  
+  // Lokální stavy pro body v této relaci
+  const [localScore, setLocalScore] = useState(0); 
+  const [accumulatedMax, setAccumulatedMax] = useState(0); // Průběžný součet max. bodů
+  
   const [loadingQuestions, setLoadingQuestions] = useState(false);
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [initializing, setInitializing] = useState(true);
 
-  // Stav pro textový vstup uživatele (Typ 2 a 3)
   const [userInput, setUserInput] = useState("");
 
+  // Ochrana obtížnosti
   useEffect(() => {
     if (difficulty === null || difficulty === undefined) navigate("/");
   }, [difficulty, navigate]);
 
+  // Načtení kategorií
   useEffect(() => {
     fetch("/api/categories")
       .then(r => r.json())
@@ -53,6 +60,7 @@ export default function Game() {
       });
   }, []);
 
+  // Načtení edukativních sliderů
   useEffect(() => {
     const category = categories[catIndex];
     if (category) {
@@ -71,24 +79,7 @@ export default function Game() {
     }
   }, [catIndex, categories]);
 
-  const saveGameResults = async (finalScore) => {
-    setSaving(true);
-    try {
-      const payload = {
-        username: user?.name || "Anonymní hráč",
-        points: finalScore,
-        difficulty: difficulty,
-      };
-      await axios.post('/api/dashboard/save', payload);
-      setStep("gameEnd");
-    } catch (err) {
-      console.error("Chyba při ukládání:", err.response?.data || err.message);
-      setStep("gameEnd");
-    } finally {
-      setSaving(false);
-    }
-  };
-
+  // NAČTENÍ OTÁZEK A VÝPOČET MAXIMÁLNÍCH BODŮ
   const startCategory = async () => {
     const category = categories[catIndex];
     if (!category) return;
@@ -97,8 +88,24 @@ export default function Game() {
       const res = await fetch(`/api/questions?category_id=${category.id}&difficulty_id=${difficulty}`);
       if (!res.ok) throw new Error("Chyba serveru");
       const data = await res.json();
+      
       if (data && data.length > 0) {
-        // Shuffle jen pro Radio/Checkbox (Typ 0/1)
+        // --- VÝPOČET MAX BODŮ PRO TUTO KATEGORII (Postgres kompatibilní) ---
+        let maxInThisCategory = 0;
+        data.forEach(q => {
+          if (q.answers) {
+            q.answers.forEach(a => {
+              // Sčítáme body u všech správných odpovědí
+              if (a.is_correct === true || String(a.is_correct) === 'true') {
+                maxInThisCategory += (Number(a.points) || 0);
+              }
+            });
+          }
+        });
+
+        // Akumulujeme maximum (přičítáme k předchozím kapitolám)
+        setAccumulatedMax(prev => prev + maxInThisCategory);
+
         const shuffled = shuffleArray(data).map(q => ({
           ...q,
           answers: q.type === 2 || q.type === 3 ? q.answers : shuffleArray(q.answers)
@@ -108,9 +115,38 @@ export default function Game() {
         setStep("question");
       }
     } catch (err) {
+      console.error(err);
       alert("Došlo k chybě při načítání otázek.");
     } finally {
       setLoadingQuestions(false);
+    }
+  };
+
+  // FINÁLNÍ ULOŽENÍ
+  const saveGameResults = async (finalScore) => {
+    setSaving(true);
+    
+    try {
+        const payload = {
+            username: user?.name || "Anonymní hráč",
+            points: finalScore,
+            difficulty: difficulty,
+        };
+        
+        await axios.post('/api/dashboard/save', payload);
+        
+        // Zápis do Contextu (použijeme nasbírané accumulatedMax)
+        setScore(finalScore); 
+        setMaxScore(accumulatedMax); 
+
+        navigate("/gameEnd"); 
+    } catch (err) {
+        console.error("Chyba při ukládání:", err);
+        setScore(finalScore);
+        setMaxScore(accumulatedMax);
+        navigate("/gameEnd");
+    } finally {
+        setSaving(false);
     }
   };
 
@@ -139,27 +175,33 @@ export default function Game() {
     let earned = 0;
     let correctIds = [];
 
+    // Game.jsx - uvnitř funkce confirmAnswer pro typ 3
     if (question.type === 3) {
-      // Logika pro pojmy (Typ 3) - najde první shodu regulárního výrazu
       const matchingAnswer = question.answers.find(a => {
         try {
-          return new RegExp(a.text, 'i').test(userInput);
-        } catch (e) { return false; }
+          // 1. Očistíme regex od (init) příznaků z Postgresu, pokud tam jsou
+          const cleanPattern = a.text.replace('(?i)', '');
+          // 2. Vytvoříme striktní regex: začátek ^, skupina se vzorem, konec $
+          const regex = new RegExp(`^(${cleanPattern})$`, 'i');
+          // 3. Otestujeme otrimovaný vstup uživatele
+          return regex.test(userInput.trim());
+        } catch (e) { 
+          return false; 
+        }
       });
 
       if (matchingAnswer) {
-        if (matchingAnswer.is_correct) earned = matchingAnswer.points || 0;
+        if (matchingAnswer.is_correct) earned = Number(matchingAnswer.points) || 0;
         correctIds = [matchingAnswer.id]; 
       }
       setSelectedAnswers(correctIds);
 
     } else if (question.type === 2) {
-      // Logika pro hesla (Typ 2) - checklist
       question.answers.forEach(a => {
         try {
           const regex = new RegExp(a.text);
           if (regex.test(userInput)) {
-            earned += (a.points || 0);
+            earned += (Number(a.points) || 0);
             correctIds.push(a.id);
           }
         } catch (e) {}
@@ -167,15 +209,15 @@ export default function Game() {
       setSelectedAnswers(correctIds);
     } else if (question.type === 1) {
       question.answers.forEach(a => {
-        if (selectedAnswers.includes(a.id) && a.is_correct) earned += (a.points || 0);
+        if (selectedAnswers.includes(a.id) && a.is_correct) earned += (Number(a.points) || 0);
       });
     } else {
       const chosen = question.answers.find(a => a.id === selectedAnswers[0]);
-      if (chosen && chosen.is_correct) earned = chosen.points || 0;
+      if (chosen && chosen.is_correct) earned = Number(chosen.points) || 0;
     }
 
     setRevealed(true);
-    setScore(s => s + earned);
+    setLocalScore(s => s + earned);
   };
 
   const nextQuestion = () => {
@@ -189,13 +231,16 @@ export default function Game() {
         setCatIndex(i => i + 1);
         setStep("intro");
       } else {
-        saveGameResults(score);
+        // KONEC HRY - použijeme lokální skóre
+        saveGameResults(localScore);
       }
     }
   };
 
   const nextSlide = () => setActiveItemIndex(prev => (prev < categoryItems.length - 1 ? prev + 1 : 0));
   const prevSlide = () => setActiveItemIndex(prev => (prev > 0 ? prev - 1 : categoryItems.length - 1));
+
+  // --- RENDERY (BEZE ZMĚN) ---
 
   if (initializing || saving || loadingQuestions || (step === "intro" && loadingItems)) {
     return (
@@ -261,11 +306,6 @@ export default function Game() {
                 <button className="btn-primary" onClick={startCategory}>Pokračovat k otázkám</button>
               </div>
             </div>
-            {category.img && (
-              <div className="intro-image-box cust-box">
-                <img src={category.img} alt={category.title} className="category-presentation-img" />
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -299,7 +339,6 @@ export default function Game() {
               
               <div className="answers">
                 {question.type === 3 ? (
-                  // TYP 3: ČISTÝ POJEM
                   <div className="text-answer-wrapper">
                     <h3>Zadejte odpověď:</h3>
                     <input 
@@ -313,17 +352,15 @@ export default function Game() {
                     />
                   </div>
                 ) : question.type === 2 ? (
-                  // TYP 2: HESLO S CHECKLISTEM
                   <div className="text-answer-wrapper">
                     <div className="password-checklist">
                       {question.answers.map(a => {
                         let isMet = false;
                         try { isMet = new RegExp(a.text).test(userInput); } catch (e) {}
                         const statusClass = isMet ? "is-correct-exp" : "is-missed-exp";
-                        const statusIcon = isMet ? "✓" : "X";
                         return (
                           <div key={a.id} className={`explanation-box ${statusClass}`}>
-                            <div className="explanation-icon">{statusIcon}</div>
+                            <div className="explanation-icon">{isMet ? "✓" : "X"}</div>
                             <div className="explanation-content">
                               <strong style={{ fontSize: '0.9rem' }}>{a.explanation}</strong>
                             </div>
@@ -331,7 +368,6 @@ export default function Game() {
                         );
                       })}
                     </div>
-                    <h3>Zadejte odpověď:</h3>
                     <input 
                       type="text" 
                       className="game-input" 
@@ -343,9 +379,7 @@ export default function Game() {
                     />
                   </div>
                 ) : (
-                  // TYP 0/1: MOŽNOSTI
                   question.answers.map((a, i) => {
-                    const letter = String.fromCharCode(65 + i);
                     const isSelected = selectedAnswers.includes(a.id);
                     let state = revealed ? (a.is_correct ? (isSelected ? "correct" : "missed") : (isSelected ? "wrong" : "")) : "";
                     return (
@@ -357,7 +391,7 @@ export default function Game() {
                           checked={isSelected}
                           onChange={() => pickAnswer(a)}
                         />
-                        <span className="answer-letter">{letter}</span>
+                        <span className="answer-letter">{String.fromCharCode(65 + i)}</span>
                         <span className="answer-text">{a.text}</span>
                       </label>
                     );
@@ -378,77 +412,61 @@ export default function Game() {
 
         {revealed && (
   <div className="explanations-outer">
-    {question.answers
-      .filter(a => {
-        const isSelected = selectedAnswers.includes(a.id);
-        const isCorrect = a.is_correct;
-
-        // --- ÚPRAVA PRO TYP 3 ---
-        if (question.type === 3) {
-          // Zobrazíme:
-          // 1. To, co uživatel vybral (i když je to chytrá chyba / negace)
-          // 2. VŽDY to, co je v DB označeno jako správné (is_correct === 1)
-          return isSelected || isCorrect;
-        }
-
-        // Ostatní typy (0, 1, 2) zůstávají původní
-        return (isSelected || isCorrect) && a.explanation;
-      })
-      .map(a => {
-        const isSelected = selectedAnswers.includes(a.id);
-        const isCorrect = a.is_correct;
-        
-        let statusClass = isCorrect && isSelected ? "is-correct-exp" : (isCorrect ? "is-missed-exp" : "is-wrong-exp");
-        let statusIcon = isCorrect && isSelected ? "✓" : (isCorrect ? "?" : "!");
-        let statusTitle = "";
-
-        if (question.type === 3) {
-          if (isCorrect) {
-            statusTitle = "Výborně";
-            statusClass = "is-correct-exp";
-            statusIcon = "✓";
-          }
-          // Pokud uživatel vybral chybnou variantu (negaci/chytrou chybu)
-          else {
-            statusTitle = "Vaše odpověď";
-            statusClass = "is-wrong-exp";
-            statusIcon = "!";
-          }
-        } else if (question.type === 2) {
-          statusTitle = isCorrect && isSelected ? "Splněno" : "Nesplněno";
-        } else {
-          statusTitle = isCorrect && isSelected ? `Splněno: „${a.explanation_title || a.text}“` : (isCorrect ? `Chybějící: „${a.explanation_title || a.text}“` : `Špatně: „${a.explanation_title || a.text}“`);
-        }
+    {question.type === 3 ? (
+      // --- SPECIÁLNÍ LOGIKA PRO TYP 3 (Textový vstup) ---
+      (() => {
+        // Najdeme správnou odpověď pro nápovědu
+        const correctAns = question.answers.find(a => a.is_correct);
+        // Zjistíme, zda uživatel trefil ID správné odpovědi
+        const isUserCorrect = selectedAnswers.includes(correctAns?.id);
 
         return (
-          <div key={`exp-${a.id}`} className={`explanation-box ${statusClass}`}>
-            <div className="explanation-icon">{statusIcon}</div>
+          <div className={`explanation-box ${isUserCorrect ? "is-correct-exp" : "is-wrong-exp"}`}>
+            <div className="explanation-icon">{isUserCorrect ? "✓" : "!"}</div>
             <div className="explanation-content">
-              <strong>{statusTitle}</strong>
-              {question.type === 3 && isCorrect ? (
-                <p>Možné odpovědi jsou <strong>{a.explanation}</strong></p>
-              ) : (
-                <p>{a.explanation}</p>
-              )}
+              <strong>{isUserCorrect ? "Správně" : "Špatně"}</strong>
+              <p>Možné odpovědi jsou: <strong>{correctAns?.explanation}</strong></p>
             </div>
           </div>
         );
-      })
-    }
+      })()
+    ) : (
+      // --- KLASICKÁ LOGIKA PRO OSTATNÍ TYPY ---
+      question.answers
+        .filter(a => {
+          const isSelected = selectedAnswers.includes(a.id);
+          const isCorrect = a.is_correct;
+          return (isSelected || isCorrect) && a.explanation;
+        })
+        .map(a => {
+          const isSelected = selectedAnswers.includes(a.id);
+          const isCorrect = a.is_correct;
+          
+          let statusClass = isCorrect && isSelected ? "is-correct-exp" : (isCorrect ? "is-missed-exp" : "is-wrong-exp");
+          let statusTitle = "";
+
+          if (question.type === 2) {
+            statusTitle = isCorrect && isSelected ? "Splněno" : "Nesplněno";
+          } else {
+            statusTitle = isCorrect && isSelected ? "Správná odpověď: " + a.text : (isCorrect ? "Chybějící odpověď: " + a.text : "Proč je špatně: " + a.text);
+          }
+
+          return (
+            <div key={`exp-${a.id}`} className={`explanation-box ${statusClass}`}>
+              <div className="explanation-icon">{isCorrect && isSelected ? "✓" : "!"}</div>
+              <div className="explanation-content">
+                <strong>{statusTitle}</strong>
+                <p>{a.explanation}</p>
+              </div>
+            </div>
+          );
+        })
+    )}
   </div>
 )}
       </div>
     );
   }
 
-  if (step === "gameEnd") {
-    return (
-      <div className="game-end cust-box">
-        <h1>Konec hry</h1>
-        <p>Celkové skóre: {score}</p>
-        <button className="btn-primary" onClick={() => navigate("/")}>Domů</button>
-      </div>
-    );
-  }
   return null;
 }

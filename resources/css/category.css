@@ -14,13 +14,25 @@
     align-items: start;
     color: #eaf0f6;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 @media (max-width: 900px) {
     .intro-grid { 
         grid-template-columns: 1fr; 
         max-width: 600px;
+        padding: 10px;
     }
+
+    .slider-toc {
+        display: none;
+    }
+
+    .slider-body {
+        height: 20vh !important;
+    }
+
+    .intro-center { position: static; }
 }
 
 /* --- LEVÝ SLOUPEC: INTERAKTIVNÍ SLIDER --- */
@@ -257,10 +269,6 @@
     display: grid;
     position: sticky;
     top: 20px;
-}
-
-@media (max-width: 900px) {
-    .intro-center { position: static; }
 }
 
 .intro-center-card {

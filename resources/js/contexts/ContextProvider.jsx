@@ -1,5 +1,4 @@
-import { use, useContext } from "react";
-import { createContext, useState } from "react";
+import { useContext, createContext, useState } from "react";
 
 const StateContext = createContext({
     user: null,
@@ -7,7 +6,11 @@ const StateContext = createContext({
     setUser: () => {},
     setToken: () => {},
     difficulty: null,
-    setDifficulty: () => {}
+    setDifficulty: () => {},
+    score: 0,              // Přidáno
+    setScore: () => {},     // Přidáno
+    maxScore: 0,        // Přidáno sem
+    setMaxScore: () => {} // Přidáno sem
 })
 
 export const ContextProvider = ({children}) => {
@@ -15,12 +18,19 @@ export const ContextProvider = ({children}) => {
         const storedUser = localStorage.getItem('USER_DATA');
         return storedUser ? JSON.parse(storedUser) : {};
     });
+
     const [difficulty, setDifficulty] = useState(() => {
         const storedUser = localStorage.getItem('USER_DATA');
         const userData = storedUser ? JSON.parse(storedUser) : {};
         return userData.difficulty !== undefined ? userData.difficulty : null;
     });
+
     const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+
+    // --- NOVÝ STAV PRO SKÓRE ---
+    const [score, setScore] = useState(0);
+    const [maxScore, setMaxScore] = useState(0);
+
     const setToken = (token) => {
         _setToken(token)
         if(token){
@@ -30,7 +40,6 @@ export const ContextProvider = ({children}) => {
         }
     }
 
-    // Simple login function to create token
     const login = (username) => {
         if(username && username.trim() !== "") {
             const fakeToken = "token_" + username.trim();
@@ -67,11 +76,13 @@ export const ContextProvider = ({children}) => {
             setToken,
             login,
             difficulty,
-            setDifficulty: setDifficultyAndStore
+            setDifficulty: setDifficultyAndStore,
+            score,       // Export skóre
+            setScore,     // Export funkce pro nastavení
+            maxScore,       // Export
+            setMaxScore
         }}>
-
-        {children}
-
+            {children}
         </StateContext.Provider>
     )
 }

@@ -152,36 +152,145 @@
 .diff-střední { color: #ffb74d; border-color: rgba(255, 183, 77, 0.3); }
 .diff-těžká { color: #e57373; border-color: rgba(229, 115, 115, 0.3); }
 
-/* 5. RESPONZIVITA */
+/* ==========================================================================
+   5. RESPONZIVITA - Kompletní vertikální karty bez horizontálního scrollu
+   ========================================================================== */
+
 @media (max-width: 768px) {
+    /* 5.1 KONTEJNER - Úprava hlavního boxu pro mobilní displeje */
+    .content-container.cust-box {
+        padding: 12px !important;
+        margin: 5px !important;
+        width: auto !important;
+        overflow-x: hidden !important; /* Striktní zákaz horizontálního posunu */
+        display: block !important;
+    }
+
+    /* 5.2 HLAVIČKA - Srovnání nadpisu a filtru pod sebe */
     .dashboard-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 15px !important;
+        padding-bottom: 20px !important;
     }
 
+    .dashboard-header h1 {
+        font-size: 1.4rem !important;
+    }
+
+    .dashboard-filter label {
+        justify-content: center !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* 5.3 TRANSFORMACE TABULKY - Změna tabulkové struktury na blokovou */
+    .score-table, 
+    .score-table thead, 
+    .score-table tbody, 
+    .score-table tr, 
+    .score-table td {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* Skrytí původní hlavičky tabulky */
     .score-table thead {
-        display: none;
+        display: none !important;
     }
 
+    /* 5.4 KARTA HRÁČE - Každý řádek (tr) vypadá jako samostatná karta */
     .score-table tbody tr {
-        display: block;
-        margin-bottom: 15px;
-        padding: 10px 0;
+        margin-bottom: 15px !important;
+        border: 1px solid rgba(183, 243, 198, 0.1) !important;
+        border-radius: 10px !important;
+        padding: 5px 0 !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+        transition: none !important;
     }
 
+    /* 5.5 BUŇKY (TD) - Každý sloupec je nyní řádek uvnitř karty */
     .score-table tbody td {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 20px;
-        text-align: right;
+        display: flex !important;
+        justify-content: space-between !important; /* Popisek vlevo, hodnota vpravo */
+        align-items: center !important;
+        padding: 10px 15px !important;
+        min-height: auto !important;
+        text-align: right !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-sizing: border-box !important;
     }
 
+    /* Reset speciálních desktopových šířek a zaoblení */
+    .score-table tbody tr td:first-child,
+    .score-table tbody tr td:last-child {
+        width: 100% !important;
+        border-radius: 0 !important;
+        color: var(--heading-color) !important;
+    }
+
+    /* Zvýraznění posledního řádku karty (Body) */
+    .score-table tbody td:last-child {
+        border-bottom: none !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* 5.6 MAGICKÉ POPISKY - Využití atributu data-label pro zobrazení názvů */
     .score-table td::before {
         content: attr(data-label);
-        font-weight: 700;
-        color: var(--button-bg);
-        text-transform: uppercase;
-        font-size: 0.7rem;
+        font-weight: 800 !important;
+        color: var(--button-bg) !important;
+        text-transform: uppercase !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 0.5px !important;
+        text-align: left !important;
+        /* Fixní šířka pro popisek vlevo zajistí místo pro hodnotu */
+        flex: 0 0 85px !important; 
+        opacity: 0.7 !important;
+    }
+
+    /* 5.7 HODNOTY - Zarovnání skutečných dat vpravo */
+    .username-cell, 
+    .points-cell, 
+    .badge,
+    .score-table td:first-child {
+        display: flex !important;
+        font-size: 0.9rem !important;
+        /* Ochrana proti přetečení u dlouhých jmen */
+        word-break: break-word !important;
+        white-space: normal !important;
+    }
+
+    /* Odznaky obtížnosti na mobilu */
+    .badge {
+        padding: 2px 8px !important;
+        font-size: 0.7rem !important;
+        
+        justify-content: flex-end !important;
+    }
+
+    /* 5.8 SPECIÁLNÍ ŘÁDKY - Skrytí nebo úprava teček a loading zpráv */
+    .more-records-row {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .no-results, .loading-message {
+        display: block !important; /* Zrušíme flex, aby fungovalo text-align: center */
+        text-align: center !important;
+        padding: 40px 20px !important;
+        font-size: 1rem !important; /* Normální velikost textu */
+        font-weight: 500 !important;
+        color: rgba(255, 255, 255, 0.5) !important;
+        border: none !important;
+        width: 100% !important;
+    }
+
+    /* Skryjeme popisek (např. "POŘADÍ"), který se tam automaticky cpe přes ::before */
+    .no-results::before, .loading-message::before {
+        display: none !important;
     }
 }

@@ -7,14 +7,14 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
 }
 
-.game-question.no-image {
-    width: min(700px, 90vw);
+.has-image{
+    width: min(90vw, 90vw);
 }
-
-.game-question.has-image {
-    width: min(75vw, 100vw);
+.no-image{
+    width: min(60vw, 90vw);
 }
 
 .question-layout {
@@ -336,24 +336,14 @@
   font-style: italic;
 }
 
-/* --- KONEC HRY --- */
-.game-end {
-    width: min(450px, 90vw);
-    padding: 3.5rem;
-    margin: 15vh auto;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 /* --- RESPONZIVITA --- */
 @media (max-width: 1200px) {
     .question-layout { flex-direction: column; align-items: center; }
     .question-image-container, .question-content { width: 100%; min-width: 100%; }
 }
 
-@media (max-width: 768px) {
-    .game-question { width: 95vw; padding: 1.5rem; }
+@media (max-width: 900px) {
+    .game-question { width: 95vw; padding: 1rem; }
     .answer-option { padding: 12px; font-size: 14px; }
+    .category-label { margin-bottom:5vh}
 }

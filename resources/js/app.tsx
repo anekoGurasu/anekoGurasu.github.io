@@ -1,4 +1,5 @@
 import '../css/app.css';
+import '../css/nav.css';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -8,6 +9,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Game from './pages/Game';
 import Contact from './pages/Contact';
+import GameEnd from './pages/GameEnd';
 
 // Importy tvých layoutů a contextu
 import { ContextProvider, useStateContext } from './contexts/ContextProvider';
@@ -79,6 +81,14 @@ if (container) {
                         <ProtectedRoute>
                             <DefaultLayout>
                                 <Contact />
+                            </DefaultLayout>
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path="/gameEnd" element={
+                        <ProtectedRoute>
+                            <DefaultLayout>
+                                <GameEnd />
                             </DefaultLayout>
                         </ProtectedRoute>
                     } />

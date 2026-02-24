@@ -1,0 +1,197 @@
+/* ---------- TOP MENU ---------- */
+
+.top-menu {
+  background-color: #0b0f14;
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid rgba(183,243,198,0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+/* ===== LOGO (původní styl) ===== */
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.logo-first {
+  color: var(--button-bg);
+  text-shadow: 0 0 2px var(--button-bg);
+}
+
+/* ===== MENU ITEMS ===== */
+
+.menu-items {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-items a {
+  color: var(--heading-color);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0; /* Vertikální padding pro linku */
+  transition: all 0.2s ease;
+}
+
+.menu-items a:hover {
+  color: var(--button-bg);
+}
+
+/* Automaticky aplikovaná třída od NavLink */
+.menu-items a.active {
+  color: var(--button-bg);
+  opacity: 1;
+}
+
+/* ===== TLAČÍTKO V MENU (pokud máš) ===== */
+
+.menu-items button {
+  background: none;
+  border: 1px solid var(--button-bg);
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  color: var(--button-bg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-items button:hover {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+/* ===== PRAVÉ TLAČÍTKO (Odhlásit se) ===== */
+
+.nav-right button {
+  background: var(--button-bg);
+  border: 1px solid var(--button-bg);
+  border-radius: 6px;
+  padding: 0.35rem 0.9rem;
+  color: var(--button-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-right button:hover {
+  background: var(--button-hover);
+  border-color: var(--button-hover);
+  box-shadow: 0 0 8px var(--button-shadow);
+}
+
+/* --- POMOCNÉ TŘÍDY --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  white-space: nowrap; /* Zabrání rozdělení textu loga */
+  z-index: 101; /* Aby bylo nad vysunutým menu */
+}
+
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 101;
+  padding: 5px;
+}
+
+.burger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--heading-color);
+  transition: 0.3s;
+}
+
+/* Animace křížku */
+.burger-menu.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger-menu.open span:nth-child(2) { opacity: 0; }
+.burger-menu.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-only { display: none; }
+
+/* --- RESPONSIVE (pod 900px kvůli délce loga) --- */
+
+@media (max-width: 900px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+    width: 100%;
+  }
+
+  .mobile-only button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .menu-items {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: #0b0f14;
+    flex-direction: column;
+    padding: 100px 2rem;
+    transition: 0.3s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    align-items: flex-start;
+  }
+
+  .menu-items.show {
+    right: 0;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+  }
+
+}

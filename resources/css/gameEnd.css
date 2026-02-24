@@ -1,0 +1,141 @@
+/* Kontejner celé stránky */
+.game-end-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 20px;
+}
+
+/* Hlavní karta s výsledky */
+.game-end-content {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 40px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.game-end-title {
+    font-size: 2.2rem;
+    color: var(--button-bg);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Zobrazení skóre v kruhu/bloku */
+.score-main-display {
+    margin: 30px 0;
+}
+
+.score-circle {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 40px;
+    border-radius: 30px;
+    border: 2px solid var(--button-bg);
+}
+
+.score-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--button-bg);
+}
+
+.score-separator, .score-max {
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.score-label {
+    margin-top: 10px;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Progress bar úspěšnosti */
+.progress-bar-wrapper {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.progress-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--button-bg);
+    font-size: 0.9rem;
+}
+
+.progress-bar-bg {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--button-bg), var(--heading-color));
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
+/* Mřížka s informacemi */
+.end-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.info-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    color: #95a5a6;
+    margin-bottom: 3px;
+}
+
+.info-value {
+    font-weight: bold;
+    color: var(--button-bg);
+}
+
+/* Tlačítka */
+.game-end-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ripple {
+    transition: transform 0.2s;
+}
+
+.ripple:active {
+    transform: scale(0.96);
+}
+
+/* Animace pop-in */
+.animate-pop {
+    animation: pop 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48);
+}
+
+@keyframes pop {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
