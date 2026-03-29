@@ -9,24 +9,19 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [error, setError] = useState("");
     const { login } = useStateContext();
-    const navigate = useNavigate(); // Hook pro navigaci
-
+    const navigate = useNavigate();
     const handleLogin = () => {
         if (username.trim() === "") {
             setError("Prosím, zadejte uživatelské jméno.");
             return;
         }
         
-        // Předpokládáme, že funkce login v ContextProvideru uloží token/jméno do localStorage
         if (login(username)) {
-            // 2. Změna: Čisté SPA přesměrování
             navigate("/"); 
         } else {
             setError("Nepodařilo se přihlásit.");
         }
     };
-
-    // Bonus: Přihlášení stisknutím klávesy Enter
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             handleLogin();

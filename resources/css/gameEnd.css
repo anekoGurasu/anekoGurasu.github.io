@@ -1,4 +1,3 @@
-/* Kontejner celé stránky */
 .game-end-page {
     display: flex;
     justify-content: center;
@@ -7,7 +6,6 @@
     padding: 20px;
 }
 
-/* Hlavní karta s výsledky */
 .game-end-content {
     max-width: 500px;
     width: 100%;
@@ -23,7 +21,6 @@
     letter-spacing: 2px;
 }
 
-/* Zobrazení skóre v kruhu/bloku */
 .score-main-display {
     margin: 30px 0;
 }
@@ -59,7 +56,6 @@
     font-weight: bold;
 }
 
-/* Progress bar úspěšnosti */
 .progress-bar-wrapper {
     margin: 25px 0;
     text-align: left;
@@ -88,7 +84,6 @@
     transition: width 1.5s cubic-bezier(0.1, 0, 0.1, 1);
 }
 
-/* Mřížka s informacemi */
 .end-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -115,7 +110,6 @@
     color: var(--button-bg);
 }
 
-/* Tlačítka */
 .game-end-actions {
     display: flex;
     flex-direction: column;
@@ -130,7 +124,6 @@
     transform: scale(0.96);
 }
 
-/* Animace pop-in */
 .animate-pop {
     animation: pop 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48);
 }

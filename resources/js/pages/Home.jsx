@@ -1,6 +1,5 @@
 import { useState } from "react";
-// 1. Změna: Místo routeru z Inertie používáme useNavigate a Link z React Routeru
-import { useNavigate, Link } from "react-router-dom"; 
+import { useNavigate, Link } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import "../../css/app.css";
 import "../../css/home.css";
@@ -9,22 +8,16 @@ export default function Home() {
     const { user, setDifficulty } = useStateContext();
     const [showModal, setShowModal] = useState(false);
     const [selectedDifficulty, setSelectedDifficulty] = useState(1);
-    const navigate = useNavigate(); // Hook pro rychlé přesměrování v rámci SPA
-
-    const handlePlayClick = () => {
-        setShowModal(true);
-    };
-
+    const navigate = useNavigate();
+    const handlePlayClick = () => { setShowModal(true); };
     const handleCancel = () => {
         setShowModal(false);
         setSelectedDifficulty(1);
     };
-
     const handleConfirm = () => {
         if (selectedDifficulty !== null) {
             setDifficulty(selectedDifficulty);
-            // 2. Změna: navigate("/") místo router.visit("/")
-            navigate("/game"); 
+            navigate("/game");
             setShowModal(false);
         }
     };
@@ -32,66 +25,55 @@ export default function Home() {
     return (
         <div className="home-page">
             <div className="home-content-container cust-box">
-    <div className="home-main-split">
-        {/* LEVÁ ČÁST: Subtilní uvítání a akce */}
-        <section className="home-intro-column">
-            <h2 className="welcome-title-small">
-                Vítej, hráči <span className="user-highlight">{user?.name}</span>!
-            </h2>
-            
-            <div className="intro-text-compact">
-                <p>
-                    Vstup do světa digitálních technologií s jistotou. Tato hra tě provede nástrahami internetu 
-                    a ukáže ti, jak se v něm pohybovat sebevědomě a bez rizika.
-                </p>
-                <p>
-                    Tvým úkolem je čelit reálným situacím, odhalit skrytá nebezpečí a zvolit tu nejbezpečnější cestu.
-                </p>
-            </div>
-            <div className="quick-stats">
-                <div className="stat-box">
-                    <span className="stat-value">90+</span>
-                    <span className="stat-label">Úloh</span>
-                </div>
-                <div className="stat-box">
-                    <span className="stat-value">3</span>
-                    <span className="stat-label">Kategorie</span>
-                </div>
-                <div className="stat-box">
-                    <span className="stat-value">3</span>
-                    <span className="stat-label">Obtížnosti</span>
+                <div className="home-main-split">
+                    <section className="home-intro-column">
+                        <h2 className="welcome-title-small">Vítej, hráči <span className="user-highlight">{user?.name}</span>!</h2>
+                        <div className="intro-text-compact">
+                            <p>Vstup do světa digitálních technologií s jistotou. Tato hra tě provede nástrahami internetu a ukáže ti, jak se v něm pohybovat sebevědomě a bez rizika.</p>
+                            <p>Prověř si své znalosti v oblasti kybernetické bezpečnosti a nauč se, jak se chránit před online hrozbami.</p>
+                        </div>
+                        <div className="quick-stats">
+                            <div className="stat-box"><span className="stat-value">90+</span><span className="stat-label">Úloh</span></div>
+                            <div className="stat-box"><span className="stat-value">3</span><span className="stat-label">Kategorie</span></div>
+                            <div className="stat-box"><span className="stat-value">3</span><span className="stat-label">Obtížnosti</span></div>
+                        </div>
+                        <button className="btn-primary" onClick={handlePlayClick}>Hraj</button>
+                    </section>
+                    <section className="home-rules-column">
+                        <div className="rules-card-compact">
+                            <h3>Základní pokyny</h3>
+                            <ul className="rules-timeline">
+                                <li>Nejprve si prostuduj všechny připravené materiály</li>
+                                <li>Spusť test a postupně odpověz na všechny připravené otázky.</li>
+                                <li>Po každé odpovědi se ti zobrazí zdůvodnění, které ti pomůže pochopit danou problematiku.</li>
+                                <li>Nemusíš nikam spěchat, na každou otázku máš tolik času, kolik zrovna potřebuješ.</li>
+                                <li>Nezapomeň, že cílem není bezchybný test, ale tvá schopnost včas rozpoznat rizika, se kterými se můžeš potkat v internetovém prostoru.</li>
+                            </ul>
+                        </div>
+                    </section>
                 </div>
             </div>
-            <button className="btn-primary" onClick={handlePlayClick}>Hraj</button>
-        </section>
-
-        {/* PRAVÁ ČÁST: Karta s pravidly */}
-        <section className="home-rules-column">
-            <div className="rules-card-compact">
-                <h3>Základní pravidla hry</h3>
-                {/* Tady musí být tato třída, aby fungovala linka a kuličky */}
-                <ul className="rules-timeline">
-                    <li>Tvým úkolem je vybrat správnou odpověď z nabízených možností, nebo doplnit odpověď vlastní.</li>
-                    <li>Za každou správnou trefu si připíšeš cenné body na své konto.</li>
-                    <li>Po každé odpovědi se ti zobrazí zdůvodnění, které ti pomůže pochopit danou problematiku.</li>
-                    <li>Cílem je porozumět bezpečnosti, ne jen nasbírat body.</li>
-                </ul>
-            </div>
-        </section>
-    </div>
-</div>
 
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <h2>Vyber obtížnost</h2>
+                        <h2>Výběr obtížnosti</h2>
+                        <div className="difficulty-tip-box">
+                            <span className="tip-label">TIP:</span>
+                            <div className="tip-text">
+                                {selectedDifficulty === 1 && "Body se pouze přičítají, nikdy neodečítají. Ideální pro klidné procvičování."}
+                                {selectedDifficulty === 2 && "Body se přičítají i odečítají ve stejném poměru. Skóre nikdy neklesne pod 0."}
+                                {selectedDifficulty === 3 && "Za chyby se odečítá více bodů než se přičítá za správné odpovědi. Skóre může být i záporné."}
+                                {!selectedDifficulty && "Vyberte obtížnost pro zobrazení pravidel bodování."}
+                            </div>
+                        </div>
                         <div className="difficulty-options">
                             {[
                                 { val: 1, label: "Lehká" },
                                 { val: 2, label: "Střední" },
                                 { val: 3, label: "Těžká" }
                             ].map((d) => (
-                                <label key={d.val}>
+                                <label key={d.val} className={`difficulty-pill ${selectedDifficulty === d.val ? 'active' : ''}`}>
                                     <input
                                         type="radio"
                                         name="difficulty"
@@ -99,6 +81,7 @@ export default function Home() {
                                         checked={selectedDifficulty === d.val}
                                         onChange={() => setSelectedDifficulty(d.val)}
                                     />
+                                    <span className="custom-radio"></span>
                                     {d.label}
                                 </label>
                             ))}

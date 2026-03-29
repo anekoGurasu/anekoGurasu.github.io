@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import Game from './pages/Game';
 import Contact from './pages/Contact';
 import GameEnd from './pages/GameEnd';
+import NotFound from './pages/NotFound';
 
 // Importy tvých layoutů a contextu
 import { ContextProvider, useStateContext } from './contexts/ContextProvider';
@@ -17,7 +18,6 @@ import DefaultLayout from './components/layout/defaultLayout';
 import GuestLayout from './components/layout/guestLayout';
 import { JSX } from 'react';
 
-// Pomocná komponenta pro ochranu cest (Protected Routes)
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
     const { token } = useStateContext();
     if (!token) {
@@ -25,8 +25,6 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
     }
     return children;
 };
-
-// Pomocná komponenta pro hosty (aby přihlášený nelezl na Login)
 const GuestRoute = ({ children }: { children: JSX.Element }) => {
     const { token } = useStateContext();
     if (token) {
@@ -34,8 +32,8 @@ const GuestRoute = ({ children }: { children: JSX.Element }) => {
     }
     return children;
 };
-
 const container = document.getElementById('app');
+
 if (container) {
     const root = createRoot(container);
 
@@ -43,7 +41,6 @@ if (container) {
         <ContextProvider>
             <BrowserRouter>
                 <Routes>
-                    {/* Cesty pro hosty (Login) */}
                     <Route path="/login" element={
                         <GuestRoute>
                             <GuestLayout>
@@ -52,7 +49,6 @@ if (container) {
                         </GuestRoute>
                     } />
 
-                    {/* Chráněné cesty (Hra, Dashboard, Home) */}
                     <Route path="/" element={
                         <ProtectedRoute>
                             <DefaultLayout>
@@ -93,8 +89,11 @@ if (container) {
                         </ProtectedRoute>
                     } />
 
-                    {/* Catch-all přesměrování (pokud uživatel zadá nesmysl) */}
-                    <Route path="*" element={<Navigate to="/" replace />} />
+                    <Route path="*" element={
+                        <GuestLayout>
+                            <NotFound />
+                        </GuestLayout>
+                    } />
                 </Routes>
             </BrowserRouter>
         </ContextProvider>

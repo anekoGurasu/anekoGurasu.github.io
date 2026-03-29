@@ -8,12 +8,11 @@ use App\Models\Dashboard;
 
 class DashboardController extends Controller
 {
-    // --- Vrátí top 5 skóre ---
     public function index()
     {
-        $scores = DB::table('dashboard_view')
-            ->select('username', 'points', 'difficulty_text')
-            ->orderByDesc('points')
+        $scores = DB::table(Dashboard::getViewName())
+            ->select(Dashboard::COL_USERNAME, Dashboard::COL_POINTS, 'difficulty_text')
+            ->orderByDesc(Dashboard::COL_POINTS)
             ->get();
 
         return response()->json($scores);
@@ -24,16 +23,16 @@ class DashboardController extends Controller
     {
         // validace vstupu
         $request->validate([
-            'username' => 'required|string|max:255',
-            'points' => 'required|integer|min:0',
-            'difficulty' => 'nullable|integer|max:5',
+            Dashboard::COL_USERNAME => 'required|string|max:255',
+            Dashboard::COL_POINTS => 'required|integer|min:0',
+            Dashboard::COL_DIFFICULTY => 'nullable|integer|max:5',
         ]);
 
         // vytvoření záznamu
         $dashboard = Dashboard::create([
-            'username' => $request->username,
-            'points' => $request->points,
-            'difficulty' => $request->difficulty ?? 1,
+            Dashboard::COL_USERNAME => $request->username,
+            Dashboard::COL_POINTS => $request->points,
+            Dashboard::COL_DIFFICULTY => $request->difficulty ?? 1,
         ]);
 
         // odpověď

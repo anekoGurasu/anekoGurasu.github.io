@@ -1,13 +1,11 @@
-/* --- LOGIN WRAPPER --- */
 .login-wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 0 1rem; /* Ochrana proti nalepení na hrany displeje */
+    padding: 0 1rem;
 }
 
-/* --- SITE TITLE (Obří nápis nad formulářem) --- */
 .site-title {
     font-size: 4rem;
     font-weight: 700;
@@ -15,7 +13,7 @@
     text-align: center;
     margin-top: 5rem;
     margin-bottom: 6rem;
-    white-space: normal; /* Na mobilu se může zalamovat */
+    white-space: normal;
     transition: all 0.3s ease;
 }
 
@@ -28,17 +26,17 @@
         0 0 15px var(--button-shadow);
 }
 
-/* --- LOGIN FORM BOX --- */
 .login-form {
     background: rgba(255,255,255,0.06);
     padding: 1.5rem 3rem 3.5rem 3rem !important;
-    width: 100%;       /* Flexibilní šířka */
-    max-width: 340px;  /* Původní fixní šířka jako limit */
+    width: 100%;
+    max-width: 30vw;
+    min-width: 350px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     transition: all 0.2s ease;
-    box-sizing: border-box; /* Důležité pro správný padding */
+    box-sizing: border-box;
 }
 
 .login-form:hover {
@@ -52,7 +50,6 @@
     font-weight: 700;
 }
 
-/* --- VSTUPY A TLAČÍTKA --- */
 .login-form input {
     width: 100%;
     padding: 0.8rem 1rem;
@@ -100,33 +97,19 @@
     text-align: center;
 }
 
-/* --- RESPONZIVITA (Media Queries) --- */
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .site-title {
-        font-size: 2.8rem;    /* Zmenšení loga pro tablety */
+        font-size: 2rem;
         margin-top: 3rem;
         margin-bottom: 4rem;
     }
 
     .login-form {
-        padding: 1.5rem 2rem 2.5rem 2rem !important; /* Menší postranní padding */
-    }
-}
-
-@media (max-width: 480px) {
-    .site-title {
-        font-size: 1.8rem;    /* Zmenšení loga pro malé telefony */
-        margin-top: 2rem;
-        margin-bottom: 3rem;
-    }
-
-    .login-form {
-        padding: 1.5rem 1.2rem 2.5rem 1.2rem !important;
-        max-width: 100%;      /* Využije plnou šířku (mínus padding wrapperu) */
+        padding: 1rem 1rem 1rem 1rem !important;
+        min-width: 90vw !important;
     }
 
     .login-form h1 {
-        font-size: 1.6rem;    /* Menší nápis "Přihlášení" */
+        font-size: 1.6rem;
     }
 }

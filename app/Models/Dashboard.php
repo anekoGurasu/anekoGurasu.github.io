@@ -20,4 +20,9 @@ class Dashboard extends Model
         self::COL_POINTS,
         self::COL_DIFFICULTY,
     ];
+
+    public static function getViewName(): string
+    {
+        return 'dashboard_view';
+    }
 }

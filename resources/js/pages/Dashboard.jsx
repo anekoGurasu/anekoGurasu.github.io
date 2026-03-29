@@ -7,7 +7,6 @@ import "../../css/dashboard.css";
 export default function Dashboard() {
   const { token } = useStateContext();
   const navigate = useNavigate();
-  
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [difficultyFilter, setDifficultyFilter] = useState("Lehká");
@@ -38,32 +37,26 @@ export default function Dashboard() {
     const filterDiff = String(difficultyFilter).trim();
     return hracDiff === filterDiff;
   });
-
   const top = filteredDashboard.slice(0, 5);
 
   return (
     <div className="content-container cust-box">
       <div className="dashboard-header">
         <h1>Výsledky hráčů</h1>
-
         <div className="dashboard-filter">
           <label>
             Filtr obtížnosti:
             <div className="select-custom-wrapper">
-            <select
-              value={difficultyFilter}
-              onChange={(e) => setDifficultyFilter(e.target.value)}
-            >
-              <option value="">Vše</option>
-              <option value="Lehká">Lehká</option>
-              <option value="Střední">Střední</option>
-              <option value="Těžká">Těžká</option>
-            </select>
+              <select value={difficultyFilter} onChange={(e) => setDifficultyFilter(e.target.value)}>
+                <option value="">Vše</option>
+                <option value="Lehká">Lehká</option>
+                <option value="Střední">Střední</option>
+                <option value="Těžká">Těžká</option>
+              </select>
             </div>
           </label>
         </div>
       </div>
-
       <table className="score-table">
         <thead>
           <tr>
@@ -75,15 +68,13 @@ export default function Dashboard() {
         </thead>
         <tbody>
           {loading ? (
-            <tr>
-              <td colSpan="4" className="loading-message">Načítám výsledky...</td>
-            </tr>
+            <tr><td colSpan="4" className="loading-message">Načítám výsledky...</td></tr>
           ) : top.length > 0 ? (
             <>
               {top.map((hrac, index) => {
                 const rank = index + 1;
                 const rowClass = rank <= 3 ? `top-rank rank-${rank}` : "";
-                
+
                 return (
                   <tr key={`${hrac.username}-${index}`} className={rowClass}>
                     <td data-label="Pořadí">{rank}.</td>
@@ -99,27 +90,15 @@ export default function Dashboard() {
               })}
               {filteredDashboard.length > 5 && (
                 <tr className="more-records-row">
-                  <td style={{ textAlign: "center", opacity: 0.5 }}>
-                    ...
-                  </td>
-                  <td style={{ textAlign: "left", opacity: 0.5 }}>
-                    ...
-                  </td>
-                  <td style={{ textAlign: "center", opacity: 0.5 }}>
-                    ...
-                  </td>
-                  <td style={{ textAlign: "center", opacity: 0.5 }}>
-                    ...
-                  </td>
+                  <td style={{ textAlign: "center", opacity: 0.5 }}>...</td>
+                  <td style={{ textAlign: "left", opacity: 0.5 }}>...</td>
+                  <td style={{ textAlign: "center", opacity: 0.5 }}>...</td>
+                  <td style={{ textAlign: "center", opacity: 0.5 }}>...</td>
                 </tr>
               )}
             </>
           ) : (
-            <tr>
-              <td colSpan="4" className="no-results">
-                Zatím žádné výsledky pro tuto obtížnost.
-              </td>
-            </tr>
+            <tr><td colSpan="4" className="no-results">Zatím žádné výsledky pro tuto obtížnost.</td></tr>
           )}
         </tbody>
       </table>

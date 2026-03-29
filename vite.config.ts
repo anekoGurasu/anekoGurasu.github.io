@@ -22,4 +22,10 @@ export default defineConfig({
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
     },
+    server: {
+        host: '0.0.0.0', // Naslouchat na všech adresách
+        hmr: {
+            host: '192.168.0.104', // Vaše IP z ipconfig
+        },
+    },
 });

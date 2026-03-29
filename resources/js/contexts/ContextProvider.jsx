@@ -7,10 +7,10 @@ const StateContext = createContext({
     setToken: () => {},
     difficulty: null,
     setDifficulty: () => {},
-    score: 0,              // Přidáno
-    setScore: () => {},     // Přidáno
-    maxScore: 0,        // Přidáno sem
-    setMaxScore: () => {} // Přidáno sem
+    score: 0,
+    setScore: () => {},
+    maxScore: 0,
+    setMaxScore: () => {}
 })
 
 export const ContextProvider = ({children}) => {
@@ -26,8 +26,6 @@ export const ContextProvider = ({children}) => {
     });
 
     const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
-
-    // --- NOVÝ STAV PRO SKÓRE ---
     const [score, setScore] = useState(0);
     const [maxScore, setMaxScore] = useState(0);
 
@@ -77,9 +75,9 @@ export const ContextProvider = ({children}) => {
             login,
             difficulty,
             setDifficulty: setDifficultyAndStore,
-            score,       // Export skóre
-            setScore,     // Export funkce pro nastavení
-            maxScore,       // Export
+            score,
+            setScore,
+            maxScore,
             setMaxScore
         }}>
             {children}
