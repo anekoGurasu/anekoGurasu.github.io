@@ -13,5 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'api/dashboard/save', // React SPA POST endpoint
+        '/poslat-kontakt',
+        'poslat-kontakt', // Přidáno pro případ, že by někdo posílal bez lomítka
     ];
 }

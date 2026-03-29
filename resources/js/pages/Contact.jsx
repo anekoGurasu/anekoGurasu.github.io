@@ -5,11 +5,31 @@ import "../../css/contact.css";
 export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [statusMessage, setStatusMessage] = useState("");
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Odesláno:", formData);
-        setStatusMessage("Děkujeme! Tvá zpráva byla úspěšně odeslána.");
-        setFormData({ name: '', email: '', message: '' });
+        setStatusMessage("Odesílám...");
+
+        try {
+            const response = await fetch('/poslat-kontakt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    // Laravel ve web.php tohle obvykle vyžaduje
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content')
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatusMessage("Děkujeme! Tvá zpráva byla úspěšně odeslána.");
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                setStatusMessage("Ups! Chyba při odesílání. Zkus to za chvilku.");
+            }
+        } catch (error) {
+            setStatusMessage("Nepodařilo se spojit se serverem.");
+        }
     };
 
     return (

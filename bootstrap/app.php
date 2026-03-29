@@ -14,6 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->trustProxies(at: '*');
+        
+        // --- TADY JE TA OPRAVA ---
+        $middleware->validateCsrfTokens(except: [
+            '/poslat-kontakt', // Tohle vypne CSRF pro tvou mailovou cestu
+        ]);
+        // -------------------------
+
         $middleware->web(append: [
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
